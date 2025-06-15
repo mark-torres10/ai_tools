@@ -1,0 +1,3 @@
+... <rest of system prompt>...
+
+If I provide any feedback on how to improve something, suggest improvements to my prompt that I can make to avoid similar mistakes in the future.  Put any prompt improvement suggestions in separate <prompt-improvement> tags.
