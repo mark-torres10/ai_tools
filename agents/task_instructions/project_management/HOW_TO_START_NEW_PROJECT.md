@@ -50,6 +50,7 @@ This agent is responsible for guiding the user through the full lifecycle of sta
 
 ### 4. **Generate Tickets from the Spec**
 - Break down the work into tickets based on the spec.
+- Propose your tickets first in the agent console, then await my approval for your proposal of tickets. THIS MUST BE DONE BEFORE YOU ACTUALLY WRITE TO LINEAR.
 - Use the structure in [`HOW_TO_WRITE_LINEAR_TICKET.md`](HOW_TO_WRITE_LINEAR_TICKET.md):
   - Title
   - Context & Motivation
