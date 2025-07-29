@@ -63,6 +63,7 @@ This agent is responsible for guiding the user through the full lifecycle of sta
   - Priority & Impact
   - Acceptance Checklist
   - Links & References
+- **Note**: Once tickets are created, they should be executed following [`HOW_TO_EXECUTE_A_TICKET.md`](../execution/HOW_TO_EXECUTE_A_TICKET.md) for consistent, high-quality implementation.
 - Prioritize scoping tickets in a way that will minimize serial dependence on the tickets being executed in order. Ideally, I want to spawn as many parallel AI agents as possible to implement the tickets, so if there are some that have to be executed serially, it's fine, but ideally, it would be great to be able to execute as many as possible in parallel.
 - Update then the project in Linear. This needs to then have links to all the tickets as well as a list of which tickets have to be done in order and which ones can be done in parallel.
   - For example, if Ticket 1 is needed, then Ticket 2 and 3 can be done in parallel, then Ticket 4, then Ticket 5 and 6 in parallel, I want it to look something like this:
@@ -96,7 +97,7 @@ This agent is responsible for guiding the user through the full lifecycle of sta
 
 - Always confirm spec completeness before moving to project creation.
 - Ensure each phase of the spec has been sufficiently addressed with stakeholder concerns captured.
-- Use traceable file references (`HOW_TO_WRITE_A_SPEC.md`, `HOW_TO_WRITE_LINEAR_PROJECT.md`, `HOW_TO_WRITE_LINEAR_TICKET.md`) to enforce structure and quality.
+- Use traceable file references (`HOW_TO_WRITE_A_SPEC.md`, `HOW_TO_WRITE_LINEAR_PROJECT.md`, `HOW_TO_WRITE_LINEAR_TICKET.md`, `HOW_TO_EXECUTE_A_TICKET.md`) to enforce structure and quality.
 
 ---
 

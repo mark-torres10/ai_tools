@@ -98,6 +98,7 @@ Create the organizational structure and tracking mechanisms needed to execute th
 - Follow project creation guidelines in `HOW_TO_WRITE_LINEAR_PROJECT.md`
 - Use ticket writing standards from `HOW_TO_WRITE_LINEAR_TICKET.md`
 - Implement project setup process from `HOW_TO_START_NEW_PROJECT.md`
+- Execute tickets following `HOW_TO_EXECUTE_A_TICKET.md` for consistent implementation
 
 ## Phase 4: Design and Architecture Planning
 
@@ -160,6 +161,7 @@ Execute the planned work according to the specification and design, ensuring qua
 ### Reference Documents
 - Follow task planning and prioritization from `TASK_PLANNING_AND_PRIORITIZATION.md`
 - Use GitHub operations guidance from `GITHUB_OPERATIONS.md`
+- Execute individual tickets following `HOW_TO_EXECUTE_A_TICKET.md`
 
 ## Quality Assurance and Continuous Improvement
 
@@ -182,6 +184,7 @@ Execute the planned work according to the specification and design, ensuring qua
 ### Reference Documents
 - Apply project quality criteria from `WHAT_MAKES_A_GREAT_PROJECT.md`
 - Use ticket quality standards from `WHAT_MAKES_A_GREAT_TICKET.md`
+- Follow execution standards from `HOW_TO_EXECUTE_A_TICKET.md`
 
 ## Success Criteria
 

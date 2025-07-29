@@ -60,3 +60,6 @@
 
 - **Evaluate current behaviors**: Evaluate the current behaviors. Note one by one each observed behavior and if it is intended or not. Make a note of what results are incorrect and what the intended results are. Then, for the incorrect results, make an action plan of how to fix those results and include what the expected results should look like instead.
 - **Diagnose the bug and create a plan**: When asked by the user to fix the bug, propose a plan to fix it comprehensively, and propose how to create tests to ensure that the bug is fixed. Return this proposed plan before actually making any changes.
+
+## Pre-commit hooks
+- See CODING_REPO_CONVENTIONS.md for detailed guidelines on pre-commit hook setup.
