@@ -111,3 +111,4 @@ projects/
   │   ├── ticket-001.md
   │   └── ticket-002.md
   └── README.md            ← Optional: project overview or dashboard
+```

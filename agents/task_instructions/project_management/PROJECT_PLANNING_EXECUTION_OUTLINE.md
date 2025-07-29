@@ -100,10 +100,57 @@ Create the organizational structure and tracking mechanisms needed to execute th
 - Implement project setup process from `HOW_TO_START_NEW_PROJECT.md`
 - Execute tickets following `HOW_TO_EXECUTE_A_TICKET.md` for consistent implementation
 
+## Phase 3.5: File Organization and Project Tracking Setup
+
+### Objective
+Ensure proper file organization is established after Linear project creation to support effective project tracking and execution.
+
+### Process
+1. **Verify Project Folder Structure**
+   - Check that the project folder exists following the structure from `HOW_TO_START_NEW_PROJECT.md`:
+     ```
+     projects/
+     └── project-slug/
+       ├── spec.md              ← Finalized spec (renamed from temp_spec.md)
+       ├── tickets/
+       │   ├── ticket-001.md
+       │   └── ticket-002.md
+       └── README.md            ← Optional: project overview or dashboard
+     ```
+   - Ensure the spec file has been moved from `temp_spec.md` to the project folder as `spec.md`
+   - Verify all ticket documentation is properly organized in the `tickets/` subfolder
+
+2. **Create Project Tracking Files**
+   - Set up `/planning/<projectId_prefix>_<project_name>/` folder structure as required by `TASK_PLANNING_AND_PRIORITIZATION.md`
+   - Create essential tracking files:
+     - `plan_<feature>.md` - Task plan with subtasks, deliverables, and effort estimates
+     - `todo.md` - Checklist of subtasks synchronized with Linear issues
+     - `logs.md` - Log file for tracking progress and issues
+     - `lessons_learned.md` - Document insights and process improvements
+     - `metrics.md` - Track performance metrics and completion times
+
+3. **Validate File Organization**
+   - Confirm all project files are in their correct locations
+   - Verify that Linear project links are properly documented
+   - Ensure ticket dependencies and parallel execution information is clearly documented
+   - Check that all file references and paths are consistent
+
+### Deliverables
+- Properly organized project folder structure
+- All required tracking and planning files created
+- Validated file organization ready for execution
+
+### Reference Documents
+- Follow file organization structure from `HOW_TO_START_NEW_PROJECT.md`
+- Implement tracking setup from `TASK_PLANNING_AND_PRIORITIZATION.md`
+- Ensure readiness for execution following `HOW_TO_EXECUTE_A_TICKET.md`
+
 ## Phase 4: Design and Architecture Planning
 
 ### Objective
 Develop the technical design and architecture needed to implement the project successfully.
+
+**Prerequisite**: Ensure Phase 3.5 (File Organization and Project Tracking Setup) is complete before proceeding with design and architecture planning.
 
 ### Process
 1. **Technical Design Creation**
