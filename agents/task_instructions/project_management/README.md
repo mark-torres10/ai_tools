@@ -26,11 +26,11 @@ graph TD
     
     K[GITHUB_OPERATIONS.md] --> F
     
-    style A fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000
-    style B fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000
-    style C fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000
-    style D fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000
-    style E fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000
+    style A fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
+    style B fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
+    style C fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
+    style D fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
+    style E fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
     style F fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
     style G fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
     style H fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
@@ -40,11 +40,22 @@ graph TD
 ```
 
 **Workflow Phases:**
-1. **Planning & Brainstorming** (Blue): Start with the outline, then conduct brainstorming
-2. **Specification** (Blue): Create comprehensive project specifications
-3. **Project Setup** (Blue): Establish Linear projects and organizational structure
-4. **Ticket Creation** (Blue): Break down work into actionable tickets
-5. **Execution** (Blue): Plan, prioritize, and execute tasks
+1. **Planning & Brainstorming**: Start with the outline, then conduct brainstorming
+   - `PROJECT_PLANNING_EXECUTION_OUTLINE.md`
+   - `HOW_TO_BRAINSTORM.md`
+2. **Specification**: Create comprehensive project specifications
+   - `HOW_TO_WRITE_A_SPEC.md`
+   - `WHAT_MAKES_A_GREAT_SPEC.md`
+3. **Project Setup**: Establish Linear projects and organizational structure
+   - `HOW_TO_WRITE_LINEAR_PROJECT.md`
+   - `HOW_TO_START_NEW_PROJECT.md`
+   - `WHAT_MAKES_A_GREAT_PROJECT.md`
+4. **Ticket Creation**: Break down work into actionable tickets
+   - `HOW_TO_WRITE_LINEAR_TICKET.md`
+   - `WHAT_MAKES_A_GREAT_TICKET.md`
+5. **Execution**: Plan, prioritize, and execute tasks
+   - `TASK_PLANNING_AND_PRIORITIZATION.md`
+   - `GITHUB_OPERATIONS.md`
 
 ---
 
