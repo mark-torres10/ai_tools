@@ -5,7 +5,11 @@
 - For JavaScript/TypeScript: verify that builds work without errors (e.g., `npm run build`).
 - For Python: Use [Ruff][https://github.com/astral-sh/ruff] to check and enforce styling conventions.
 - If pre-commit hooks don't exist for a project yet, set it up on the next commit.
-    - For JavaScript/Typescript, add a Linter and also require that `npm run build` passes.
+    - For JavaScript/Typescript:
+        - Add a linter
+        - Require that `npm run build` passes.
+        - For any frontend changes, use the `playwright` MCP to check the local build and vrify that the requested features have been added.
+
     - For Python projects, use Ruff.
 
 ## Package management
