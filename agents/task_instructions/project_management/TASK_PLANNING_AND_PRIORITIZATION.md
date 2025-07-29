@@ -72,14 +72,15 @@ Errors during planning, prioritization, or GitHub operations require swift detec
 
 ## Linear Integration
 
-Linear serves as the primary source of truth for project and task management, with `/planning/<projectId_prefix>_<project_name>/plan_<feature>.md` and `/planning/<projectId_prefix>_<project_name>/todo.md` synchronized to reflect Linear’s state. The agent uses Linear’s GraphQL API via the MCP spec integrated with Cursor to create projects and issues, read updates, and maintain consistency for the `MET` team, using a shortened project identifier and project name for folder organization.
+Linear serves as the primary source of truth for project and task management, with `/planning/<projectId_prefix>_<project_name>/plan_<feature>.md` and `/planning/<projectId_prefix>_<project_name>/todo.md` synchronized to reflect Linear’s state. The agent uses Linear’s GraphQL API via the MCP spec integrated with Cursor to create projects and issues, read updates, and maintain consistency for the appropriate team, using a shortened project identifier and project name for folder organization.
 
 ### Setup
 - Leverage the MCP spec’s pre-configured Linear integration in Cursor to access the GraphQL API without explicit authentication. Verify access by querying the `viewer` endpoint on startup, logging any failures to `/planning/<projectId_prefix>_<project_name>/logs.md`.
-- Use the `MET` team’s `teamId` for all operations, retrieved via the `teams` query (e.g., `name: "MET"`). Cache the `teamId` in memory for the session to optimize API calls.
+- If you haven't been told the team, DO NOT ASSUME. ASK THE USER FOR CLARIFICATION. Use the Linear MCP to fetch the list of teams, and then use that team. ALWAYS ASK.
+- Use the appropriate team’s `teamId` for all operations, retrieved via the `teams` query (e.g., `name: "MET"`). Cache the `teamId` in memory for the session to optimize API calls.
 
 ### Project Creation
-- For each new feature, create a Linear project in the `MET` team using the `projectCreate` mutation, generating a unique `projectId` (UUID, e.g., `8f4c2b1a-4f3e-4a6b-9c2d-7e8f9a0b1c2d`).
+- For each new feature, create a Linear project in the appropriate team using the `projectCreate` mutation, generating a unique `projectId` (UUID, e.g., `8f4c2b1a-4f3e-4a6b-9c2d-7e8f9a0b1c2d`).
 - Create a project-specific folder `/planning/<projectId_prefix>_<project_name>/`, where `<projectId_prefix>` is the first 6 characters of the `projectId` and `<project_name>` is the Linear project name (lowercased, spaces replaced with underscores, e.g., `/planning/8f4c2b_user_profile_page/` for “User Profile Page”). Store `plan_<feature>.md`, `todo.md`, `lessons_learned.md`, `logs.md`, `metrics.md`, `mocks.md`, and `<projectId_prefix>_<issueId_prefix>_reflection.md` within it.
 - Map `plan_<feature>.md` fields: `name` to the feature name (e.g., “User Profile Page”), `description` to deliverables and milestones, `startDate` to the current date, and `targetDate` to the planned completion date based on effort estimates.
 - Store the full `projectId` in `plan_<feature>.md` as a table column (`Linear Project ID`) and in `/planning/<projectId_prefix>_<project_name>/metadata.md` as a key-value pair (e.g., `projectId: 8f4c2b1a-4f3e-4a6b-9c2d-7e8f9a0b1c2d`). Commit using `gh` per `GITHUB_OPERATIONS.md` with a message like `[plan] Create /planning/<projectId_prefix>_<project_name>/ for <feature> with Linear project ID`. Log creation in `/planning/<projectId_prefix>_<project_name>/<projectId_prefix>_<issueId_prefix>_reflection.md`.
@@ -91,7 +92,7 @@ Linear serves as the primary source of truth for project and task management, wi
   - `estimate`: Effort in hours, rounded to the nearest integer.
   - `priority`: Map priority score (1-5) to Linear’s scale (0-4, e.g., 5→1=Urgent, 4→2=High, 3→3=Medium, 2→4=Low, 1→0=None).
   - `projectId`: Link to the feature’s Linear project.
-  - `teamId`: `MET` team’s ID.
+  - `teamId`: The team’s ID from Linear.
 - Store the issue `id` and human-readable `identifier` (e.g., `MET-123`) in `plan_<feature>.md` as table columns (`Linear Issue ID`, `Linear Issue Identifier`) and commit using `gh` per `GITHUB_OPERATIONS.md`. Log creation in `/planning/<projectId_prefix>_<project_name>/<projectId_prefix>_<issueId_prefix>_reflection.md`.
 - Update issues via `issueUpdate` when `plan_<feature>.md` changes (e.g., updated effort, priority, or status). For example, if a subtask’s effort increases, update the issue’s `estimate` field and update the PR.  Log updates in `/planning/<projectId_prefix>_<project_name>/<projectId_prefix>_<issueId_prefix>_reflection.md`.
 - When completing a subtask, wait for PR approval on GitHub per `GITHUB_OPERATIONS.md`, then set the Linear issue `state` to `Completed` and update `/planning/<projectId_prefix>_<project_name>/todo.md` to `[x]`. Log completion in `/planning/<projectId_prefix>_<project_name>/<projectId_prefix>_<issueId_prefix>_reflection.md`.
@@ -117,8 +118,8 @@ Handle offline scenarios by queuing changes in sync_queue.json, syncing when con
 
 ### Testing
 
-- Write language-specific unit tests in the `bluesky-research` conda environment to mock Linear (`projectCreate`, `issueCreate`, `issueUpdate`) and GitHub (`gh pr create`) operations, verifying field mappings (e.g., priority score to Linear priority, PR title format). For Python projects, use `pytest` with `unittest.mock`. For JavaScript projects, use `jest` with `jest-mock`. Ensure >90% line coverage per `CODING_RULES.md`.
-- Run integration tests to create a test project in Linear’s `MET` team, a test PR using `gh pr create`, and sync with `/planning/<projectId_prefix>_<project_name>/plan_<feature>.md`, asserting consistency (e.g., issue count, PR links). Use test-specific prefixes (e.g., “Test_<feature>” for projects, `test/<issueId_prefix>_<feature_snippet>` for branches).
+- Write language-specific unit tests to mock Linear (`projectCreate`, `issueCreate`, `issueUpdate`) and GitHub (`gh pr create`) operations, verifying field mappings (e.g., priority score to Linear priority, PR title format). For Python projects, use `pytest` with `unittest.mock`. For JavaScript projects, use `jest` with `jest-mock`. Ensure >90% line coverage per `CODING_RULES.md`.
+- Run integration tests to create a test project in the correct Linear team, a test PR using `gh pr create`, and sync with `/planning/<projectId_prefix>_<project_name>/plan_<feature>.md`, asserting consistency (e.g., issue count, PR links). Use test-specific prefixes (e.g., “Test_<feature>” for projects, `test/<issueId_prefix>_<feature_snippet>` for branches).
 - Validate sync accuracy by simulating a sync cycle (Linear↔Markdown↔GitHub) and asserting no data loss. Log test results in `/planning/<projectId_prefix>_<project_name>/tests.md`.
 - Test error handling by simulating API and gh command failures (e.g., 429, network timeout), verifying retries and logging per `LLM_REFLECTION_DEBUGGING_RULES.md`.
 - Verify folder structure integrity by checking that all required files (`plan_<feature>.md`, `todo.md`, etc.) exist in `/planning/<projectId_prefix>_<project_name>/` and match Linear and GitHub data.
@@ -161,7 +162,11 @@ Task planning integrates with coding, testing, GitHub, and workflow rules for co
 ## Implementation Notes
 
 - Use Markdown tables in `/planning/<projectId_prefix>_<project_name>/plan_<feature>.md` for subtasks, dependencies, priorities, Linear IDs, and PR URLs. Example: `| Subtask | Deliverable | Dependencies | Effort (hrs) | Priority Score | Linear Issue ID | Linear Issue Identifier | PR URL |`.
-- Test task plans, Linear, and GitHub integration with a language-specific script in the `bluesky-research` conda environment, integrated into CI pipelines per `CODING_RULES.md`. For Python projects, use `pytest` and `unittest.mock`. For JavaScript projects, use `jest` and `esbuild` for bundling.
+- Test task plans, Linear, and GitHub integration with a language-specific script, integrated into CI pipelines per `CODING_RULES.md`. For Python projects, use `pytest` and `unittest.mock`. For JavaScript projects, use `jest` and `esbuild` for bundling.
 - Optimize planning for performance by limiting subtasks to 10-20 per feature, merging or splitting to balance granularity and manageability.
 - Ensure compatibility with Streamlit or other frameworks by including framework-specific considerations in effort estimates (e.g., Streamlit’s rendering constraints for Python, React’s component lifecycle for JavaScript).
 - Instrument planning efficiency with Prometheus metrics (e.g., plan reassessment frequency, sync latency, PR creation time) and set alerts for error rates >1% over a 5-minute window, logged in `/planning/<projectId_prefix>_<project_name>/metrics.md`.
+
+## Planning Folder Nomenclature Rule
+
+- All new planning folders must use the first 6 digits of the Linear project ID as prefix, followed by the project name, for all new backend/frontend projects. Example: `b94f21_bluesky_post_explorer_backend` for project ID `b94f21bf-f11b-4210-a8ef-67904301a8fa` and project name `Bluesky Post Explorer Backend`. This ensures consistent cross-project planning nomenclature and traceability.
