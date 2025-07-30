@@ -135,6 +135,12 @@ Ensure proper file organization is established after Linear project creation to 
    - Ensure ticket dependencies and parallel execution information is clearly documented
    - Check that all file references and paths are consistent
 
+4. **Create a PR in Github with the files from the planning component**
+   - Follow steps in `GITHUB_OPERATIONS.md` on how to do this. Check out a new branch, call it `<project-slug>-setup`.
+   - Add the `projects/project-slug/` to the commit.
+   - Push the commit and use the Github CLI to create a new PR.
+   - Await for that PR to be merged.
+
 ### Deliverables
 - Properly organized project folder structure
 - All required tracking and planning files created
