@@ -72,6 +72,8 @@ gh repo sync
 git checkout -b feature/<issueId_prefix>_<feature_snippet>
 ```
 
+YOU MUST ALWAYS CREATE A NEW BRANCH IF ONE DOESN'T EXIST. DO THIS before starting a ticket.
+
 #### Environment Activation
 - **Python Projects**: Activate conda environment (e.g., `conda activate bluesky-research`)
 - **JavaScript Projects**: Install dependencies with `npm install` or `yarn install` (if needed).
