@@ -119,6 +119,7 @@ Ensure proper file organization is established after Linear project creation to 
        │   ├── ticket-001.md
        │   └── ticket-002.md
        └── README.md            ← Optional: project overview or dashboard
+       ├── braindump.md              ← Brain dump session
      ```
    - Ensure the spec file has been moved from `temp_spec.md` to the project folder as `spec.md`
    - Verify all ticket documentation is properly organized in the `tickets/` subfolder
