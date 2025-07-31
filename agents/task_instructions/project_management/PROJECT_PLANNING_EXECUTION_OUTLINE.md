@@ -32,6 +32,9 @@ Establish a comprehensive understanding of the project requirements, constraints
 - Use guidance from `WHAT_MAKES_A_GREAT_PROJECT.md` to ensure project quality criteria are met
 - Follow conversation style guidelines from `AGENT_CONVERSATION_STYLE.md`
 
+### Success Requirements
+- After you have your brain dump, and you think that you're done, confirm with the user that there isn't anything else to be done and that the brain dump looks good. You need an explicit approval on the user's end before you can continue. Propose other questions that the user can ruminate on until the user indicates to you that the brain dump session is done.
+
 ## Phase 2: Requirements Specification and Context Refinement
 
 ### Objective
