@@ -296,6 +296,31 @@ git branch -d feature/<issueId_prefix>_<feature_snippet>
 
 ## 🚨 Error Handling & Recovery
 
+### Debugging Process
+
+When encountering bugs, errors, or implementation challenges, follow the systematic debugging approach outlined in `HOW_TO_DEBUG.md`:
+
+#### When to Use Debugging Process
+- **User Reports Bugs**: When the user reports specific errors or unexpected behavior
+- **Repeated Failures**: When the same issue occurs multiple times during implementation
+- **Test Failures**: When tests consistently fail and the root cause is unclear
+- **Integration Issues**: When components don't work together as expected
+- **Performance Problems**: When the implementation doesn't meet performance requirements
+
+#### Debugging Steps
+1. **Activate Debugging Mode**: Follow the trigger instruction from `HOW_TO_DEBUG.md`
+2. **Generate Three Hypotheses**: Identify distinct possible root causes
+3. **Analyze Each Hypothesis**: Provide evidence, likelihood scores, and verification methods
+4. **Create Investigation Plan**: Prioritize investigation steps and define success criteria
+5. **Execute Investigation**: Follow the recommended sequence to identify the root cause
+6. **Document Findings**: Update the ticket with debugging results and lessons learned
+
+#### Integration with Ticket Execution
+- Document debugging findings in the Linear ticket
+- Update implementation plan based on root cause analysis
+- Add debugging insights to `/planning/<projectId_prefix>_<project_name>/lessons_learned.md`
+- Consider if the debugging reveals broader architectural or process improvements
+
 ### Common Issues & Solutions
 
 #### Implementation Challenges
@@ -347,6 +372,7 @@ git branch -d feature/<issueId_prefix>_<feature_snippet>
 - **Coding Standards**: `CODING_RULES.md`, `CODING_REPO_CONVENTIONS.md`
 - **UI Development**: `UI_RULES.md`
 - **Agent Workflow**: `AGENT_WORKFLOW.md`, `LLM_REFLECTION_DEBUGGING_RULES.md`
+- **Debugging**: `HOW_TO_DEBUG.md`
 
 ---
 
