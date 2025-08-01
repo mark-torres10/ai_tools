@@ -125,7 +125,7 @@ Ensure proper file organization is established after Linear project creation to 
    - Verify all ticket documentation is properly organized in the `tickets/` subfolder
 
 2. **Create Project Tracking Files**
-   - Set up `/planning/<projectId_prefix>_<project_name>/` folder structure as required by `TASK_PLANNING_AND_PRIORITIZATION.md`
+   - Set up `/projects/<projectId_prefix>_<project_name>/` folder structure as required by `TASK_PLANNING_AND_PRIORITIZATION.md`
    - Create essential tracking files:
      - `plan_<feature>.md` - Task plan with subtasks, deliverables, and effort estimates
      - `todo.md` - Checklist of subtasks synchronized with Linear issues
