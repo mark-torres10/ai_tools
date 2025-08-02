@@ -70,6 +70,44 @@ Transform the brain dump into a structured, comprehensive specification that cle
 - Follow the comprehensive spec writing process in `HOW_TO_WRITE_A_SPEC.md`
 - Ensure alignment with criteria from `WHAT_MAKES_A_GREAT_SPEC.md`
 
+### 2.5. Specification Review and Iteration
+
+#### Objective
+Conduct thorough reviews of the specification using specialized personas to identify gaps, risks, and improvement opportunities before proceeding to project creation.
+
+#### Process
+1. **Specification Review Session**
+   - Present the completed specification to the user for initial review
+   - Walk through each section systematically, explaining the content and rationale
+   - Identify potential areas that would benefit from specialized review
+
+2. **Persona Selection and Routing**
+   - Use the `ROUTER_AGENT.md` to identify relevant personas for different sections of the spec
+   - Present persona recommendations to the user for each section
+   - Allow user to make final determination of which persona(s) to use for review
+
+3. **Multi-Persona Review Process**
+   - For each selected persona, conduct a thorough review using `AGENT_REVIEW_TICKET.md`
+   - Provide the spec as input to each persona with the review prompt
+   - Collect structured feedback with scores, ratings, and actionable recommendations
+
+4. **Specification Iteration**
+   - Synthesize feedback from all persona reviews
+   - Identify critical issues that must be addressed
+   - Prioritize improvements based on review scores and recommendations
+   - Iterate on the specification until user satisfaction is achieved
+
+#### Deliverables
+- Multi-perspective review feedback with scores and ratings
+- Prioritized list of improvements and critical issues
+- Finalized specification ready for project creation
+- Documentation of review decisions and rationale
+
+#### Reference Documents
+- Use `AGENT_REVIEW_TICKET.md` for structured persona reviews
+- Apply `ROUTER_AGENT.md` for persona selection and routing
+- Follow review criteria from `WHAT_MAKES_A_GREAT_SPEC.md`
+
 ## Phase 3: Project Structure and Tracking Setup
 
 ### Objective

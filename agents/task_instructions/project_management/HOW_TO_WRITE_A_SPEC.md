@@ -188,6 +188,10 @@ Generate the spec using this format:
 
 After my approval of your spec, what we will do next is:
 
-- Create a project in Linear, as per HOW_TO_WRITE_LINEAR_PROJECT.md
-- Create tickets in Linear, as per HOW_TO_WRITE_LINEAR_TICKET.md
-- Start with the first ticket. Each ticket will follow the steps in TASK_PLANNING_AND_PRIORITIZATION.md
+1. **Specification Review Session**: I'll walk you through each section of the spec, explaining the content and rationale
+2. **Persona Selection**: I'll use the ROUTER_AGENT.md to suggest relevant personas for reviewing different sections of your spec
+3. **Multi-Persona Review**: We'll conduct thorough reviews using the selected personas with AGENT_REVIEW_TICKET.md
+4. **Specification Iteration**: Based on the review feedback, we'll iterate on the spec until you're satisfied
+5. **Project Creation**: Once the spec is finalized, we'll create a project in Linear, as per HOW_TO_WRITE_LINEAR_PROJECT.md
+6. **Ticket Creation**: We'll create tickets in Linear, as per HOW_TO_WRITE_LINEAR_TICKET.md
+7. **Execution**: Start with the first ticket, following the steps in TASK_PLANNING_AND_PRIORITIZATION.md
