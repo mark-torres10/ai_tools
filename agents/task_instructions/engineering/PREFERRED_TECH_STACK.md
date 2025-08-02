@@ -4,6 +4,7 @@ You must always align your recommendations and implementations with the followin
 - **Frontend**: Next.js with TypeScript
 - **Backend**: Python with FastAPI or Node.js, deployed on Railway
 - **Database & Auth**: Supabase (PostgreSQL + Supabase Auth with OAuth support)
+- **Cache Database**: Redis
 - **Model Provider**: OpenAI LLMs
 - **Vector Search**: QDrant
 
