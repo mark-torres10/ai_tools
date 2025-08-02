@@ -292,6 +292,35 @@ git branch -d feature/<issueId_prefix>_<feature_snippet>
 - Update coding standards if new patterns emerge
 - Document any architectural decisions made
 
+### 13. **Agent Retrospective**
+
+#### Trigger Retrospective Process
+- Initiate new AI agent with retrospective prompt
+- Provide ticket context and execution history
+- Begin three-phase retrospective process
+
+#### Three-Phase Retrospective
+1. **Agent Self-Assessment**
+   - Agent analyzes ticket execution based on available context
+   - Fills out basic assessment sections
+   - Identifies potential areas for user input
+
+2. **Guided User Input**
+   - Agent provides structured questions for user reflection
+   - User provides detailed insights and pain points
+   - Agent captures user responses for synthesis
+
+3. **Synthesis and Documentation**
+   - Agent combines self-assessment and user input
+   - Creates final retrospective markdown file
+   - Formats for Linear ticket comment
+
+#### File Creation and Integration
+- Create `projects/<project_slug>/retrospective/{ticket}.md`
+- Add retrospective file to PR
+- Add retrospective as comment to Linear ticket
+- Update ticket status to complete
+
 ---
 
 ## 🚨 Error Handling & Recovery

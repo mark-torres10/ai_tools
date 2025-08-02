@@ -15,6 +15,7 @@ graph TD
     C --> D[HOW_TO_WRITE_LINEAR_PROJECT.md]
     D --> E[HOW_TO_WRITE_LINEAR_TICKET.md]
     E --> F[TASK_PLANNING_AND_PRIORITIZATION.md]
+    F --> L[AGENT_RETROSPECTIVE_SPEC.md]
     
     A --> G[WHAT_MAKES_A_GREAT_PROJECT.md]
     C --> H[WHAT_MAKES_A_GREAT_SPEC.md]
@@ -37,6 +38,7 @@ graph TD
     style I fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
     style J fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
     style K fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
+    style L fill:#ffffff,stroke:#333,stroke-width:2px,color:#000
 ```
 
 **Workflow Phases:**
@@ -56,6 +58,8 @@ graph TD
 5. **Execution**: Plan, prioritize, and execute tasks
    - `TASK_PLANNING_AND_PRIORITIZATION.md`
    - `GITHUB_OPERATIONS.md`
+6. **Retrospective**: Capture learnings and improve workflows
+   - `AGENT_RETROSPECTIVE_SPEC.md`
 
 ---
 
@@ -116,6 +120,11 @@ graph TD
 **References:** Complements HOW_TO_WRITE_LINEAR_TICKET.md and PROJECT_PLANNING_EXECUTION_OUTLINE.md.
 **When to use:** Use to review or improve tickets before assignment or implementation.
 
+### AGENT_RETROSPECTIVE_SPEC.md
+**Purpose:** Structured system for capturing learnings and insights after each ticket completion through a three-phase process (agent self-assessment → user input → synthesis).
+**References:** Integrates with HOW_TO_EXECUTE_A_TICKET.md and PROJECT_PLANNING_EXECUTION_OUTLINE.md.
+**When to use:** Use after every ticket completion to systematically capture learnings and improve future workflows.
+
 ---
 
 ## Quick Start Recommendations
@@ -132,6 +141,7 @@ graph TD
 - **Creating new Linear projects?** See `HOW_TO_WRITE_LINEAR_PROJECT.md` and `WHAT_MAKES_A_GREAT_PROJECT.md`
 - **Planning or prioritizing work?** Reference `TASK_PLANNING_AND_PRIORITIZATION.md`
 - **Managing GitHub/PRs?** Use `GITHUB_OPERATIONS.md`
+- **Completing tickets?** Use `AGENT_RETROSPECTIVE_SPEC.md` to capture learnings and insights
 
 ### For Project Reviews
 - **Reviewing specs:** Use `WHAT_MAKES_A_GREAT_SPEC.md`

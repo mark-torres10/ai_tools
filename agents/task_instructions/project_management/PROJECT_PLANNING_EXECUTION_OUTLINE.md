@@ -132,6 +132,7 @@ Ensure proper file organization is established after Linear project creation to 
      - `logs.md` - Log file for tracking progress and issues
      - `lessons_learned.md` - Document insights and process improvements
      - `metrics.md` - Track performance metrics and completion times
+     - `retrospective/` - Directory for ticket retrospectives. Create a simple README.md file here for now.
 
 3. **Validate File Organization**
    - Confirm all project files are in their correct locations
