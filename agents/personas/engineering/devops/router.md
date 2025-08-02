@@ -27,6 +27,7 @@ Technology-focused agents for specific DevOps tools:
 - **Docker Security Specialist** - Container security hardening and vulnerability assessment
 - **Docker Performance Optimization Expert** - Container performance and build optimization
 - **Docker Compose Orchestration Specialist** - Multi-service container orchestration
+- **Railway Deployment Specialist** - Railway platform optimization and deployment strategies
 
 ### 🎯 **Generic Personas** (`generic/`)
 General-purpose DevOps agents:
@@ -124,6 +125,12 @@ General-purpose DevOps agents:
 - **Focus Areas**: Multi-service orchestration, container networking, service discovery, volume management, health checks
 - **Example Tasks**: Troubleshoot service communication, set up health checks, manage environment variables
 
+#### `tool_specific/railway_deployment_expert.md`
+- **Name**: Railway Deployment Specialist
+- **Summary**: Specializes in Railway platform optimization, deployment strategies, scaling solutions, and production deployment workflows
+- **Focus Areas**: Railway service configuration, environment management, scaling strategies, cost optimization, monitoring and logging
+- **Example Tasks**: Set up Railway deployment with proper environment management, optimize Railway performance and costs, implement zero-downtime deployments
+
 ### Generic Personas
 
 #### `generic/devops_engineer.md`
@@ -140,7 +147,7 @@ To determine which persona to use:
 
 ### 1. **Identify the Primary Category**
 - **Operational Tasks** (incidents, performance, reliability) → Task-Specific Personas
-- **Technology-Specific Tasks** (Terraform, Redis, Docker, etc.) → Tool-Specific Personas
+- **Technology-Specific Tasks** (Terraform, Redis, Docker, Railway, etc.) → Tool-Specific Personas
 - **General DevOps Tasks** → Generic Personas
 
 ### 2. **Match Task Characteristics**
@@ -182,6 +189,7 @@ Return: **No matching persona found. Consider defining a new one.**
 | Docker security hardening | `tool_specific/docker_security_expert.md` |
 | Docker performance optimization | `tool_specific/docker_performance_expert.md` |
 | Docker Compose orchestration | `tool_specific/docker_compose_orchestration_expert.md` |
+| Railway deployment and optimization | `tool_specific/railway_deployment_expert.md` |
 | General container and deployment tasks | `generic/devops_engineer.md` |
 | Multi-tool infrastructure projects | Multiple relevant personas |
 | DevOps strategy and best practices | `generic/devops_engineer.md` |

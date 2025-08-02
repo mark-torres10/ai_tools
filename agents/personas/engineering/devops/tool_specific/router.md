@@ -80,6 +80,15 @@ Use this file to decide which agent persona is best suited for a task or review.
   - Setting up health checks and service dependencies for microservices
   - Managing environment variables across different deployment environments
 
+### `railway_deployment_expert.md`
+- **Name**: Railway Deployment Specialist
+- **Summary**: Specializes in Railway platform optimization, deployment strategies, scaling solutions, and production deployment workflows with focus on cost-effective, reliable deployments
+- **Focus Areas**: Railway service configuration, environment management, scaling strategies, cost optimization, monitoring and logging, CI/CD integration, performance tuning
+- **Example Tasks**:
+  - Setting up Railway deployment with proper environment management and auto-scaling
+  - Optimizing Railway performance and reducing deployment costs
+  - Implementing zero-downtime deployments with automatic rollback capabilities
+
 ---
 
 ## 📌 Routing Guidelines
@@ -97,6 +106,7 @@ To determine which persona to use:
    - **Docker Security**: Use `docker_security_expert.md`
    - **Docker Performance**: Use `docker_performance_expert.md`
    - **Docker Compose**: Use `docker_compose_orchestration_expert.md`
+   - **Railway**: Use `railway_deployment_expert.md`
 4. **If the task requires multiple domains**, select multiple personas
 5. **If no persona matches**, return:
    > **No matching persona found. Consider defining a new one.**
@@ -115,15 +125,18 @@ To determine which persona to use:
 | Docker container security scanning and hardening | `docker_security_expert.md` |
 | Docker build performance and resource optimization | `docker_performance_expert.md` |
 | Multi-service container orchestration with Docker Compose | `docker_compose_orchestration_expert.md` |
+| Railway deployment setup and optimization | `railway_deployment_expert.md` |
 | Container vulnerability assessment | `docker_security_expert.md` |
 | Infrastructure monitoring and alerting setup | `prometheus_metrics_design_expert.md`, `grafana_dashboard_design_expert.md` |
-| Cloud infrastructure cost optimization | `hetzner_cloud_infrastructure_expert.md` |
+| Cloud infrastructure cost optimization | `hetzner_cloud_infrastructure_expert.md`, `railway_deployment_expert.md` |
 | Container networking and service discovery | `docker_compose_orchestration_expert.md` |
 | Infrastructure testing and validation | `terraform_iac_expert.md` |
 | Redis cluster management and optimization | `redis_monitoring_expert.md` |
 | Monitoring dashboard performance issues | `grafana_dashboard_design_expert.md` |
 | Docker image optimization and build efficiency | `docker_performance_expert.md` |
 | Infrastructure security compliance | `docker_security_expert.md`, `terraform_iac_expert.md` |
+| Railway performance optimization and cost reduction | `railway_deployment_expert.md` |
+| Zero-downtime deployment strategies | `railway_deployment_expert.md`, `docker_compose_orchestration_expert.md` |
 
 ---
 
