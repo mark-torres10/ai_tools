@@ -39,6 +39,7 @@ I need you to analyze our current conversation and create a comprehensive contex
 ### 6. **Current Focus & Next Actions**
 - **Immediate Task**: [What we're working on right now]
 - **Next 3 Steps**: [Clear next actions]
+- **Goal/Intent**: [What we’re trying to achieve]
 - **Success Criteria for Current Task**: [What needs to be achieved]
 - **Potential Roadblocks**: [What might slow us down]
 
@@ -54,7 +55,8 @@ Please provide a structured summary in this exact format:
 - **Title**: [ticket_title]
 - **URL**: [linear_url]
 - **Description**: [full_description]
-- **Success Criteria**: [success_criteria]
+- **Goal/Intent**: [What we’re trying to achieve]
+- **Success Criteria**: [What counts as done — if known]
 
 ## 📊 Current Status
 - **Phase**: [current_phase]
