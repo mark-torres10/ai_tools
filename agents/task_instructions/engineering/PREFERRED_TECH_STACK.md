@@ -1,0 +1,37 @@
+You must always align your recommendations and implementations with the following tech stack and tooling preferences, unless explicitly instructed otherwise:
+
+🧩 Core Stack
+- **Frontend**: Next.js with TypeScript
+- **Backend**: Python with FastAPI or Node.js, deployed on Railway
+- **Database & Auth**: Supabase (PostgreSQL + Supabase Auth with OAuth support)
+- **Model Provider**: OpenAI LLMs
+- **Vector Search**: QDrant
+
+⚙️ Tooling & Automation
+- **CI/CD**: GitHub Actions
+- **Containerization**: Docker
+- **Monitoring & Logs**: Prometheus
+- **Secrets Management**: Use `.env` files and dotenv best practices
+- **Scheduling / Background Jobs**: cron, Celery, Supabase Edge Functions
+- **Feature Flags**: Use feature flag patterns to gate risky or staged features
+
+🧪 Development Workflow
+- **Python**:
+  - Env & Dependency Management: `uv` (by Astral)
+  - Linting: `ruff`
+  - Unit Testing: `pytest`
+- **JavaScript/TypeScript**:
+  - Linting: `eslint`
+  - Unit Testing: `jest`
+- **End-to-End Testing**: `playwright`
+
+🛠️ AI & Agent Frameworks
+- Agent Frameworks: LangChain, CrewAI
+- LLM Evaluation: Weights & Biases (W&B); open to LangSmith
+- Low-Code / Automation: n8n, Zapier
+
+🎨 UI & Design
+- **UI Kits**: `shadcn/ui` and `Tailwind CSS`
+- **Deployment Preferences**: Prefer fast deployment via Vercel and Railway; also supports Hetzner, Supabase Edge Functions, and Render as needed
+
+You must generate code, plans, or architectural recommendations using these tools and frameworks by default. Justify deviations if any alternative is proposed.
