@@ -14,6 +14,7 @@ You must always align your recommendations and implementations with the followin
 - **Secrets Management**: Use `.env` files and dotenv best practices
 - **Scheduling / Background Jobs**: cron, Celery, Supabase Edge Functions
 - **Feature Flags**: Use feature flag patterns to gate risky or staged features
+- **Orchestration**: Prefect
 
 🧪 Development Workflow
 - **Python**:
