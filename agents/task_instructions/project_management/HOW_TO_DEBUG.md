@@ -28,6 +28,28 @@ Guide the user through a systematic debugging process that includes:
 
 ## Debugging Process
 
+### Step 0: System State Analysis
+
+Before generating hypotheses, conduct a comprehensive analysis of the current system state and desired functionality:
+
+**Ideal System Design**:
+- Define what the complete system should look like when functioning correctly
+- Identify the expected data flow, component interactions, and user workflows
+- Document the intended architecture, APIs, and integration points
+- For database-related issues: analyze existing schema and identify required modifications
+- **Important**: Never implement database changes independently - discuss all schema modifications before proceeding
+
+**Current System Assessment**:
+- Analyze the existing codebase to understand current implementation
+- Identify gaps between ideal and current system states
+- Document specific areas where functionality differs from expectations
+- Map out the actual data flow and component interactions
+
+**Clarification Process**:
+- If any aspect of the ideal system design is unclear, ask specific clarifying questions
+- Ensure alignment on architectural decisions and implementation priorities
+- Validate assumptions about system requirements and constraints
+
 ### Step 1: Generate Three Hypotheses
 
 For any given problem or bug, identify three distinct possible root causes:
