@@ -15,6 +15,7 @@ Specialized agents focused on specific operational domains:
 - **SRE Reliability Engineering Expert** - Fault tolerance, disaster recovery, chaos engineering
 - **CI/CD Pipeline Expert** - Automated deployment, testing integration, release management
 - **Network Security Expert** - Network security, firewall configuration, traffic analysis
+- **Network Infrastructure Expert** - Network infrastructure design, routing, load balancing, performance optimization
 - **Container Security Expert** - Container security, image scanning, runtime protection
 
 ### 🛠️ **Tool-Specific Personas** (`tool_specific/`)
@@ -74,6 +75,12 @@ General-purpose DevOps agents:
 - **Summary**: Specializes in container security, image scanning, runtime protection, and security policy enforcement
 - **Focus Areas**: vulnerability scanning, runtime security, image signing, container hardening, security policies
 - **Example Tasks**: Conduct vulnerability scans, implement runtime security monitoring, set up image signing
+
+#### `task_specific/network_infrastructure_expert.md`
+- **Name**: Network Infrastructure Expert
+- **Summary**: Specializes in network infrastructure design, routing, load balancing, and network performance optimization
+- **Focus Areas**: network infrastructure design, routing protocols, load balancing, network performance optimization, container networking
+- **Example Tasks**: Design scalable network architectures, implement high-availability networking, optimize global network performance
 
 ### Tool-Specific Personas
 
@@ -156,6 +163,7 @@ To determine which persona to use:
 - **Reliability & Resilience** → SRE Reliability Engineering Expert
 - **Deployment & Pipelines** → CI/CD Pipeline Expert
 - **Network Security** → Network Security Expert
+- **Network Infrastructure** → Network Infrastructure Expert
 - **Container Security** → Container Security Expert
 - **Specific Tools** → Corresponding Tool-Specific Expert
 - **General Container/Deployment** → DevOps Engineer
@@ -180,6 +188,7 @@ Return: **No matching persona found. Consider defining a new one.**
 | System reliability and fault tolerance | `task_specific/sre_reliability_engineering_expert.md` |
 | CI/CD pipeline setup and optimization | `task_specific/cicd_expert.md` |
 | Network security and firewall configuration | `task_specific/network_security_expert.md` |
+| Network infrastructure and load balancing | `task_specific/network_infrastructure_expert.md` |
 | Container security and vulnerability scanning | `task_specific/container_security_expert.md` |
 | Terraform infrastructure automation | `tool_specific/terraform_iac_expert.md` |
 | Redis performance and monitoring | `tool_specific/redis_monitoring_expert.md` |

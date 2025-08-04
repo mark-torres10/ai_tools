@@ -62,6 +62,15 @@ Use this file to decide which agent persona is best suited for a task or review.
   - Implement runtime security monitoring and threat detection for containers
   - Set up image signing and verification workflows for supply chain security
 
+### `network_infrastructure_expert.md`
+- **Name**: Network Infrastructure Expert
+- **Summary**: Specializes in network infrastructure design, routing, load balancing, and network performance optimization for distributed systems
+- **Focus Areas**: network infrastructure design, routing protocols, load balancing, network performance optimization, container networking, high-availability networking
+- **Example Tasks**:
+  - Design scalable network architectures for microservices with container networking solutions
+  - Implement high-availability networking with redundant paths and automatic failover
+  - Optimize network performance for global users with CDN strategies and edge locations
+
 ---
 
 ## 📌 Routing Guidelines
@@ -92,9 +101,11 @@ To determine which persona to use:
 | Fault tolerance, disaster recovery, chaos engineering | `sre_reliability_engineering_expert.md` |
 | CI/CD pipeline setup, automated testing, deployment strategies | `cicd_expert.md` |
 | Network security, firewall configuration, DDoS protection | `network_security_expert.md` |
+| Network infrastructure, load balancing, performance optimization | `network_infrastructure_expert.md` |
 | Container vulnerabilities, image scanning, runtime security | `container_security_expert.md` |
 | System reliability and high availability | `sre_reliability_engineering_expert.md`, `sre_incident_response_expert.md` |
 | Security compliance and policy enforcement | `container_security_expert.md`, `network_security_expert.md` |
+| Network performance and infrastructure optimization | `network_infrastructure_expert.md`, `sre_performance_engineering_expert.md` |
 | Monitoring and observability setup | `sre_performance_engineering_expert.md`, `sre_incident_response_expert.md` |
 | Infrastructure automation and deployment | `cicd_expert.md`, `sre_reliability_engineering_expert.md` |
 
