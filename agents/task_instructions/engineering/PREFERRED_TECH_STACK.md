@@ -3,7 +3,8 @@ You must always align your recommendations and implementations with the followin
 🧩 Core Stack
 - **Frontend**: Next.js with TypeScript
 - **Backend**: Python with FastAPI or Node.js, deployed on Railway
-- **Database & Auth**: Supabase (PostgreSQL + Supabase Auth with OAuth support), DuckDB (for local databases).
+- **Database**: Supabase (for Postgres and for blob storage), DuckDB (for local databases).
+- **Auth**: Supabase Auth, Clerk
 - **File formats**: Parquet for big data.
 - **Data processing**: Polars, pandas
 - **Machine learning**: PyTorch, sklearn
@@ -11,6 +12,8 @@ You must always align your recommendations and implementations with the followin
 - **Cache Database**: Redis
 - **Model Provider**: OpenAI LLMs
 - **Vector Search**: QDrant
+- **Payments**: Stripe
+- **Emails**: Resend
 
 ⚙️ Tooling & Automation
 - **CI/CD**: GitHub Actions
