@@ -2,9 +2,25 @@
 
 This directory contains the canonical rules, style guides, and process documentation for all engineering, product, and agentic workflows in the Bluesky-Research project. Use this README to quickly locate the right guide for any task, and to understand how the rules interconnect.
 
+## 🚀 Quick Start
+
+**For immediate guidance on common scenarios, start with [QUICK_REFERENCE.md](./QUICK_REFERENCE.md)** - it contains decision trees and quick guides for:
+- Starting new projects
+- Implementing tickets
+- Debugging issues
+- Creating personas
+- And much more
+
 ---
 
 ## 📦 File Summaries & Usage
+
+### Quick Reference Files
+
+#### QUICK_REFERENCE.md
+**Purpose:** Decision trees and quick reference information for common scenarios. Provides immediate guidance for starting projects, implementing tickets, debugging issues, and more.
+**References:** References all major guides and provides quick navigation paths.
+**When to use:** Start here when you need immediate guidance or don't know which detailed guide to use.
 
 ### Project Management Files
 
@@ -119,6 +135,10 @@ This directory contains the canonical rules, style guides, and process documenta
 ---
 
 ## 🧭 Quick Start Recommendations
+
+**📋 Need immediate guidance?** Start with [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) for decision trees and quick guides.
+
+**Detailed guides by scenario:**
 - **Starting a new project?** Begin with `HOW_TO_START_NEW_PROJECT.md`.
 - **Writing a spec?** Use `HOW_TO_WRITE_A_SPEC.md` and review with `WHAT_MAKES_A_GREAT_SPEC.md`.
 - **Creating a Linear project?** See `HOW_TO_WRITE_LINEAR_PROJECT.md` and `WHAT_MAKES_A_GREAT_PROJECT.md`.
