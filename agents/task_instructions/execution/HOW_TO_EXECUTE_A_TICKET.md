@@ -147,11 +147,98 @@ npm test -- --coverage
 - Verify end-to-end functionality
 - Check for regression issues
 
+### 7. **Comprehensive Testing & Experimentation**
+
+#### Proactive Testing Offer
+After completing implementation and basic testing, proactively offer comprehensive testing:
+
+**Prompt to User:**
+```
+✅ Implementation Complete
+
+I've successfully implemented [feature description] and completed basic testing. 
+
+Would you like me to conduct comprehensive testing using our systematic experimentation framework? This would include:
+
+🔍 **System State Analysis**: Deep dive into current vs. ideal system state
+📋 **Multi-Phase Test Plan**: Structured testing with clear success criteria  
+🧪 **Automated Scripts**: Generate testing scripts for validation
+📊 **Progress Tracking**: Detailed checklist with status updates
+📈 **Performance Analysis**: Benchmarking and optimization validation
+
+**Estimated Time**: [X] hours
+**Scope**: [Specific areas to test]
+
+This would ensure the implementation is production-ready and meets all requirements thoroughly.
+
+Would you like me to proceed with comprehensive testing?
+```
+
+#### Comprehensive Testing Process
+If the user agrees, follow the complete framework from `HOW_TO_RUN_EXPERIMENTS_TESTING.md`:
+
+**Step 1: System State Analysis**
+- Analyze current implementation against ideal system design
+- Identify gaps between expected and actual functionality
+- Document specific areas requiring validation
+- Clarify any unclear requirements or assumptions
+
+**Step 2: High-Level Strategy Proposal**
+- Propose testing approach with clear objectives
+- Identify key hypotheses to validate
+- Assess risks and success criteria
+- Provide timeline estimate for user approval
+
+**Step 3: Multi-Phase Test Plan**
+- Create detailed phases with specific objectives
+- Define step-by-step testing procedures
+- Establish clear success criteria with checkboxes
+- Generate automated testing scripts where applicable
+
+**Step 4: Execution & Progress Tracking**
+- Execute each phase systematically
+- Track progress with status indicators (✅ COMPLETED, 🔄 IN PROGRESS, ⏳ PENDING)
+- Document findings and issues discovered
+- Update Linear ticket with testing progress
+
+**Step 5: Results Analysis & Recommendations**
+- Compile comprehensive testing report
+- Document all findings, performance metrics, and issues
+- Provide actionable recommendations for improvements
+- Update implementation if critical issues are found
+
+#### Testing Scripts Generation
+For applicable scenarios, create automated testing scripts following the templates and examples provided in `HOW_TO_RUN_EXPERIMENTS_TESTING.md`:
+
+- **API Testing Scripts**: Use the Python script template for comprehensive API endpoint testing
+- **Web Application Testing Scripts**: Use the Selenium-based template for UI testing
+- **Infrastructure Testing Scripts**: Use the infrastructure testing examples for database, cache, and service validation
+- **Performance Testing Scripts**: Use the performance testing framework for load and capacity testing
+
+All scripts should include proper error handling, logging, and comprehensive reporting as outlined in the testing guide.
+
+#### Testing Report Integration
+- Create testing report in `/planning/<projectId_prefix>_<project_name>/testing_reports/`
+- Update Linear ticket with testing findings and status
+- Add testing scripts to the repository
+- Document any issues found and resolutions applied
+- Update implementation if critical issues discovered
+
+#### Success Criteria Validation
+Ensure all testing validates against the original ticket success criteria:
+- [ ] All functional requirements tested and validated
+- [ ] Performance requirements met and benchmarked
+- [ ] Error handling scenarios covered
+- [ ] Security considerations validated
+- [ ] User experience flows tested
+- [ ] Integration points verified
+- [ ] Documentation updated with testing results
+
 ---
 
 ## 🔄 Version Control & Collaboration
 
-### 7. **Incremental Commits**
+### 8. **Incremental Commits**
 
 Follow `GITHUB_OPERATIONS.md` for commit practices:
 - **Small, Focused Commits**: Each commit addresses one logical change
@@ -165,7 +252,7 @@ git commit -m "[feat] Implement user authentication endpoint (Linear MET-123)
 See: https://linear.app/metresearch/issue/MET-123"
 ```
 
-### 8. **Code Review Preparation**
+### 9. **Code Review Preparation**
 
 #### Self-Review Checklist
 - [ ] All tests pass with >90% coverage
@@ -186,7 +273,7 @@ See: https://linear.app/metresearch/issue/MET-123"
 
 ## 📤 Pull Request Creation
 
-### 9. **PR Creation Process**
+### 10. **PR Creation Process**
 
 Follow `GITHUB_OPERATIONS.md` for PR creation.
 
@@ -235,7 +322,7 @@ gh pr create \
   --label feature,needs-review
 ```
 
-### 10. **PR Management**
+### 11. **PR Management**
 
 #### Monitor PR Status
 - Track review comments and feedback
@@ -257,7 +344,7 @@ gh pr comment <pr_number> --body "Updated based on feedback, please re-review"
 
 ## ✅ Completion & Cleanup
 
-### 11. **Task Completion**
+### 12. **Task Completion**
 
 #### Wait for PR Approval
 - Monitor PR status using `gh pr view <pr_number> --json state,reviewDecision,mergedAt`
@@ -275,7 +362,7 @@ gh pr merge <pr_number> --delete-branch
 git branch -d feature/<issueId_prefix>_<feature_snippet>
 ```
 
-### 12. **Post-Completion Tasks**
+### 13. **Post-Completion Tasks**
 
 #### Documentation
 - Update project documentation if needed
@@ -292,7 +379,7 @@ git branch -d feature/<issueId_prefix>_<feature_snippet>
 - Update coding standards if new patterns emerge
 - Document any architectural decisions made
 
-### 13. **Agent Retrospective**
+### 14. **Agent Retrospective**
 
 #### Trigger Retrospective Process
 - Initiate new AI agent with retrospective prompt
@@ -392,6 +479,7 @@ When encountering bugs, errors, or implementation challenges, follow the systema
 - **Coding Standards**: `CODING_RULES.md`, `CODING_REPO_CONVENTIONS.md`
 - **UI Development**: `UI_RULES.md`
 - **Agent Workflow**: `AGENT_WORKFLOW.md`, `LLM_REFLECTION_DEBUGGING_RULES.md`
+- **Testing & Experimentation**: `HOW_TO_RUN_EXPERIMENTS_TESTING.md`
 - **Debugging**: `HOW_TO_DEBUG.md`
 
 ---
