@@ -46,7 +46,14 @@ To determine which persona to use:
    - Social media sentiment analysis and trend detection
    - Ensuring data quality and compliance for social media data
 
-3. **Multiple Personas** - If the task requires both real-time processing AND social media data integration, consider using both personas for comprehensive coverage.
+3. **Machine Learning Classification Expert** - Choose when the task involves:
+   - Building and optimizing classification models for business applications
+   - Handling imbalanced data with techniques like SMOTE and class weighting
+   - Implementing model interpretability with SHAP and LIME
+   - Designing validation strategies including temporal splits and drift detection
+   - Feature engineering and selection for improved model performance
+
+4. **Multiple Personas** - If the task requires multiple specialized skills (e.g., real-time processing AND social media data integration, or real-time analytics AND machine learning), consider using multiple personas for comprehensive coverage.
 
 4. **No Match** - If no persona matches, return:
    > **No matching persona found. Consider defining a new one.**
