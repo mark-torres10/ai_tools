@@ -102,6 +102,24 @@ Use this file to decide which agent persona is best suited for a task or researc
   - Design comprehensive statistical analysis plans
   - Conduct power analysis and sample size planning
 
+#### `methodology/task_specific/topic_modeling_expert.md`
+- **Name**: Topic Modeling Expert
+- **Summary**: Specializes in topic modeling methodologies, from classical LDA to modern neural approaches, with deep expertise in model selection, evaluation, and interpretation
+- **Focus Areas**: Topic Model Selection & Architecture, Model Evaluation & Validation, Hyperparameter Optimization, Domain-Specific Adaptation, Interpretability & Human Evaluation
+- **Example Tasks**:
+  - Choose between LDA and BERTopic for different text types
+  - Troubleshoot topic model quality and coherence issues
+  - Evaluate topic models for publication with proper metrics
+
+#### `methodology/task_specific/scientific_visualization_specialist.md`
+- **Name**: Scientific Visualization Specialist
+- **Summary**: Specializes in scientific data visualization, with deep expertise in creating publication-ready figures, interactive dashboards, and effective visual communication
+- **Focus Areas**: Scientific Figure Design & Publication Standards, Interactive Visualization & Dashboard Creation, Data-Ink Ratio & Visual Clarity, Color Theory & Accessibility
+- **Example Tasks**:
+  - Create publication-ready visualizations for complex research findings
+  - Design interactive dashboards for exploratory data analysis
+  - Optimize visualizations for clarity and accessibility
+
 #### `methodology/tool_specific/text_preprocessing_expert.md`
 - **Name**: Text Preprocessing Expert
 - **Summary**: Specializes in text preprocessing, cleaning, and feature extraction for computational analysis
@@ -186,8 +204,9 @@ To determine which persona to use:
    - **Planning & Design**: `experimental_design_expert.md`, `social_science_research_expert.md`, `research_coordinator.md`, `research_pipeline_architect.md`
    - **Data Exploration**: `exploratory_analysis_expert.md`, `text_preprocessing_expert.md`, `data_quality_research_expert.md`
    - **Hypothesis Development**: `hypothesis_generation_expert.md`, `hypothesis_tester.md`
-   - **Analysis**: `statistical_analysis_expert.md`, `bert_topic_modeling_expert.md`, `temporal_analysis_expert.md`
-   - **Interpretation**: `result_interpretation_expert.md`, `visualization_interpretation_expert.md`
+   - **Analysis**: `statistical_analysis_expert.md`, `topic_modeling_expert.md`, `bert_topic_modeling_expert.md`, `temporal_analysis_expert.md`
+   - **Visualization**: `scientific_visualization_specialist.md`, `visualization_interpretation_expert.md`
+   - **Interpretation**: `result_interpretation_expert.md`
    - **Workflow & Iteration**: `iteration_coach.md`, `research_synthesizer.md`, `result_reviewer.md`
 
 2. **Look for focus area overlap** between the task and the persona's expertise
@@ -197,8 +216,9 @@ To determine which persona to use:
 4. **Consider the research domain**:
    - **Social Science**: `social_science_research_expert.md`, `computational_linguistics_social_science_expert.md`
    - **Experimental**: `experimental_design_expert.md`
-   - **Text Analysis**: `text_preprocessing_expert.md`, `bert_topic_modeling_expert.md`
+   - **Text Analysis**: `text_preprocessing_expert.md`, `topic_modeling_expert.md`, `bert_topic_modeling_expert.md`
    - **Temporal**: `temporal_analysis_expert.md`
+   - **Visualization**: `scientific_visualization_specialist.md`, `visualization_interpretation_expert.md`
    - **Workflow**: `research_coordinator.md`, `research_pipeline_architect.md`
 
 5. **If the task requires multiple domains**, select multiple personas for collaboration
@@ -229,9 +249,9 @@ To determine which persona to use:
 | "I found patterns but need to develop testable hypotheses" | `methodology/task_specific/hypothesis_generation_expert.md` |
 | "What statistical test should I use for my data?" | `methodology/task_specific/statistical_analysis_expert.md` |
 | "What do my results actually mean?" | `methodology/task_specific/result_interpretation_expert.md` |
-| "I need to analyze text data" | `methodology/tool_specific/text_preprocessing_expert.md` + `methodology/tool_specific/bert_topic_modeling_expert.md` |
+| "I need to analyze text data" | `methodology/task_specific/text_preprocessing_expert.md` + `methodology/task_specific/topic_modeling_expert.md` |
 | "I need to analyze time series data" | `methodology/tool_specific/temporal_analysis_expert.md` |
-| "I need to create visualizations" | `methodology/tool_specific/visualization_interpretation_expert.md` |
+| "I need to create visualizations" | `methodology/task_specific/scientific_visualization_specialist.md` |
 | "I need to plan my research approach" | `methodology/task_specific/exploratory_analysis_expert.md` + `methodology/task_specific/hypothesis_generation_expert.md` |
 | "I have results but need to communicate them" | `methodology/task_specific/result_interpretation_expert.md` |
 | "My hypothesis wasn't supported - how should I interpret this?" | `methodology/task_specific/result_interpretation_expert.md` + `methodology/task_specific/statistical_analysis_expert.md` |
@@ -240,9 +260,12 @@ To determine which persona to use:
 | "What's the practical significance of my findings?" | `methodology/task_specific/result_interpretation_expert.md` |
 | "I need to design a social science study" | `methodology/domain_specific/social_science_research_expert.md` |
 | "I need to analyze linguistic patterns" | `methodology/domain_specific/computational_linguistics_social_science_expert.md` |
-| "Cross-condition text analysis" | `methodology/tool_specific/text_preprocessing_expert.md` + `methodology/tool_specific/bert_topic_modeling_expert.md` |
-| "Temporal text analysis" | `methodology/tool_specific/temporal_analysis_expert.md` + `methodology/tool_specific/bert_topic_modeling_expert.md` |
-| "Visualization of temporal data" | `methodology/tool_specific/temporal_analysis_expert.md` + `methodology/tool_specific/visualization_interpretation_expert.md` |
+| "Cross-condition text analysis" | `methodology/task_specific/text_preprocessing_expert.md` + `methodology/task_specific/topic_modeling_expert.md` |
+| "Temporal text analysis" | `methodology/tool_specific/temporal_analysis_expert.md` + `methodology/task_specific/topic_modeling_expert.md` |
+| "Visualization of temporal data" | `methodology/tool_specific/temporal_analysis_expert.md` + `methodology/task_specific/scientific_visualization_specialist.md` |
+| "Topic modeling for social media" | `methodology/task_specific/topic_modeling_expert.md` + `methodology/task_specific/text_preprocessing_expert.md` |
+| "Creating publication figures" | `methodology/task_specific/scientific_visualization_specialist.md` |
+| "Interactive data exploration" | `methodology/task_specific/scientific_visualization_specialist.md` + `methodology/task_specific/exploratory_analysis_expert.md` |
 
 ---
 
@@ -266,13 +289,17 @@ To determine which persona to use:
 
 ### **Analysis Stage**
 - **Statistical Analysis Expert** - Statistical methodology and testing
-- **BERT Topic Modeling Expert** - Text analysis and topic modeling
+- **Topic Modeling Expert** - Topic modeling and text analysis
+- **BERT Topic Modeling Expert** - Advanced BERT-based topic analysis
 - **Temporal Analysis Expert** - Time series and longitudinal analysis
 - **Hypothesis Tester** - Next testing and validation planning
 
+### **Visualization Stage**
+- **Scientific Visualization Specialist** - Publication-ready figures and interactive dashboards
+- **Visualization Interpretation Expert** - Chart interpretation and visual communication
+
 ### **Interpretation Stage**
 - **Result Interpretation Expert** - Finding interpretation and communication
-- **Visualization Interpretation Expert** - Visual communication and chart design
 - **Result Reviewer** - Quality assessment and improvement
 
 ### **Synthesis & Review Stage**
@@ -304,3 +331,4 @@ After adding new personas to this folder, rerun `create_router.md` to regenerate
 - Focus areas are complementary, allowing for comprehensive coverage of research needs
 - Workflow personas focus on process and coordination, while methodology personas focus on specific research techniques
 - The combined router provides a complete view of the research lifecycle from planning through final synthesis
+- New specialized personas (Topic Modeling Expert, Scientific Visualization Specialist) provide deep expertise in specific research methodologies
