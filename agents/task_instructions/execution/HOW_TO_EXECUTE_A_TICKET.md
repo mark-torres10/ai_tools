@@ -68,7 +68,6 @@ Follow `GITHUB_OPERATIONS.md` for branch naming and creation:
 ```bash
 # Create feature branch with Linear issue prefix
 git checkout main && git pull
-gh repo sync
 git checkout -b feature/<issueId_prefix>_<feature_snippet>
 ```
 
