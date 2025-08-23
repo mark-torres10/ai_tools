@@ -262,6 +262,48 @@ See: https://linear.app/metresearch/issue/MET-123"
 - [ ] Security implications reviewed
 - [ ] Success criteria met
 
+#### Manual Code Review Offer
+After completing self-review, proactively offer manual code review to the user:
+
+**Prompt to User:**
+```
+✅ Self-Review Complete
+
+I've completed my implementation and self-review. All tests pass and the code meets our quality standards.
+
+Would you like me to prepare for a manual code review? This would include:
+
+🔍 **Architecture Decision Explanation**: Detailed explanation of my design choices and reasoning
+📋 **Code Review Context**: Comprehensive context for thorough review using our established checklist
+📊 **Implementation Summary**: Clear overview of what was built and why
+
+**Estimated Time**: 15-30 minutes
+**Scope**: Complete implementation explanation and review preparation
+
+This would ensure you have full visibility into my implementation decisions and can conduct a thorough review.
+
+Would you like me to proceed with code review preparation?
+```
+
+#### Code Review Preparation Process
+If the user agrees to manual code review, follow this structured approach:
+
+**Step 1: Architecture Decision Explanation**
+- Use `ARCHITECTURE_DECISION_PROMPT.md` to explain your implementation decisions
+- Provide comprehensive context on design choices, alternatives considered, and trade-offs
+- Document how your solution integrates with existing patterns and architecture
+
+**Step 2: Code Review Context Preparation**
+- Use `COMPREHENSIVE_CODE_REVIEW_CHECKLIST.md` to prepare review context
+- Provide key files and review order with clear reasoning
+- Highlight critical sections, pitfalls, and cross-cutting concerns
+- Document testing coverage and identify any missing scenarios
+
+**Step 3: Review Documentation**
+- Create a comprehensive review package combining both prompts
+- Ensure all explanations align with actual implementation
+- Prepare for user questions and validation of design decisions
+
 #### Documentation Updates
 - Update relevant README files
 - Add inline documentation
