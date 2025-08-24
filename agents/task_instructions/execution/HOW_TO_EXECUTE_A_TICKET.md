@@ -47,6 +47,12 @@ This document provides a comprehensive, step-by-step guide for executing Linear 
 - Each step should be focused and testable
 - Document steps in `/planning/<projectId_prefix>_<project_name>/plan_<feature>.md`
 
+#### Create Detailed Execution Plan
+- Use `EXECUTION_PLANNING_PROMPT.md` to create comprehensive implementation plan
+- Include code structure, organization, and technical approach
+- Wait for explicit user approval before beginning implementation
+- Ensure plan aligns with existing code patterns and conventions
+
 #### Estimate Effort
 - Use historical data from similar tasks
 - Consider complexity, testing requirements, and integration needs
@@ -522,6 +528,7 @@ When encountering bugs, errors, or implementation challenges, follow the systema
 - **Agent Workflow**: `AGENT_WORKFLOW.md`, `LLM_REFLECTION_DEBUGGING_RULES.md`
 - **Testing & Experimentation**: `HOW_TO_RUN_EXPERIMENTS_TESTING.md`
 - **Debugging**: `HOW_TO_DEBUG.md`
+- **Execution Planning**: `EXECUTION_PLANNING_PROMPT.md`
 
 ---
 
