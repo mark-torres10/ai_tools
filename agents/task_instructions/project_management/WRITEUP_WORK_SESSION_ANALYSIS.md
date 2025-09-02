@@ -56,6 +56,8 @@ Extract key insights, patterns, and article-worthy content from AI agent work se
 ## Output Format
 Structure your response with clear headings and bullet points. Include specific examples, quotes, or technical details where relevant. Focus on actionable insights and lessons that could inspire future articles.
 
+**Important**: Write the complete analysis to a file called `temp_writeup.md` in the current directory. This file should contain the full structured analysis following the framework above.
+
 ## Success Criteria
 A successful analysis should result in:
 - Clear understanding of what was accomplished
