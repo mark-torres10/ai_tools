@@ -3,6 +3,33 @@
 ## Overview
 This workflow guides you through creating production-ready AI video prompts from initial brainstorming to final shot generation instructions. The process transforms freeform creative ideas into structured, executable prompts optimized for specific AI models.
 
+## 📁 Project Folder Structure
+All AI video projects follow a consistent folder structure for organization and collaboration:
+
+```
+/projects
+  /creative_{project_name}
+    /storyboard
+      - storyboard_sketches.md
+      - visual_references.md
+      - shot_sequence.md
+    /shots
+      - shot_001_prompt.md
+      - shot_002_prompt.md
+      - shot_003_prompt.md
+      - [additional shot files]
+    creative_production_braindump.md
+    INSTRUCTIONS_SHOT_GENERATION.md
+    project_brief.md
+    brand_guidelines.md
+```
+
+**Folder Structure Guidelines:**
+- **Project Name**: Use descriptive, kebab-case naming (e.g., `creative_product_launch_video`, `creative_brand_story_campaign`)
+- **Storyboard Folder**: Contains visual planning documents, sketches, and reference materials
+- **Shots Folder**: Individual shot prompt files for each scene or sequence
+- **Root Files**: Main project documentation and workflow files
+
 ---
 
 ## 📋 Workflow Outline
@@ -11,26 +38,31 @@ This workflow guides you through creating production-ready AI video prompts from
 - **Objective**: Establish comprehensive understanding of project requirements, constraints, and context
 - **Process**: Collaborative exploration with AI agent to capture all initial thoughts and requirements
 - **Deliverable**: `creative_production_braindump.md` with structured context and questions
+- **Location**: `/projects/creative_{project_name}/creative_production_braindump.md`
 
 ### Phase 2: Project Structure and Shot Planning
 - **Objective**: Break down the project into discrete, manageable shots with clear narrative flow
 - **Process**: Walk through each proposed shot, following the 8-Part Cinematic Framework
 - **Deliverable**: Structured shot breakdown with creative vision and technical specifications
+- **Location**: `/projects/creative_{project_name}/storyboard/shot_sequence.md`
 
 ### Phase 3: Prompt Development and Optimization
 - **Objective**: Create model-specific prompts for each shot, optimized for target AI models
 - **Process**: Apply `HOW_TO_CREATE_AI_VIDEO_PROMPTS_FOR_PROJECT.md` guidelines to each shot
 - **Deliverable**: Individual shot prompts with model-specific optimizations
+- **Location**: `/projects/creative_{project_name}/shots/shot_XXX_prompt.md`
 
 ### Phase 4: Audio Integration and Synchronization
 - **Objective**: Develop audio scripts and synchronization instructions for each shot
 - **Process**: Create dialogue, music, and sound effect specifications aligned with visual content
 - **Deliverable**: Audio scripts with timing and synchronization notes
+- **Location**: Integrated into individual shot files in `/projects/creative_{project_name}/shots/`
 
 ### Phase 5: Post-Production and Assembly Instructions
 - **Objective**: Define how to combine video and audio elements into final deliverables
 - **Process**: Create step-by-step instructions for stitching, editing, and quality assurance
 - **Deliverable**: `INSTRUCTIONS_SHOT_GENERATION.md` with complete production workflow
+- **Location**: `/projects/creative_{project_name}/INSTRUCTIONS_SHOT_GENERATION.md`
 
 ---
 
@@ -39,6 +71,39 @@ This workflow guides you through creating production-ready AI video prompts from
 - **Technical Quality**: Prompts optimized for specific AI models with clear success metrics
 - **Production Ready**: Instructions detailed enough for immediate execution by creative teams
 - **Scalable Process**: Workflow can be adapted for different project types and requirements
+
+---
+
+## 🚀 Project Initialization
+
+### Setup Project Folder Structure
+Before beginning any AI video project, create the standardized folder structure:
+
+1. **Create main project folder**: `/projects/creative_{project_name}/`
+2. **Create subfolders**:
+   - `/storyboard/` - Visual planning and reference materials
+   - `/shots/` - Individual shot prompt files
+3. **Initialize root files**:
+   - `creative_production_braindump.md` - Initial brainstorming document
+   - `project_brief.md` - Project overview and requirements
+   - `brand_guidelines.md` - Brand identity and visual requirements
+
+### Project Naming Convention
+- Use descriptive, kebab-case naming
+- Include project type or purpose
+- Examples: `creative_product_launch_video`, `creative_brand_story_campaign`, `creative_tutorial_series`
+
+### File Naming Standards
+- **Shot files**: `shot_001_prompt.md`, `shot_002_prompt.md`, etc.
+- **Storyboard files**: `shot_sequence.md`, `visual_references.md`, `storyboard_sketches.md`
+- **Project files**: `creative_production_braindump.md`, `project_brief.md`, `brand_guidelines.md`
+- **Final deliverable**: `INSTRUCTIONS_SHOT_GENERATION.md`
+
+### File Organization Guidelines
+- **Keep related files together** in appropriate subfolders
+- **Use consistent naming** across all project files
+- **Include version numbers** for major revisions (e.g., `shot_001_prompt_v2.md`)
+- **Maintain clear file hierarchy** for easy navigation and collaboration
 
 ---
 
@@ -111,7 +176,9 @@ The AI agent should ask comprehensive questions based on the 8-Part Cinematic Fr
 - **Identify missing brand assets** or reference materials
 
 ### Deliverables
-- **`creative_production_braindump.md`** containing all initial thoughts and context
+- **`/projects/creative_{project_name}/creative_production_braindump.md`** containing all initial thoughts and context
+- **`/projects/creative_{project_name}/project_brief.md`** with project overview and requirements
+- **`/projects/creative_{project_name}/brand_guidelines.md`** with brand identity and visual requirements
 - **List of questions requiring answers** from stakeholders
 - **Initial scope boundaries and constraints** identified
 - **Knowledge gaps** that need to be addressed before proceeding
@@ -207,7 +274,8 @@ For each shot, systematically apply the 8-Part Cinematic Framework:
 - **Flag potential challenges** or risks
 
 ### Deliverables
-- **Structured shot breakdown** with 8-Part Cinematic Framework applied to each shot
+- **`/projects/creative_{project_name}/storyboard/shot_sequence.md`** with structured shot breakdown and 8-Part Cinematic Framework
+- **`/projects/creative_{project_name}/storyboard/visual_references.md`** with reference materials and inspiration
 - **Shot sequence timeline** with durations and transitions
 - **Technical requirements summary** for each shot
 - **Visual continuity notes** between shots
@@ -315,8 +383,8 @@ Apply model-specific optimization strategies:
 - **Test model-specific optimizations**
 
 ### Deliverables
-- **Individual shot prompts** optimized for target AI models
-- **Model-specific optimization notes** and rationale
+- **Individual shot prompt files** in `/projects/creative_{project_name}/shots/shot_XXX_prompt.md`
+- **Model-specific optimization notes** and rationale for each shot
 - **Success criteria** and evaluation metrics for each shot
 - **Troubleshooting guide** for common issues
 - **Prompt variations** and alternatives where applicable
@@ -420,8 +488,8 @@ Apply model-specific audio optimization strategies:
 - **Test audio model compatibility** and capabilities
 
 ### Deliverables
-- **Individual audio scripts** for each shot with dialogue, music, and sound effects
-- **Audio timing and synchronization** specifications
+- **Audio scripts integrated** into individual shot files in `/projects/creative_{project_name}/shots/`
+- **Audio timing and synchronization** specifications for each shot
 - **Model-specific audio generation** instructions
 - **Audio production workflow** and quality control measures
 - **Troubleshooting guide** for audio generation issues
@@ -506,7 +574,7 @@ For each shot, create comprehensive instructions following this structure:
 - **Resource requirements** and dependencies
 
 ### Deliverables
-- **`INSTRUCTIONS_SHOT_GENERATION.md`** - Complete production workflow document
+- **`/projects/creative_{project_name}/INSTRUCTIONS_SHOT_GENERATION.md`** - Complete production workflow document
 - **Individual shot instructions** with video and audio generation details
 - **Post-processing workflow** and assembly instructions
 - **Quality assurance framework** and validation procedures
