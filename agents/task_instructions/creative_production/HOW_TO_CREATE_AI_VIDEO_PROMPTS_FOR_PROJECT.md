@@ -297,6 +297,115 @@ Guide the overall color scheme and visual mood. Include specific color choices t
 
 ---
 
+## 🏗️ Structured Prompt Architecture for Professional Results
+
+For **Veo3** and other advanced AI video models, prompts must follow a detailed, structured format to achieve professional-quality results. The examples in the attached files demonstrate the level of detail and structure required.
+
+### Required JSON Structure Format
+
+All Veo3 prompts must follow this comprehensive JSON structure:
+
+```json
+{
+  "description": "A detailed, cinematic description of the scene with specific visual and emotional elements",
+  "camera": {
+    "type": "Specific camera type and movement",
+    "lens": "Lens specification (e.g., 35mm Prime Lens)",
+    "aperture": "Aperture setting (e.g., f/4.0)",
+    "position": "Camera positioning and angle",
+    "movement": "Detailed camera movement description"
+  },
+  "environment": {
+    "location": "Specific location description",
+    "atmosphere": "Environmental conditions and mood",
+    "details": "Specific environmental elements and textures"
+  },
+  "main_subject": {
+    "character": "Detailed character description",
+    "action": "Specific actions and movements",
+    "details": "Physical characteristics and props"
+  },
+  "lighting": {
+    "primary_source": {
+      "type": "Light source type",
+      "position": "Light positioning",
+      "color_temperature": "Color temperature (e.g., 5000K)",
+      "intensity": "Light intensity and effects"
+    },
+    "effects": "Specific lighting effects and atmosphere"
+  },
+  "animation": {
+    "character_animation": "Detailed character movement",
+    "environmental_animation": "Environmental movement and effects",
+    "subtle_effects": "Particle effects and details"
+  },
+  "sound": "Detailed audio description including dialogue, ambient sounds, and music"
+}
+```
+
+### Minimum Requirements for Veo3 Prompts
+
+- **Word Count**: 200-300+ words minimum
+- **Structure**: Must follow JSON format above
+- **Detail Level**: Include ALL technical specifications from shot files
+- **Professional Language**: Use cinematographic terminology
+- **Comprehensive Coverage**: Include camera, lighting, audio, animation, and environmental details
+
+### Example of Professional Veo3 Prompt
+
+```json
+{
+  "description": "A bright gradient background with PonteAI logo prominently displayed in the center, featuring a subtle pulsing glow effect that creates a sense of life and energy. The background showcases a modern gradient with brand colors, creating an inspiring and trustworthy atmosphere. The logo appears clean, professional, and modern with subtle animation that draws attention while maintaining brand consistency.",
+  "camera": {
+    "type": "Subtle zoom-in shot",
+    "lens": "50mm Prime Lens",
+    "aperture": "f/2.8",
+    "position": "Centered on logo with slight low angle for authority",
+    "movement": "Very slow, smooth zoom-in over 8 seconds, starting wide and ending in medium close-up of logo"
+  },
+  "environment": {
+    "location": "Clean, minimal gradient background space",
+    "atmosphere": "Professional, inspiring, trustworthy",
+    "details": "Modern gradient background with brand colors, subtle texture and depth"
+  },
+  "main_subject": {
+    "logo": "PonteAI logo with clean, modern typography",
+    "animation": "Subtle pulsing glow effect that creates energy and life",
+    "details": "Professional branding with consistent visual identity"
+  },
+  "lighting": {
+    "primary_source": {
+      "type": "Clean, professional lighting",
+      "position": "Even, diffused lighting across the scene",
+      "color_temperature": "5000K-6000K (Bright, professional)",
+      "intensity": "High, clean lighting for professional appearance"
+    },
+    "effects": "Subtle rim lighting on logo edges, soft gradient lighting on background"
+  },
+  "animation": {
+    "logo_animation": "Gentle pulsing glow effect that pulses every 2 seconds, creating sense of life and energy",
+    "background_animation": "Subtle gradient shift and movement, very slow and smooth",
+    "subtle_effects": "Soft light particles or energy effects around logo edges"
+  },
+  "sound": "Upbeat, warm finish with inspiring music that builds to a crescendo, subtle logo sound effect on pulse, success chime at the end, voice-over: 'This is the internet with your people in it. Sign up for the waitlist today.'"
+}
+```
+
+### Integration with Shot Files
+
+When creating Veo3 prompts, you must incorporate **ALL** details from the shot file:
+
+- **Project Context & Brand Alignment** → Include in description and environment
+- **Creative Vision & Narrative** → Include in description and emotional tone
+- **Technical Requirements** → Include in camera, lighting, and animation sections
+- **Character & Setting Elements** → Include in main_subject and environment
+- **Lighting & Mood** → Include in lighting section with specific specifications
+- **Audio Cue** → Include in sound section with detailed audio description
+- **Color Palette** → Include in environment and lighting sections
+- **Success Criteria** → Ensure prompt addresses all quality requirements
+
+---
+
 ## 🚫 Common Prompt Mistakes to Avoid
 
 ### Technical Mistakes
@@ -347,10 +456,17 @@ Guide the overall color scheme and visual mood. Include specific color choices t
 ## 🎯 Model-Specific Optimization Strategies
 
 ### Veo3 Optimization
-- **Leverage native audio generation**: Include specific dialogue and sound effects
-- **Use image-to-video capabilities**: Upload reference images for character consistency
-- **Focus on physics and movement**: Describe realistic, physics-based actions
-- **Rich detail**: Use 60-100 words of specific, descriptive content
+- **Structured JSON Format**: Must follow the comprehensive JSON structure with all sections (camera, environment, main_subject, lighting, animation, sound)
+- **Rich Detail**: Use 200-300+ words minimum of specific, descriptive content
+- **Leverage native audio generation**: Include specific dialogue, sound effects, and ambient audio with precise timing
+- **Use image-to-video capabilities**: Upload reference images for character consistency and visual references
+- **Focus on physics and movement**: Describe realistic, physics-based actions and environmental interactions
+- **Professional cinematographic language**: Use specific camera terminology, lighting specifications, and technical details
+- **Comprehensive shot integration**: Include ALL details from shot files in the structured prompt format
+- **Audio-visual synchronization**: Ensure audio cues are precisely timed with visual elements
+- **Environmental storytelling**: Include detailed atmospheric conditions, lighting effects, and environmental interactions
+- **Character consistency**: Maintain detailed character descriptions and consistent visual elements
+- **Technical precision**: Include specific lens specifications, aperture settings, color temperatures, and lighting setups
 
 ### Runway Gen-4 Optimization
 - **Embrace simplicity**: Start with basic prompts and build complexity gradually

@@ -190,8 +190,25 @@ The AI agent should ask comprehensive questions based on the 8-Part Cinematic Fr
 - **Technical requirements** and AI model preferences specified
 - **Brand alignment** and visual identity requirements established
 
+### Recommended Personas for Review
+**Primary Review Personas:**
+- **`audience_research_expert.md`** - For target audience validation and market context
+- **`brand_storytelling_expert.md`** - For brand narrative and emotional resonance alignment
+- **`creative_director.md`** - For overall creative strategy and vision validation
+
+**Supporting Review Personas:**
+- **`executive_producer.md`** - For timeline, budget, and resource constraint validation
+- **`product_marketing_expert.md`** - For business objectives and value proposition alignment
+
 ### Next Steps
 After completing Phase 1, present the `creative_production_braindump.md` for approval before proceeding to Phase 2: Project Structure and Shot Planning.
+
+**Review Request:** Would you like any of the recommended personas to review the Phase 1 deliverables? If so, please specify which persona(s) you'd like to engage:
+- `audience_research_expert.md` - For audience and market validation
+- `brand_storytelling_expert.md` - For brand narrative and storytelling review
+- `creative_director.md` - For creative strategy and vision validation
+- `executive_producer.md` - For resource and timeline validation
+- `product_marketing_expert.md` - For business objectives alignment
 
 ---
 
@@ -288,8 +305,25 @@ For each shot, systematically apply the 8-Part Cinematic Framework:
 - **Brand consistency** maintained across all shots
 - **Visual continuity** planned between consecutive shots
 
+### Recommended Personas for Review
+**Primary Review Personas:**
+- **`video_storyboarding_expert.md`** - For visual narrative structure and shot composition validation
+- **`creative_director.md`** - For creative vision and brand consistency review
+- **`ai_video_production_coordinator.md`** - For workflow management and shot sequencing validation
+
+**Supporting Review Personas:**
+- **`executive_producer.md`** - For resource allocation and timeline validation
+- **`brand_storytelling_expert.md`** - For narrative flow and emotional arc review
+
 ### Next Steps
 After completing Phase 2, present the shot breakdown for approval before proceeding to Phase 3: Prompt Development and Optimization.
+
+**Review Request:** Would you like any of the recommended personas to review the Phase 2 deliverables? If so, please specify which persona(s) you'd like to engage:
+- `video_storyboarding_expert.md` - For visual narrative and shot composition review
+- `creative_director.md` - For creative vision and brand consistency validation
+- `ai_video_production_coordinator.md` - For workflow and shot sequencing review
+- `executive_producer.md` - For resource allocation and timeline validation
+- `brand_storytelling_expert.md` - For narrative flow and emotional arc review
 
 ---
 
@@ -396,8 +430,33 @@ Apply model-specific optimization strategies:
 - **Technical specifications** are accurate and feasible
 - **Narrative coherence** is maintained across all shots
 
+### Recommended Personas for Review
+**Primary Review Personas:**
+- **`prompt_engineering_specialist.md`** - For prompt architecture and optimization validation
+- **`ai_video_generation_expert.md`** - For multi-tool strategy and workflow optimization review
+- **`creative_director.md`** - For brand alignment and creative quality validation
+
+**Tool-Specific Review Personas (based on selected models):**
+- **`veo3_optimization_expert.md`** - For Veo3-specific optimization review
+- **`runway_gen4_optimization_expert.md`** - For Runway Gen-4 optimization review
+- **`luma_dream_machine_expert.md`** - For Luma Dream Machine optimization review
+- **`pika_optimization_expert.md`** - For Pika 1.5 optimization review
+
+**Supporting Review Personas:**
+- **`ai_video_production_coordinator.md`** - For consistency across shots validation
+
 ### Next Steps
 After completing Phase 3, present the individual shot prompts for approval before proceeding to Phase 4: Audio Integration and Synchronization.
+
+**Review Request:** Would you like any of the recommended personas to review the Phase 3 deliverables? If so, please specify which persona(s) you'd like to engage:
+- `prompt_engineering_specialist.md` - For prompt architecture and optimization review
+- `ai_video_generation_expert.md` - For multi-tool strategy and workflow review
+- `creative_director.md` - For brand alignment and creative quality validation
+- `veo3_optimization_expert.md` - For Veo3-specific optimization review
+- `runway_gen4_optimization_expert.md` - For Runway Gen-4 optimization review
+- `luma_dream_machine_expert.md` - For Luma Dream Machine optimization review
+- `pika_optimization_expert.md` - For Pika 1.5 optimization review
+- `ai_video_production_coordinator.md` - For consistency across shots validation
 
 ---
 
@@ -501,8 +560,25 @@ Apply model-specific audio optimization strategies:
 - **Model-specific optimizations** correctly applied
 - **Quality standards** defined and achievable
 
+### Recommended Personas for Review
+**Primary Review Personas:**
+- **`audio_production_specialist.md`** - For audio generation and synchronization validation
+- **`veo3_optimization_expert.md`** - For native audio generation capabilities review (if using Veo3)
+- **`brand_storytelling_expert.md`** - For brand voice and narrative audio validation
+
+**Supporting Review Personas:**
+- **`ai_video_production_coordinator.md`** - For audio-visual workflow coordination review
+- **`creative_director.md`** - For overall creative and brand consistency validation
+
 ### Next Steps
 After completing Phase 4, present the audio integration specifications for approval before proceeding to Phase 5: Post-Production and Assembly Instructions.
+
+**Review Request:** Would you like any of the recommended personas to review the Phase 4 deliverables? If so, please specify which persona(s) you'd like to engage:
+- `audio_production_specialist.md` - For audio generation and synchronization review
+- `veo3_optimization_expert.md` - For native audio generation capabilities review
+- `brand_storytelling_expert.md` - For brand voice and narrative audio validation
+- `ai_video_production_coordinator.md` - For audio-visual workflow coordination review
+- `creative_director.md` - For overall creative and brand consistency validation
 
 ---
 
@@ -662,8 +738,25 @@ The `INSTRUCTIONS_SHOT_GENERATION.md` file will include:
 - **Quality assurance framework** ensures consistent output quality
 - **Troubleshooting guides** address common issues and challenges
 
+### Recommended Personas for Review
+**Primary Review Personas:**
+- **`ai_video_production_coordinator.md`** - For final workflow assembly and quality control validation
+- **`executive_producer.md`** - For final delivery and stakeholder management review
+- **`creative_director.md`** - For final creative approval and brand compliance validation
+
+**Supporting Review Personas:**
+- **`audio_production_specialist.md`** - For final audio mixing and synchronization review
+- **`prompt_engineering_specialist.md`** - For troubleshooting and optimization validation
+
 ### Final Review and Approval
 After completing Phase 5, present the complete `INSTRUCTIONS_SHOT_GENERATION.md` file for final approval. This document will serve as the comprehensive production guide for executing the entire AI video project.
+
+**Review Request:** Would you like any of the recommended personas to review the Phase 5 deliverables? If so, please specify which persona(s) you'd like to engage:
+- `ai_video_production_coordinator.md` - For final workflow assembly and quality control review
+- `executive_producer.md` - For final delivery and stakeholder management validation
+- `creative_director.md` - For final creative approval and brand compliance review
+- `audio_production_specialist.md` - For final audio mixing and synchronization review
+- `prompt_engineering_specialist.md` - For troubleshooting and optimization validation
 
 ---
 
