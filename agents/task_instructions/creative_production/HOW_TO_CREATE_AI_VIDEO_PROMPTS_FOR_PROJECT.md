@@ -406,6 +406,280 @@ When creating Veo3 prompts, you must incorporate **ALL** details from the shot f
 
 ---
 
+## 🎬 Detailed Shot Sequence Requirements
+
+When creating shot sequence files, you must provide comprehensive technical specifications that go far beyond bullet points. Each shot must include detailed production requirements that enable immediate execution.
+
+### Required Shot Sequence Structure
+
+Every shot sequence file must follow this detailed format:
+
+#### **Project Overview Section**
+- **Total Duration**: Exact duration in seconds
+- **Total Shots**: Number of discrete shots
+- **Narrative Arc**: Clear story progression (e.g., Problem → Solution → Value Demonstration → Vision → Action)
+- **Target Platforms**: Specific platform requirements (16:9, 9:16, 1:1, etc.)
+- **Production Complexity**: Technical difficulty assessment
+
+#### **Individual Shot Breakdown**
+
+Each shot must include these **comprehensive sections**:
+
+##### **1. Shot Overview**
+- **Duration**: Exact timing (e.g., 0-3s, 3-5s)
+- **Purpose**: Clear narrative function
+- **Emotion**: Specific emotional target
+- **Key Message**: Exact messaging goal
+- **Visual Hierarchy**: Primary focus → Secondary elements → Background
+
+##### **2. 8-Part Cinematic Framework** (Detailed Implementation)
+
+**Scene Description (Core Action):**
+- **Primary Action**: Specific, detailed action description
+- **Secondary Actions**: Supporting visual elements
+- **Environmental Interaction**: How subjects interact with environment
+- **Narrative Function**: How this shot serves the overall story
+
+**Visual Style (Aesthetic Direction):**
+- **Cinematic Approach**: Specific style (realistic, animated, documentary, etc.)
+- **Color Treatment**: Specific color grading approach
+- **Mood and Atmosphere**: Detailed emotional tone
+- **Brand Alignment**: How visual style supports brand identity
+
+**Camera Movement (Dynamic Direction):**
+- **Movement Type**: Specific camera movement (dolly, crane, handheld, etc.)
+- **Movement Pattern**: Detailed movement description with timing
+- **Technical Specifications**: Lens type, aperture, focus techniques
+- **Movement Purpose**: How movement serves the narrative
+
+**Main Subject (Character Focus):**
+- **Primary Focus**: Detailed character/subject description
+- **Secondary Elements**: Supporting visual elements with positioning
+- **Background Elements**: Environmental details and their role
+- **Visual Hierarchy**: Clear focal progression (Primary → Secondary → Background)
+
+**Background Setting (Environmental Context):**
+- **Specific Location**: Detailed environmental description
+- **Environmental Details**: Specific props, textures, and elements
+- **Atmospheric Conditions**: Weather, lighting conditions, mood
+- **Scale and Perspective**: Specific camera positioning and framing
+
+**Lighting and Mood (Emotional Tone):**
+- **Lighting Setup**: Specific lighting configuration
+- **Color Temperature**: Exact color temperature (e.g., 3200K, 5600K)
+- **Lighting Ratio**: Key to fill ratio specifications
+- **Atmospheric Effects**: Specific lighting effects and mood creation
+
+**Audio Cue (Sonic Landscape):**
+- **Primary Audio**: Specific dialogue, music, or sound effects
+- **Ambient Audio**: Environmental sounds and atmosphere
+- **Audio Timing**: Precise synchronization with visual elements
+- **Audio Transitions**: How audio flows to next shot
+
+**Color Palette (Visual Harmony):**
+- **Primary Colors**: Specific hex values and usage
+- **Accent Colors**: Supporting color specifications
+- **Color Progression**: How colors change throughout the sequence
+- **Brand Integration**: How colors support brand identity
+
+##### **3. Technical Specifications**
+
+**Camera Work:**
+- **Shot Type**: Specific shot type (wide, medium, close-up, etc.)
+- **Lens Specifications**: Exact lens type and settings
+- **Camera Movement**: Detailed movement pattern with timing
+- **Framing**: Specific composition and rule of thirds positioning
+
+**Lighting Setup:**
+- **Primary Light Source**: Type, position, and intensity
+- **Fill Lighting**: Specific fill light configuration
+- **Background Lighting**: Environmental lighting setup
+- **Color Temperature**: Exact color temperature specifications
+
+**Audio Design:**
+- **Voice-Over**: Exact script with delivery notes
+- **Music**: Specific music style and timing
+- **Sound Effects**: Detailed SFX requirements
+- **Audio Sync**: Precise timing with visual elements
+
+**Post-Production:**
+- **Color Grading**: Specific color treatment approach
+- **Transitions**: Exact transition type and timing
+- **Effects**: Specific visual effects requirements
+- **Quality Control**: Specific quality checkpoints
+
+##### **4. Visual Continuity**
+
+**From Previous Shot:**
+- **Visual Connection**: How this shot connects to previous
+- **Color Progression**: How colors flow from previous shot
+- **Pacing Continuity**: How timing flows from previous shot
+- **Narrative Progression**: How story advances from previous shot
+
+**To Next Shot:**
+- **Transition Setup**: How this shot prepares for next
+- **Visual Handoff**: What elements carry forward
+- **Pacing Preparation**: How timing sets up next shot
+- **Narrative Bridge**: How story flows to next shot
+
+##### **5. Production Requirements**
+
+**AI Model Optimization:**
+- **Recommended Model**: Specific AI model for this shot
+- **Model-Specific Settings**: Optimized settings for chosen model
+- **Reference Materials**: Specific reference images or videos
+- **Quality Settings**: Specific quality and resolution requirements
+
+**Asset Requirements:**
+- **Brand Assets**: Specific brand elements needed
+- **Reference Materials**: Visual references required
+- **Audio Assets**: Specific audio files needed
+- **Technical Assets**: Any technical reference materials
+
+**Quality Standards:**
+- **Visual Quality**: Specific quality benchmarks
+- **Audio Quality**: Audio quality requirements
+- **Brand Consistency**: Brand alignment checkpoints
+- **Technical Standards**: Technical quality requirements
+
+### Example of Detailed Shot Specification
+
+```markdown
+### Shot 1: Hook - "Lost in the scroll?" (0-3s)
+
+**Shot Overview:**
+- **Duration**: 3 seconds (0-3s)
+- **Purpose**: Establish problem and create relatability
+- **Emotion**: Confusion, overwhelm, relatability
+- **Key Message**: "You're lost in endless scrolling"
+- **Visual Hierarchy**: Face (primary) → Laptop screen (secondary) → Home environment (background)
+
+**8-Part Cinematic Framework:**
+
+**Scene Description (Core Action):**
+- **Primary Action**: Person on couch scrolling laptop with confused, overwhelmed expression
+- **Secondary Actions**: Quick zoom-in on puzzled face, then pull back to reveal context
+- **Environmental Interaction**: Person leans forward, squints at screen, shows frustration
+- **Narrative Function**: Establishes the problem of digital overwhelm and information overload
+
+**Visual Style (Aesthetic Direction):**
+- **Cinematic Approach**: Vlog-style, relatable home environment with documentary realism
+- **Color Treatment**: Slightly desaturated colors with warm undertones, muted contrast
+- **Mood and Atmosphere**: Confused, overwhelmed, relatable, slightly dim and cluttered
+- **Brand Alignment**: Authentic, relatable tone that connects with target audience
+
+**Camera Movement (Dynamic Direction):**
+- **Movement Type**: Handheld, slightly shaky for authenticity
+- **Movement Pattern**: Quick push-in on face (0.5s), then pull back to reveal context (1.5s), hold for 1s
+- **Technical Specifications**: 35mm lens, f/2.8 aperture, handheld with slight camera shake
+- **Movement Purpose**: Creates intimacy and relatability, then reveals the context of scrolling
+
+**Main Subject (Character Focus):**
+- **Primary Focus**: Relatable person (18-30, diverse representation) - face in center frame, rule of thirds
+- **Secondary Elements**: Laptop screen with scrolling content (right side, rule of thirds)
+- **Background Elements**: Home couch/living room with soft, natural lighting
+- **Visual Hierarchy**: Face → Laptop → Environment (clear focal progression with depth of field)
+
+**Background Setting (Environmental Context):**
+- **Specific Location**: Home living room with comfortable couch, coffee table, soft lighting
+- **Environmental Details**: Laptop, coffee mug, throw pillows, natural home clutter
+- **Atmospheric Conditions**: Soft, natural lighting with slight shadows, cozy but slightly dim
+- **Scale and Perspective**: Medium shot that shows person and environment, slight low angle for intimacy
+
+**Lighting and Mood (Emotional Tone):**
+- **Lighting Setup**: Natural window light with soft fill light, no harsh shadows
+- **Color Temperature**: 4000K (warm daylight) with slight desaturation
+- **Lighting Ratio**: 2:1 key to fill ratio for soft, natural look
+- **Atmospheric Effects**: Slight desaturation and muted contrast to convey confusion/overwhelm
+
+**Audio Cue (Sonic Landscape):**
+- **Primary Audio**: Subtle background music (low energy, minor key, 60-80 BPM)
+- **Ambient Audio**: Laptop typing/scrolling sounds, distant traffic, home atmosphere
+- **Audio Timing**: Music fades in over 0.5s, holds steady, quick fade out over 0.3s
+- **Audio Transitions**: Quick crossfade to next shot with energy buildup
+
+**Color Palette (Visual Harmony):**
+- **Primary Colors**: Warm beige (#F5F5DC), soft blue (#B0C4DE), muted green (#98FB98)
+- **Accent Colors**: Warm orange (#FFA07A) for laptop glow, soft pink (#FFB6C1) for skin tones
+- **Color Progression**: Muted, desaturated colors that brighten in subsequent shots
+- **Brand Integration**: Warm, approachable colors that align with brand's friendly tone
+
+**Technical Specifications:**
+
+**Camera Work:**
+- **Shot Type**: Medium shot transitioning to close-up
+- **Lens Specifications**: 35mm lens, f/2.8 aperture, handheld
+- **Camera Movement**: Quick push-in (0.5s), pull back (1.5s), hold (1s)
+- **Framing**: Rule of thirds with face centered, laptop on right third
+
+**Lighting Setup:**
+- **Primary Light Source**: Natural window light, 4000K color temperature
+- **Fill Lighting**: Soft fill light at 30% intensity to reduce shadows
+- **Background Lighting**: Ambient room lighting for depth
+- **Color Temperature**: 4000K (warm daylight) with slight desaturation
+
+**Audio Design:**
+- **Voice-Over**: None for this shot
+- **Music**: Subtle background music, minor key, 60-80 BPM, low energy
+- **Sound Effects**: Laptop typing/scrolling, distant traffic, home atmosphere
+- **Audio Sync**: Music fades in over 0.5s, holds steady, quick fade out
+
+**Post-Production:**
+- **Color Grading**: Slight desaturation (-10%), warm tone (+5%), muted contrast
+- **Transitions**: Quick cut to next shot with audio crossfade
+- **Effects**: None
+- **Quality Control**: Check for natural skin tones, proper exposure, clear laptop screen
+
+**Visual Continuity:**
+
+**From Previous Shot:**
+- **Visual Connection**: Opening shot, establishes the problem
+- **Color Progression**: Starts with muted, confused color palette
+- **Pacing Continuity**: Slow, contemplative start
+- **Narrative Progression**: Introduces the problem of digital overwhelm
+
+**To Next Shot:**
+- **Transition Setup**: Quick cut to text overlay
+- **Visual Handoff**: Confused expression leads to questioning text
+- **Pacing Preparation**: Sets up quick, energetic text sequence
+- **Narrative Bridge**: Problem statement leads to question
+
+**Production Requirements:**
+
+**AI Model Optimization:**
+- **Recommended Model**: Veo3 for realistic human expressions and natural lighting
+- **Model-Specific Settings**: High detail mode, natural lighting optimization
+- **Reference Materials**: Reference images of relatable people, home environments
+- **Quality Settings**: 1080p minimum, 60fps for smooth movement
+
+**Asset Requirements:**
+- **Brand Assets**: None for this shot
+- **Reference Materials**: Home environment references, relatable person references
+- **Audio Assets**: Background music track, ambient home sounds
+- **Technical Assets**: None
+
+**Quality Standards:**
+- **Visual Quality**: Natural skin tones, proper exposure, clear laptop screen
+- **Audio Quality**: Clear, balanced audio mix
+- **Brand Consistency**: Authentic, relatable tone
+- **Technical Standards**: Smooth camera movement, proper focus, good composition
+```
+
+### Critical Requirements for Shot Sequences
+
+1. **Specificity Over Generality**: Every element must be precisely defined
+2. **Technical Precision**: Include exact specifications, not approximations
+3. **Visual Hierarchy**: Clearly define primary, secondary, and background elements
+4. **Color Specifications**: Include hex values and specific color treatments
+5. **Timing Precision**: Exact durations and transition timings
+6. **Production Readiness**: All information needed for immediate execution
+7. **Brand Integration**: How every element supports brand objectives
+8. **Quality Standards**: Specific benchmarks for each shot
+9. **Continuity Planning**: How shots connect and flow together
+10. **Risk Mitigation**: Identify potential issues and solutions
+
+---
+
 ## 🚫 Common Prompt Mistakes to Avoid
 
 ### Technical Mistakes
