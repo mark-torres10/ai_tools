@@ -6,7 +6,7 @@ This router helps identify the most appropriate AI engineering expert persona ba
 ## Persona Categories
 
 ### Domain-Specific Experts
-These personas have deep expertise in specific aspects of AI evaluation platforms:
+These personas have deep expertise in specific aspects of AI evaluation platforms and specialized technical domains:
 
 #### AI Evals Methodology Expert
 **When to use:**
@@ -50,6 +50,36 @@ These personas have deep expertise in specific aspects of AI evaluation platform
 - User experience optimization for evaluation workflows
 - Frontend frameworks and UI/UX patterns
 
+#### GPU Architecture Expert
+**When to use:**
+- Understanding GPU hardware architecture and execution models
+- Analyzing GPU performance and bottlenecks
+- Designing GPU-optimized algorithms and data structures
+- Explaining GPU memory hierarchies and optimization strategies
+- Making hardware selection and configuration decisions
+
+**Key capabilities:**
+- Deep knowledge of GPU hardware (SMs, warps, memory hierarchy)
+- SIMT execution model and performance analysis
+- Memory coalescing, bank conflicts, and cache behavior
+- Occupancy calculation and roofline modeling
+- Architecture-specific features (Tensor Cores, async copy, etc.)
+
+#### CUDA Programming Expert
+**When to use:**
+- Writing high-performance CUDA kernels
+- Optimizing GPU code for throughput and latency
+- Debugging CUDA programs and race conditions
+- Implementing parallel algorithms on GPUs
+- Integrating CUDA with existing codebases
+
+**Key capabilities:**
+- CUDA C/C++ programming and kernel development
+- Memory management and optimization patterns
+- Synchronization, atomics, and cooperative groups
+- Profiling with NSight Compute/Systems
+- CUDA libraries (cuBLAS, cuDNN, Thrust, CUB)
+
 ### Task-Specific Experts
 These personas focus on specific implementation tasks:
 
@@ -89,12 +119,16 @@ These personas focus on specific implementation tasks:
 - **User Interface & Experience** → Evaluation Dashboard Expert
 - **Data Management & Storage** → Evaluation Data Management Expert
 - **Analysis & Insights** → Model Performance Analysis Expert
+- **GPU Hardware & Architecture** → GPU Architecture Expert
+- **CUDA Programming & Optimization** → CUDA Programming Expert
 
 ### 2. What stage of development?
 - **Planning & Design Phase** → AI Evals Methodology Expert + LLM Evaluation Platform Architect
 - **Implementation Phase** → LLM Evaluation Platform Architect + Evaluation Data Management Expert
 - **UI Development** → Evaluation Dashboard Expert
 - **Analysis & Reporting** → Model Performance Analysis Expert
+- **GPU Algorithm Design** → GPU Architecture Expert + CUDA Programming Expert
+- **GPU Performance Optimization** → GPU Architecture Expert + CUDA Programming Expert
 
 ### 3. What type of problem?
 - **"How should we evaluate..."** → AI Evals Methodology Expert
@@ -102,6 +136,9 @@ These personas focus on specific implementation tasks:
 - **"How do we display..."** → Evaluation Dashboard Expert
 - **"How do we store..."** → Evaluation Data Management Expert
 - **"What do the results mean..."** → Model Performance Analysis Expert
+- **"How does GPU hardware work..."** → GPU Architecture Expert
+- **"How do I write/optimize CUDA code..."** → CUDA Programming Expert
+- **"Why is my kernel slow..."** → GPU Architecture Expert (for analysis) + CUDA Programming Expert (for optimization)
 
 ## Collaboration Patterns
 
@@ -124,6 +161,12 @@ For evaluation analysis and reporting:
 1. **Model Performance Analysis Expert** - Statistical analysis
 2. **Evaluation Dashboard Expert** - Visualization and reporting
 3. **AI Evals Methodology Expert** - Methodology validation
+
+### GPU/CUDA Development Team
+For GPU programming and optimization:
+1. **GPU Architecture Expert** - Hardware understanding and bottleneck analysis
+2. **CUDA Programming Expert** - Implementation and optimization
+3. **Model Performance Analysis Expert** - Performance measurement and validation (when applicable)
 
 ## Usage Guidelines
 
