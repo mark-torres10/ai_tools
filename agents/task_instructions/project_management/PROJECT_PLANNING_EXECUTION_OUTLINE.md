@@ -151,7 +151,7 @@ Ensure proper file organization is established after Linear project creation to 
    - Check that the project folder exists following the structure from `HOW_TO_START_NEW_PROJECT.md`:
      ```
      projects/
-     └── project-slug/
+     └── YYYY-MM-DD_project-name/
        ├── spec.md              ← Finalized spec (renamed from temp_spec.md)
        ├── tickets/
        │   ├── ticket-001.md
@@ -163,7 +163,7 @@ Ensure proper file organization is established after Linear project creation to 
    - Verify all ticket documentation is properly organized in the `tickets/` subfolder
 
 2. **Create Project Tracking Files**
-   - Set up `/projects/<projectId_prefix>_<project_name>/` folder structure as required by `TASK_PLANNING_AND_PRIORITIZATION.md`
+   - Set up `/projects/<YYYY-MM-DD>_<project_name>/` folder structure as required by `TASK_PLANNING_AND_PRIORITIZATION.md`
    - Create essential tracking files:
      - `plan_<feature>.md` - Task plan with subtasks, deliverables, and effort estimates
      - `todo.md` - Checklist of subtasks synchronized with Linear issues
@@ -179,8 +179,8 @@ Ensure proper file organization is established after Linear project creation to 
    - Check that all file references and paths are consistent
 
 4. **Create a PR in Github with the files from the planning component**
-   - Follow steps in `GITHUB_OPERATIONS.md` on how to do this. Check out a new branch, call it `<project-slug>-setup`.
-   - Add the `projects/project-slug/` to the commit.
+   - Follow steps in `GITHUB_OPERATIONS.md` on how to do this. Check out a new branch, call it `<project-name>-setup`.
+   - Add the `projects/<YYYY-MM-DD>_<project-name>/` to the commit.
    - Push the commit and use the Github CLI to create a new PR.
    - Await for that PR to be merged.
 

@@ -105,7 +105,7 @@ This agent is responsible for guiding the user through the full lifecycle of sta
 
 ```plaintext
 projects/
-└── project-slug/
+└── YYYY-MM-DD_project-name/
   ├── spec.md              ← Finalized spec (renamed from temp_spec.md)
   ├── tickets/
   │   ├── ticket-001.md
