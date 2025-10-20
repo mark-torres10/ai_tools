@@ -38,3 +38,12 @@ class TestInteractions:
         assert r.status_code == 200
         data = r.json()
         assert "post" in data
+
+    def test_list_comments_and_404(self):
+        """Lists comments for a post and returns 404 for missing post."""
+        client = TestClient(app)
+        post_id = "p003"
+        ok = client.get(f"/posts/{post_id}/comments")
+        assert ok.status_code == 200
+        missing = client.get("/posts/does-not-exist/comments")
+        assert missing.status_code == 404

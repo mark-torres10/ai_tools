@@ -36,3 +36,11 @@ def share_post(post_id: str, body: ShareRequest) -> InteractionResponse:
         raise HTTPException(status_code=400, detail="Cannot share")
     post = store.posts[post_id]
     return InteractionResponse(post=post)
+
+
+@router.get("/{post_id}/comments")
+def list_comments(post_id: str):
+    if post_id not in store.posts:
+        raise HTTPException(status_code=404, detail="Post not found")
+    comments = store.comments.get(post_id, [])
+    return comments
