@@ -1,0 +1,22 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  logging:
+    loglevel: warn
+
+  otlphttp/prom:
+    # Example: send to Tempo/Grafana Cloud if needed
+    # endpoint: https://otlp-gateway
+    # headers:
+    #   X-Scope-OrgID: tenant
+    #   Authorization: Bearer token
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging]

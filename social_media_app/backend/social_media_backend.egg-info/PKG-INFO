@@ -1,0 +1,29 @@
+Metadata-Version: 2.4
+Name: social-media-backend
+Version: 0.1.0
+Summary: FastAPI backend for a Twitter-like social app
+Author-email: Social Media App <dev@example.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi~=0.115.0
+Requires-Dist: uvicorn[standard]~=0.30.0
+Requires-Dist: pydantic~=2.8.0
+Requires-Dist: prometheus-fastapi-instrumentator~=7.0.0
+Requires-Dist: opentelemetry-sdk~=1.27.0
+Requires-Dist: opentelemetry-instrumentation-fastapi~=0.48b0
+Requires-Dist: opentelemetry-exporter-otlp~=1.27.0
+Provides-Extra: dev
+Requires-Dist: pytest~=8.3.0; extra == "dev"
+Requires-Dist: pytest-cov~=5.0.0; extra == "dev"
+Requires-Dist: httpx~=0.27.0; extra == "dev"
+Requires-Dist: ruff~=0.6.9; extra == "dev"
+
+# Social Media Backend (FastAPI)
+
+Run locally:
+
+```bash
+uvicorn app.main:app --reload --port 8000
+```
+
+Metrics at `/metrics` (Prometheus). OpenTelemetry OTLP configured via env vars.
