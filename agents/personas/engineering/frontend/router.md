@@ -43,6 +43,19 @@ Industry-focused agents for specific business domains:
 
 ## 🧠 Persona Directory
 
+### General Frontend Persona
+
+#### `frontend_developer.md`
+- **Name**: Frontend Developer
+- **Summary**: Elite frontend specialist with expertise in modern JavaScript frameworks, responsive design, and UI implementation. Prioritizes Next.js and Vercel for rapid shipping.
+- **Focus Areas**: React/Vue/Angular, component architecture, state management, responsive design, performance optimization, accessibility, Next.js, Vercel deployment
+- **Example Tasks**: 
+  - Building analytics dashboards with interactive charts
+  - Fixing responsive navigation for mobile devices
+  - Optimizing app performance for large datasets
+  - Creating reusable component hierarchies
+  - Implementing progressive web app features
+
 ### MVP-Specific Personas
 
 #### `mvp_specific/mvp_frontend_architect_expert.md`
@@ -214,6 +227,9 @@ Return: **No matching persona found. Consider defining a new one.**
 
 | Task Pattern | Suggested Persona(s) |
 |--------------|----------------------|
+| General frontend development and UI implementation | `frontend_developer.md` |
+| Building user interfaces with React/Vue/Angular | `frontend_developer.md` |
+| Responsive design across devices | `frontend_developer.md` |
 | MVP architecture setup and rapid development | `mvp_specific/mvp_frontend_architect_expert.md` |
 | Feature flag implementation and A/B testing | `mvp_specific/mvp_feature_flag_ab_testing_expert.md` |
 | Demo creation and stakeholder presentations | `mvp_specific/mvp_frontend_demo_preparation_expert.md` |

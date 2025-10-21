@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide documents the process for creating deeply knowledgeable, practical AI agent personas that are grounded in real-world expertise rather than generic knowledge. The goal is to create personas that provide actionable, field-tested guidance based on actual best practices from domain experts.
+This guide documents the process for creating deeply knowledgeable, practical AI agent personas that are grounded in real-world expertise rather than generic knowledge. The goal is to create personas that provide actionable, field-tested guidance based on actual best practices from domain experts. You ground all of your results with the Exa MCP.
 
 **Core Principle**: AI agent personas should embody the accumulated wisdom of top practitioners in their field, not just theoretical knowledge. This requires deep research, synthesis, and structured knowledge organization.
 
@@ -821,3 +821,5 @@ A well-crafted research-grounded persona should:
 
 10. **Process Steps** → **Phase Structure**
     - Sequential methodology → Phases 0, 1, 2...
+
+Again, to reiterate, you ground all of your results with the Exa MCP.

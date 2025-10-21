@@ -8,14 +8,28 @@ Use this file to decide which agent persona is best suited for a task or review.
 
 ## 🧠 Persona Directory
 
+### `analytics/`
+- **Name**: Analytics & Growth Engineering
+- **Summary**: Specializes in product analytics, experimentation, A/B testing, and data-driven growth
+- **Focus Areas**: A/B testing, feature flags, metrics definition, event tracking, dashboards, cohort analysis, statistical experimentation
+- **Example Tasks**:
+  - Setting up A/B tests with statistical rigor
+  - Defining product metrics (engagement, retention, activation)
+  - Building analytics dashboards and funnels
+  - Implementing feature flag systems
+  - Analyzing experiment results and user behavior
+  - Designing event taxonomies and tracking plans
+
 ### `backend/`
 - **Name**: Backend Development
-- **Summary**: Specializes in backend system design, API development, and infrastructure architecture
-- **Focus Areas**: system architecture, API design, database design, performance optimization
+- **Summary**: Specializes in backend system design, API development, database architecture, and concurrent programming
+- **Focus Areas**: system architecture, API design, database design, concurrency models, Go programming, performance optimization
 - **Example Tasks**:
-  - Designing scalable backend services with FastAPI
+  - Designing scalable backend services and APIs
   - Implementing authentication and authorization systems
   - Optimizing database queries and API performance
+  - Building concurrent systems with goroutines and channels
+  - Debugging deadlocks and race conditions
 
 ### `data_engineering/`
 - **Name**: Data Engineering
@@ -37,12 +51,14 @@ Use this file to decide which agent persona is best suited for a task or review.
 
 ### `frontend/`
 - **Name**: Frontend Development
-- **Summary**: Specializes in user interface design, component architecture, and frontend performance
-- **Focus Areas**: UI/UX design, component architecture, performance optimization, accessibility
+- **Summary**: Specializes in user interface design, component architecture, frontend performance, and rapid development with Next.js
+- **Focus Areas**: React/Next.js, UI/UX implementation, component architecture, performance optimization, accessibility, responsive design, state management
 - **Example Tasks**:
-  - Building responsive component libraries
-  - Optimizing frontend performance and user experience
-  - Implementing accessibility features and testing
+  - Building responsive user interfaces with React/Next.js
+  - Optimizing frontend performance and Core Web Vitals
+  - Implementing accessibility features and WCAG compliance
+  - Creating reusable component libraries
+  - Setting up feature flags and A/B testing for frontend
 
 ### `machine_learning/`
 - **Name**: Machine Learning
@@ -64,7 +80,6 @@ Use this file to decide which agent persona is best suited for a task or review.
 
 ### Individual Personas
 - **`ai_engineer.md`**: AI and machine learning system development
-- **`frontend_developer.md`**: Frontend development and UI/UX optimization
 - **`rapid_prototyper.md`**: Quick prototyping and MVP development
 
 ---
@@ -74,6 +89,7 @@ Use this file to decide which agent persona is best suited for a task or review.
 To determine which persona to use:
 
 1. **Identify the primary domain** of your task:
+   - **Analytics/Experimentation/Metrics** → `analytics/` personas
    - **Backend/API work** → `backend/` personas
    - **Data processing/pipelines** → `data_engineering/` personas
    - **Infrastructure/operations** → `devops/` personas
@@ -94,7 +110,13 @@ To determine which persona to use:
 
 | Task Pattern | Suggested Agent(s) |
 |--------------|-------------------|
+| A/B testing and experimentation setup | `analytics/` personas |
+| Product metrics definition and tracking | `analytics/` personas |
+| Feature flag implementation | `analytics/` personas (Growth Engineer) |
+| Analytics dashboards and insights | `analytics/` personas (Product Analyst) |
+| Event tracking and schema design | `analytics/` personas (Product Analyst) |
 | API development and backend services | `backend/` personas |
+| Concurrent programming and goroutines | `backend/` personas (Go Expert, Concurrent Programming) |
 | Data pipeline design and ETL processes | `data_engineering/` personas |
 | CI/CD setup and infrastructure automation | `devops/` personas |
 | User interface and frontend optimization | `frontend/` personas |
@@ -110,7 +132,8 @@ To determine which persona to use:
 
 For detailed persona selection within each domain, refer to these specialized routers:
 
-- **[Backend Router](backend/router.md)** - Backend development and API design
+- **[Analytics Router](analytics/router.md)** - Product analytics, experimentation, and growth engineering
+- **[Backend Router](backend/router.md)** - Backend development, API design, and concurrent programming
 - **[Data Engineering Router](data_engineering/router.md)** - Data pipelines and analytics
 - **[DevOps Router](devops/router.md)** - Infrastructure and operations
 - **[Frontend Router](frontend/router.md)** - User interface and frontend development
