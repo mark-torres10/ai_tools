@@ -62,12 +62,13 @@ Use this file to decide which agent persona is best suited for a task or review.
 
 ### `machine_learning/`
 - **Name**: Machine Learning
-- **Summary**: Specializes in ML model development, evaluation, and optimization
-- **Focus Areas**: algorithm selection, model evaluation, feature engineering, interpretability
+- **Summary**: Specializes in ML model development, evaluation, optimization, and transformer interpretability/circuit analysis
+- **Focus Areas**: algorithm selection, model evaluation, feature engineering, interpretability, mechanistic interpretability, transformer architecture, circuit discovery
 - **Example Tasks**:
   - Building and optimizing classification models
   - Implementing model interpretability with SHAP and LIME
   - Designing validation strategies and monitoring systems
+  - Running mechanistic interpretability and circuit analysis on transformer LMs
 
 ### `system_architect/`
 - **Name**: System Architecture
@@ -121,6 +122,7 @@ To determine which persona to use:
 | CI/CD setup and infrastructure automation | `devops/` personas |
 | User interface and frontend optimization | `frontend/` personas |
 | Machine learning model development | `machine_learning/` personas |
+| Mechanistic interpretability and circuit analysis (transformers) | `machine_learning/` personas |
 | System architecture and design decisions | `system_architect/` personas |
 | Cross-domain system integration | Multiple relevant personas |
 | Quick prototyping and MVP development | `rapid_prototyper.md` |
