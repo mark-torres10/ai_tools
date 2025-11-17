@@ -33,6 +33,11 @@ This document provides a comprehensive, step-by-step guide for executing Linear 
   - Review existing patterns and conventions
   - Check for potential conflicts or refactoring needs
 
+#### Ingest Spec and Brain Dump (Project Artifacts)
+- Read `projects/<YYYY-MM-DD>_<project-name>/spec.md` to confirm scope, success criteria, and constraints.
+- Skim `projects/<YYYY-MM-DD>_<project-name>/braindump.md` to recover early context and assumptions.
+- If discrepancies with the Linear ticket exist, document them in `projects/<YYYY-MM-DD>_<project-name>/logs.md` and comment on the ticket with proposed resolution.
+
 #### Validate Dependencies
 - **Check Blocking Tickets**: Verify all dependencies are resolved
   - Use Linear MCP to check status of blocking tickets
@@ -45,7 +50,12 @@ This document provides a comprehensive, step-by-step guide for executing Linear 
 #### Break Down the Task
 - Decompose complex tickets into logical implementation steps
 - Each step should be focused and testable
-- Document steps in `/planning/<projectId_prefix>_<project_name>/plan_<feature>.md`
+- Document steps in `projects/<YYYY-MM-DD>_<project-name>/plan_<feature>.md`
+
+#### Sync with Tickets Folder
+- Ensure an entry exists in `projects/<YYYY-MM-DD>_<project-name>/tickets/` for this ticket (or create one): `ticket-<id>.md`.
+- Copy/align acceptance criteria from Linear into the ticket doc; keep it in sync during execution.
+- Link the ticket doc in the Linear issue and later in the PR description.
 
 #### Create Detailed Execution Plan
 - Use `EXECUTION_PLANNING_PROMPT.md` to create comprehensive implementation plan
@@ -66,6 +76,11 @@ This document provides a comprehensive, step-by-step guide for executing Linear 
 ---
 
 ## 🛠️ Implementation Phase
+
+### Daily Execution Loop (applies throughout Steps 3–7)
+- Update `projects/<YYYY-MM-DD>_<project-name>/todo.md` with progress (check items completed today).
+- Append a brief entry to `projects/<YYYY-MM-DD>_<project-name>/logs.md` (date, work done, blockers, key decisions).
+- If plans change, update `projects/<YYYY-MM-DD>_<project-name>/plan_<feature>.md` to reflect the new sequence or scope.
 
 ### 3. **Development Setup**
 
@@ -152,6 +167,10 @@ npm test -- --coverage
 - Verify end-to-end functionality
 - Check for regression issues
 
+#### Spec Compliance
+- Validate behavior against success criteria defined in `projects/<YYYY-MM-DD>_<project-name>/spec.md`.
+- If criteria are ambiguous or unmet, log specifics in `projects/<YYYY-MM-DD>_<project-name>/logs.md` and propose updates to the spec or ticket for user approval.
+
 ### 7. **Comprehensive Testing & Experimentation**
 
 #### Proactive Testing Offer
@@ -223,7 +242,7 @@ For applicable scenarios, create automated testing scripts following the templat
 All scripts should include proper error handling, logging, and comprehensive reporting as outlined in the testing guide.
 
 #### Testing Report Integration
-- Create testing report in `/planning/<projectId_prefix>_<project_name>/testing_reports/`
+- Create testing report in `projects/<YYYY-MM-DD>_<project-name>/testing_reports/`
 - Update Linear ticket with testing findings and status
 - Add testing scripts to the repository
 - Document any issues found and resolutions applied
@@ -238,6 +257,12 @@ Ensure all testing validates against the original ticket success criteria:
 - [ ] User experience flows tested
 - [ ] Integration points verified
 - [ ] Documentation updated with testing results
+
+#### Metrics Update
+- Update `projects/<YYYY-MM-DD>_<project-name>/metrics.md` with:
+  - Start date/time, first commit time, PR open/merge times (lead/cycle).
+  - Test pass/fail counts and notable performance deltas (if applicable).
+  - Any KPIs agreed for this ticket.
 
 ---
 
@@ -399,8 +424,14 @@ gh pr comment <pr_number> --body "Updated based on feedback, please re-review"
 
 #### Update Linear Status
 - Set Linear issue `state` to `Completed` via Linear MCP
-- Update `/planning/<projectId_prefix>_<project_name>/todo.md` to `[x]`
-- Log completion in `/planning/<projectId_prefix>_<project_name>/logs.md`
+- Update `projects/<YYYY-MM-DD>_<project-name>/todo.md` to `[x]` for completed items
+- Log completion in `projects/<YYYY-MM-DD>_<project-name>/logs.md` with PR link and summary
+
+#### Project Artifacts Update
+- `projects/<YYYY-MM-DD>_<project-name>/lessons_learned.md`: add 3–5 specific insights from this ticket.
+- `projects/<YYYY-MM-DD>_<project-name>/metrics.md`: finalize timing and KPI metrics.
+- `projects/<YYYY-MM-DD>_<project-name>/tickets/ticket-<id>.md`: ensure acceptance criteria and outcomes are updated and linked to the PR.
+- `projects/<YYYY-MM-DD>_<project-name>/README.md` (optional): add a brief changelog entry or links to the PR and testing report.
 
 #### Cleanup
 ```bash
@@ -454,6 +485,7 @@ git branch -d feature/<issueId_prefix>_<feature_snippet>
 - Add retrospective file to PR
 - Add retrospective as comment to Linear ticket
 - Update ticket status to complete
+- Ensure `projects/<project_slug>/retrospective/README.md` indexes `{ticket}.md` and summarizes key outcomes/actions.
 
 ---
 
@@ -532,4 +564,4 @@ When encountering bugs, errors, or implementation challenges, follow the systema
 
 ---
 
-This guide ensures consistent, high-quality ticket execution that follows all established standards and processes. Always refer to the specific rules documents for detailed requirements and best practices. 
+This guide ensures consistent, high-quality ticket execution that follows all established standards and processes. Always refer to the specific rules documents for detailed requirements and best practices.
