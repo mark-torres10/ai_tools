@@ -18,6 +18,43 @@ related:
 
 This document provides a comprehensive, step-by-step guide for executing Linear tickets from initial analysis through implementation to PR creation and completion. This process ensures high-quality, test-driven development that follows all established coding standards, project management workflows, and GitHub operations protocols.
 
+## 🏃 Runner SOP (Adherence-first)
+
+Use this section as the strict, minimal checklist for agents and CI. The detailed sections below remain the reference.
+
+### Adherence Block (must be echoed at top of each turn)
+```json
+{"step_id":"<1..14>","checklist_completed":[],"artifacts_written":[],"blockers":[],"awaiting_approval":false}
+```
+
+### Entry Criteria (before Step 3)
+- Feature branch exists and environment configured
+- Dependencies validated (blocking tickets resolved or escalated)
+- `projects/<date>_<name>/spec.md` and `braindump.md` ingested
+- Execution plan approved by user
+
+### Minimal Steps + Gates
+1. Analyze ticket & gather context → Gate: plan approval required
+2. Implementation planning → Gate: APPROVED PLAN
+3. Dev setup (branch/env)
+4. TDD (write tests first)
+5. Implementation (quality rules)
+6. Testing & validation → Gate: SPEC COMPLIANCE PASSED
+7. Comprehensive testing (optional but recommended) → Gate: Testing report linked
+8. Incremental commits (convention)
+9. Code review prep (architecture/context packages)
+10. PR creation (template + links)
+11. PR management (address feedback)
+12. Completion & cleanup (update artifacts)
+13. Post-completion tasks (lessons, metrics)
+14. Agent retrospective (retrospective/{ticket}.md)
+
+Per step triad:
+- Action: …
+- Evidence: …
+- Artifact: …
+- Gate (if any): …
+
 ---
 
 ## 📋 Pre-Execution Phase

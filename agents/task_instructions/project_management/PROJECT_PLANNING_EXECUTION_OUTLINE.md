@@ -21,6 +21,131 @@ related:
 
 This document outlines the systematic approach to planning and executing projects, from initial ideation through implementation and delivery. Each phase builds upon the previous one, ensuring comprehensive coverage of requirements, design, and execution planning.
 
+## 🏃 Runner SOP (Adherence-first)
+
+Use this section as the strict, minimal checklist for agents and CI. The detailed sections below remain the reference.
+
+### Adherence Block (must be echoed at top of each turn)
+```json
+{"phase":"<1|2|2.5|3|3.5|4|5>","step_id":"<phase.step>","checklist_completed":[],"artifacts_written":[],"blockers":[],"awaiting_approval":false}
+```
+
+### Phase Contracts
+
+```yaml
+phase: 1 Initial Brainstorming
+entry_criteria:
+  - user goal or seed idea present
+steps:
+  - id: 1.1_brainstorm_session
+  - id: 1.2_create_braindump
+  - id: 1.3_identify_gaps
+exit_criteria:
+  - projects/<date>_<name>/braindump.md present
+  - explicit user approval of brain dump
+blockers:
+  - missing constraints/stakeholders
+```
+
+```yaml
+phase: 2 Requirements Specification
+entry_criteria:
+  - braindump.md approved_by_user == true
+steps:
+  - id: 2.1_followup_context
+  - id: 2.2_write_spec
+  - id: 2.3_validate_completeness
+exit_criteria:
+  - spec.md includes success_metrics and scope_boundaries
+blockers:
+  - missing success metrics or stakeholder alignment
+```
+
+```yaml
+phase: 2.5 Multi-Persona Review
+entry_criteria:
+  - draft spec.md ready
+steps:
+  - id: 2.5.1_route_personas
+  - id: 2.5.2_collect_structured_feedback
+  - id: 2.5.3_spec_iteration
+exit_criteria:
+  - spec updated per feedback; user confirms readiness
+blockers:
+  - unresolved critical issues from reviews
+```
+
+```yaml
+phase: 3 Project Setup (Linear + Tickets + Structure)
+entry_criteria:
+  - finalized spec.md
+steps:
+  - id: 3.1_create_linear_project
+  - id: 3.2_generate_tickets
+  - id: 3.3_set_project_structure
+exit_criteria:
+  - Linear project + tickets created; project folder scaffolded
+blockers:
+  - tickets not atomic/testable or missing acceptance criteria
+```
+
+```yaml
+phase: 3.5 File Organization & Tracking
+entry_criteria:
+  - project folder exists
+steps:
+  - id: 3.5.1_verify_structure
+  - id: 3.5.2_create_tracking_files
+  - id: 3.5.3_validate_links_and_deps
+  - id: 3.5.4_open_planning_pr
+exit_criteria:
+  - spec.md moved; plan/todo/logs/lessons/metrics present; PR opened
+blockers:
+  - missing required files; invalid links/dependencies
+```
+
+```yaml
+phase: 4 Design & Architecture
+entry_criteria:
+  - 3.5 exit_criteria met
+steps:
+  - id: 4.1_tech_design
+  - id: 4.2_ux_design
+  - id: 4.3_impl_planning
+exit_criteria:
+  - design docs + implementation plan + risk mitigation
+blockers:
+  - unresolved feasibility risks
+```
+
+```yaml
+phase: 5 Execution & Delivery
+entry_criteria:
+  - design and plan approved
+steps:
+  - id: 5.1_implement
+  - id: 5.2_test_and_validate
+  - id: 5.3_deploy_and_monitor
+exit_criteria:
+  - delivery meets success metrics; monitoring in place
+blockers:
+  - failed tests; unaddressed critical bugs
+```
+
+### Gates & Evidence (apply to every step)
+- Action: one sentence of what was done
+- Evidence: link/quote/measurement proving completion
+- Artifact: path updated
+- Gate: Do not proceed without explicit user approval when indicated (e.g., “APPROVED PHASE 2”).
+
+### Phase Self‑Audit (end of each phase)
+- Entry criteria satisfied? (Y/N)
+- All steps completed and evidenced? (Y/N)
+- Exit criteria met and artifacts exist? (Y/N)
+- Red flags absent? (Y/N)
+- Pitfalls avoided? (Y/N)
+If any “No”, loop back and fix before proceeding.
+
 ## Phase 1: Initial Brainstorming and Context Gathering
 
 ### Objective
