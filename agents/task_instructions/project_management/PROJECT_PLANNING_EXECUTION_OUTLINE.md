@@ -1,3 +1,22 @@
+---
+title: PROJECT_PLANNING_EXECUTION_OUTLINE
+purpose: Phased SOP for planning and executing projects
+inputs:
+  - Project idea/requirements
+  - Stakeholder list and constraints
+required_artifacts:
+  - projects/<YYYY-MM-DD>_<project-name>/spec.md
+  - projects/<YYYY-MM-DD>_<project-name>/tickets/
+  - projects/<YYYY-MM-DD>_<project-name>/plan_<feature>.md
+exit_criteria:
+  - All phases completed and deliverables present
+  - Spec approved; tickets generated; PR created for planning artifacts
+related:
+  - project_management/HOW_TO_WRITE_A_SPEC.md
+  - project_management/HOW_TO_WRITE_LINEAR_PROJECT.md
+  - project_management/HOW_TO_WRITE_LINEAR_TICKET.md
+---
+
 # Project Planning and Execution Outline
 
 This document outlines the systematic approach to planning and executing projects, from initial ideation through implementation and delivery. Each phase builds upon the previous one, ensuring comprehensive coverage of requirements, design, and execution planning.
@@ -293,3 +312,49 @@ A project following this outline should result in:
 - Continuous improvement through lessons learned
 
 This outline ensures systematic coverage of all aspects of project planning and execution while maintaining flexibility to adapt to specific project needs and constraints.
+
+---
+
+## ⚙️ Automation Hooks
+
+### Scaffold Project Structure
+```bash
+PROJECT_DIR="projects/<YYYY-MM-DD>_<project-name>"
+mkdir -p "$PROJECT_DIR"/{tickets,retrospective,testing_reports}
+touch "$PROJECT_DIR"/{spec.md,braindump.md,plan_<feature>.md,todo.md,logs.md,lessons_learned.md,metrics.md}
+test -f "$PROJECT_DIR/README.md" || echo "# ${PROJECT_DIR##*/}" > "$PROJECT_DIR/README.md"
+```
+
+### Validate Required Artifacts
+```bash
+for f in spec.md plan_<feature>.md todo.md logs.md lessons_learned.md metrics.md; do
+  test -f "projects/<YYYY-MM-DD>_<project-name>/$f" || { echo "Missing $f"; exit 1; }
+done
+```
+
+### Create PR for Planning Artifacts
+```bash
+git checkout -b "<project-name>-setup"
+git add projects/<YYYY-MM-DD>_<project-name>/
+git commit -m "[chore] Scaffold project planning artifacts"
+gh pr create --title "<project-name>: planning scaffold" --body "Adds spec, tickets, plan, tracking files"
+```
+
+### Persona Routing Hint (reviews)
+- Before Phase 3 creation, route sections of the spec to relevant personas using `agents/task_instructions/route_personas/ROUTER_AGENT.md` for multi‑persona review.
+
+---
+
+## 🚩 Red Flags
+- Phase 1 brain dump not explicitly approved by the user before proceeding.
+- Phase 2 spec lacks measurable success criteria or clear scope boundaries.
+- Phase 2.5 review skipped or not routed to appropriate personas.
+- Phase 3.5 folder/files missing or PR for planning artifacts not created.
+- Tickets not atomic/testable or missing acceptance criteria.
+
+## ⚠️ Common Pitfalls
+- Inconsistent project folder naming or paths across documents and tools.
+- `spec.md` not moved into project folder or not kept in sync with tickets.
+- Missing dependencies map or unclear ticket sequencing.
+- Metrics not tracked; no link between planning artifacts and execution artifacts.
+- Retrospective directory present but never indexed or summarized.

@@ -1,3 +1,19 @@
+---
+title: HOW_TO_EXECUTE_A_TICKET
+purpose: End-to-end implementation SOP
+inputs:
+  - Linear ticket URL
+required_artifacts:
+  - PR link
+  - Test report
+exit_criteria:
+  - All checklist items completed
+  - Tests green and coverage >= threshold
+related:
+  - rules/CODING_RULES.md
+  - project_management/HOW_TO_WRITE_LINEAR_TICKET.md
+---
+
 # 🚀 How to Execute a Linear Ticket
 
 This document provides a comprehensive, step-by-step guide for executing Linear tickets from initial analysis through implementation to PR creation and completion. This process ensures high-quality, test-driven development that follows all established coding standards, project management workflows, and GitHub operations protocols.
@@ -266,6 +282,36 @@ Ensure all testing validates against the original ticket success criteria:
 
 ---
 
+## ⚙️ Automation Hooks
+
+### Branch Naming Validation
+```bash
+# Ensure branch matches feature/<ISSUEID>_<slug>
+CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+echo "$CURRENT_BRANCH" | grep -E '^feature/[A-Za-z0-9_-]+_[a-z0-9-]+$' >/dev/null || {
+  echo "Branch name invalid: $CURRENT_BRANCH"; exit 1;
+}
+```
+
+### Test Coverage Thresholds
+```bash
+# Python (pytest) example, require >=90% line coverage
+pytest tests/ -v --cov=src --cov-fail-under=90
+
+# JavaScript (Jest) example, require thresholds set in package.json
+npm test -- --coverage
+```
+
+### Checklist and Report Generation
+- Generate testing report in `projects/<YYYY-MM-DD>_<project-name>/testing_reports/` and link it in the PR.
+- Optionally wire a script/Make target:
+```bash
+# Example placeholder
+make generate-testing-report PROJECT_DIR="projects/<YYYY-MM-DD>_<project-name>" FEATURE="<feature>"
+```
+
+---
+
 ## 🔄 Version Control & Collaboration
 
 ### 8. **Incremental Commits**
@@ -486,6 +532,23 @@ git branch -d feature/<issueId_prefix>_<feature_snippet>
 - Add retrospective as comment to Linear ticket
 - Update ticket status to complete
 - Ensure `projects/<project_slug>/retrospective/README.md` indexes `{ticket}.md` and summarizes key outcomes/actions.
+
+---
+
+## 🚩 Red Flags
+- Proceeding without creating a new feature branch.
+- No tests added or coverage below agreed threshold and not addressed.
+- PR created without links to ticket doc, spec, or testing report.
+- No validation against `spec.md` success criteria.
+- Project artifacts (`todo.md`, `logs.md`, `lessons_learned.md`, `metrics.md`) not updated.
+- Non-deterministic runs (missing seeds) for testable components.
+
+## ⚠️ Common Pitfalls
+- Drifting from `plan_<feature>.md` without updating the plan or logs.
+- Not keeping `tickets/ticket-<id>.md` in sync with Linear acceptance criteria.
+- Skipping negative controls or performance checks in testing.
+- Forgetting to finalize timing metrics in `metrics.md`.
+- Unclear branch naming or missing Linear links in commits/PR.
 
 ---
 
