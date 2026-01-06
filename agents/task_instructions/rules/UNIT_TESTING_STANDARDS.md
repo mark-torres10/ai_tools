@@ -29,6 +29,7 @@ This document outlines the testing standards and best practices for all engineer
 - **Mocking library**: pytest-mock (preferred) or unittest.mock
 - **Coverage tool**: pytest-cov
 - **Test discovery**: pytest auto-discovery
+- **Test execution**: All pytest commands must be run with `uv run pytest` (e.g., `uv run pytest`, `uv run pytest --cov=src`)
 
 ### **Test Class Structure**
 ```python
@@ -225,19 +226,19 @@ def test_complex_business_logic(self):
 ### **Test Execution Commands**
 ```bash
 # Run all tests
-pytest
+uv run pytest
 
 # Run tests with coverage
-pytest --cov=src --cov-report=html
+uv run pytest --cov=src --cov-report=html
 
 # Run specific test file
-pytest tests/test_module.py
+uv run pytest tests/test_module.py
 
 # Run specific test class
-pytest tests/test_module.py::TestClassName
+uv run pytest tests/test_module.py::TestClassName
 
 # Run specific test method
-pytest tests/test_module.py::TestClassName::test_method_name
+uv run pytest tests/test_module.py::TestClassName::test_method_name
 ```
 
 ### **Coverage Reporting**
