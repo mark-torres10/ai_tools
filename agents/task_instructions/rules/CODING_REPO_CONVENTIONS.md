@@ -1,3 +1,35 @@
+---
+id: rules.coding_repo_conventions
+title: Repository Conventions
+description: Repository-level conventions for pre-commit checks, formatting, build verification, and package management.
+when_to_use:
+  - Preparing code for commit.
+  - Setting or auditing pre-commit conventions.
+  - Making decisions about project package-management tooling.
+when_not_to_use:
+  - Deep code architecture decisions.
+  - Server runtime troubleshooting.
+scope:
+  - repo_conventions
+  - pre_commit
+priority: 70
+applies_to:
+  task_types:
+    - commit_preparation
+    - linting
+    - formatting
+    - package_management
+  file_globs:
+    - "**/*"
+dependencies: []
+conflicts_with: []
+tools_preferred:
+  - Shell
+  - ReadFile
+owner: ai_tools
+last_updated: 2026-02-17
+---
+
 # Coding Repo Conventions
 
 ## Pre-commit hooks

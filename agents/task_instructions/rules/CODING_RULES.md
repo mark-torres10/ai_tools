@@ -1,3 +1,39 @@
+---
+id: rules.coding_rules
+title: Core Development Rules
+description: Cross-cutting software engineering standards for architecture, data, testing, style, performance, and reliability.
+when_to_use:
+  - Implementing or refactoring application code.
+  - Reviewing code quality and maintainability.
+  - Defining baseline engineering guardrails for new work.
+when_not_to_use:
+  - Running or troubleshooting local servers (use server management rules).
+  - Generating project tickets or PM artifacts.
+scope:
+  - coding
+  - architecture
+  - reliability
+priority: 80
+applies_to:
+  task_types:
+    - implementation
+    - refactor
+    - bugfix
+    - code_review
+  file_globs:
+    - "**/*.{py,ts,tsx,js,jsx,go,java,rs}"
+dependencies:
+  - rules.coding_repo_conventions
+  - rules.unit_testing_standards
+conflicts_with: []
+tools_preferred:
+  - ReadFile
+  - ApplyPatch
+  - ReadLints
+owner: ai_tools
+last_updated: 2026-02-17
+---
+
 # Rules for development
 
 ## Code Quality & Architecture

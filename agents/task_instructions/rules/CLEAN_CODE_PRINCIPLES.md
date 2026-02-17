@@ -1,3 +1,35 @@
+---
+id: rules.clean_code_principles
+title: Clean Code Principles
+description: Readability, maintainability, and design principles derived from established clean-code guidance.
+when_to_use:
+  - Refactoring for readability and maintainability.
+  - Reviewing naming, function design, comments, and code organization.
+  - Applying foundational code-quality principles across languages.
+when_not_to_use:
+  - Process-specific workflow operations (for example, server startup).
+  - Toolchain configuration and package manager decisions.
+scope:
+  - coding
+  - readability
+  - maintainability
+priority: 75
+applies_to:
+  task_types:
+    - implementation
+    - refactor
+    - code_review
+  file_globs:
+    - "**/*.{py,ts,tsx,js,jsx,go,java,rs}"
+dependencies: []
+conflicts_with: []
+tools_preferred:
+  - ReadFile
+  - ApplyPatch
+owner: ai_tools
+last_updated: 2026-02-17
+---
+
 # Clean Code Principles
 
 Source: [Clean Code: A Handbook of Agile Software Craftsmanship, by Robert Martin](https://www.goodreads.com/book/show/3735293-clean-code)

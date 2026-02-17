@@ -1,3 +1,33 @@
+---
+id: rules.ui_rules
+title: Ticket and Prompt Quality Guidelines
+description: Guidance for writing high-quality project-management and engineering tickets with clear scope and acceptance criteria.
+when_to_use:
+  - Generating or reviewing project-management tickets.
+  - Improving prompt quality for ticket generation workflows.
+  - Ensuring ticket clarity for product and engineering execution.
+when_not_to_use:
+  - Implementing frontend UI code conventions.
+  - Runtime server operations.
+scope:
+  - ticket_quality
+  - prompt_quality
+priority: 60
+applies_to:
+  task_types:
+    - ticket_writing
+    - planning
+    - requirements_definition
+  file_globs:
+    - "**/*.md"
+dependencies: []
+conflicts_with: []
+tools_preferred:
+  - ReadFile
+owner: ai_tools
+last_updated: 2026-02-17
+---
+
 # What makes a great project management ticket?
 
 ## ✅ As an Expert AI Engineer: 5 Criteria for Great Prompts

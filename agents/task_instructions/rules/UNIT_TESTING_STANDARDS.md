@@ -1,3 +1,39 @@
+---
+id: rules.unit_testing_standards
+title: Unit Testing Standards
+description: Testing requirements and execution standards for writing, structuring, and validating automated tests.
+when_to_use:
+  - Writing or updating tests for changed code.
+  - Reviewing test quality and coverage expectations.
+  - Enforcing pytest and mocking patterns in Python projects.
+when_not_to_use:
+  - Non-testing-only operational tasks (for example, server startup).
+  - Product ticket-writing guidance.
+scope:
+  - testing
+  - quality_assurance
+priority: 85
+applies_to:
+  task_types:
+    - testing
+    - test_refactor
+    - bugfix_validation
+  file_globs:
+    - "**/test_*.py"
+    - "**/*_test.py"
+    - "**/*.spec.ts"
+    - "**/*.test.ts"
+dependencies:
+  - rules.coding_repo_conventions
+conflicts_with: []
+tools_preferred:
+  - Shell
+  - ReadFile
+  - ApplyPatch
+owner: ai_tools
+last_updated: 2026-02-17
+---
+
 # Unit Testing Standards
 
 This document outlines the testing standards and best practices for all engineering work. These standards ensure consistent, maintainable, and comprehensive test coverage across the codebase.

@@ -1,3 +1,37 @@
+---
+id: rules.run_servers
+title: Server Management and Startup Procedures
+description: Structured process for checking, starting, validating, and troubleshooting local development servers.
+when_to_use:
+  - Starting frontend or backend development servers.
+  - Troubleshooting local server startup failures.
+  - Validating port/process state before running long-lived services.
+when_not_to_use:
+  - Pure code design discussions without runtime execution.
+  - Test-only tasks that do not require server processes.
+scope:
+  - server_management
+  - local_runtime
+priority: 95
+applies_to:
+  task_types:
+    - run_servers
+    - debug_runtime
+    - environment_validation
+  file_globs:
+    - "**/package.json"
+    - "**/pyproject.toml"
+    - "**/docker-compose*.yml"
+dependencies:
+  - rules.coding_repo_conventions
+conflicts_with: []
+tools_preferred:
+  - Shell
+  - ReadFile
+owner: ai_tools
+last_updated: 2026-02-17
+---
+
 # How to Run Servers Effectively
 
 You are a senior-level AI agent acting as a **Server Management Specialist**. Your goal is to reliably start, manage, and troubleshoot servers while avoiding common pitfalls and ensuring proper coordination between frontend and backend services.
