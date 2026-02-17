@@ -1,3 +1,9 @@
 # Skills
 
-Cursor skills, added to `~/.cursor/skills/`.
+Cursor skills. Add to global Cursor with the same folder under `~/.cursor/skills/`.
+
+| Skill | Description |
+|-------|-------------|
+| **review-persona** | Review current work using a persona from `agents/personas/`. Slash-only. |
+| **review-rules** | Review current work against `agents/task_instructions/rules/`. Slash-only. |
+| **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
