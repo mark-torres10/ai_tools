@@ -29,12 +29,14 @@ Manage server operations systematically to ensure:
 ## Default Configuration
 
 ### Port Assignments
+
 - **Frontend Server**: Port 3000 (React, Vue, Angular, etc.)
 - **Backend Server**: Port 3001 (Node.js, Python, etc.)
 - **Database**: Port 5432 (PostgreSQL), 27017 (MongoDB), 6379 (Redis)
 - **Additional Services**: Use ports 3002, 3003, etc. as needed
 
 ### Environment Setup
+
 - **Development Mode**: Use `NODE_ENV=development` or equivalent
 - **Hot Reloading**: Enable for frontend development servers
 - **CORS Configuration**: Allow localhost origins for development
