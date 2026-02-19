@@ -7,3 +7,4 @@ Cursor skills. Add to global Cursor with the same folder under `~/.cursor/skills
 | **review-persona** | Review current work using a persona from `agents/personas/`. Slash-only. |
 | **review-rules** | Review current work against `agents/task_instructions/rules/`. Slash-only. |
 | **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
+| **create-implementation-plan** | Create implementation plans following `PLANNING_RULES` (Overview, Happy Flow, Manual Verification). Agent can auto-apply. |
