@@ -1,6 +1,6 @@
 ---
 name: create-implementation-plan
-description: Creates implementation plans following PLANNING_RULES. Use when the user asks to create a plan, write an implementation plan, or plan out work. Ensures Overview, Happy Flow, Manual Verification, and other structure from planning rules.
+description: Creates implementation plans following PLANNING_RULES. Use when the user asks to create a plan, write an implementation plan, or plan out work. Ensures Overview, Happy Flow, Manual Verification, asset storage, and UI screenshots from planning rules.
 disable-model-invocation: false
 metadata:
   owner: mark
@@ -46,6 +46,27 @@ In addition to the plan steps, include:
 4. **Alternative approaches** – Short note on options considered and why the chosen approach was selected.
 5. **Specificity** – Exact commands, file paths, and component names. No vague steps like "Add auth" or "Fix the bug".
 
+## Plan Asset Storage
+
+Save all assets related to this workflow in:
+
+```
+docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash>/
+```
+
+Example: `docs/plans/2026-01-30_change_selector_panels_123456/`
+
+## UI-Related Changes (screenshots)
+
+For UI-related work:
+
+1. **Before starting** – Use the browser tool to capture the current UI state (happy flow). Save screenshots to:
+   - `docs/plans/<YYYY-MM-DD>_<descriptor>_<hash>/images/before/`
+2. **After changes** – Capture the new UI state (happy flow). Save screenshots to:
+   - `docs/plans/<YYYY-MM-DD>_<descriptor>_<hash>/images/after/`
+
+This provides a before/after baseline for visual comparison.
+
 ## Remember (include at top of every plan)
 
 ```markdown
@@ -69,7 +90,9 @@ In addition to the plan steps, include:
 1. Resolve ai_tools root and read `PLANNING_RULES.md` if available.
 2. Create or refine the plan using the required structure.
 3. Ensure the Remember block is at the top.
-4. Verify no anti-patterns are present.
+4. Use the plan asset path: `docs/plans/<YYYY-MM-DD>_<descriptor>_<6-digit hash>/`.
+5. For UI work: capture before screenshots in `.../images/before/`, after screenshots in `.../images/after/`.
+6. Verify no anti-patterns are present.
 
 ## Constraints
 
