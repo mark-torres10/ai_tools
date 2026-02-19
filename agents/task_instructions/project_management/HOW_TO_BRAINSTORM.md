@@ -231,16 +231,3 @@ A successful brainstorming session should result in:
 - **Realistic Scope**: Appropriate boundaries for what's in and out of scope
 
 The brain dump file should serve as a complete foundation for the next phase of project planning, providing all the context needed to create a comprehensive specification.
-
----
-
-## Integration with Project Planning
-
-This brainstorming session feeds directly into the project planning process outlined in `PROJECT_PLANNING_EXECUTION_OUTLINE.md`. The brain dump file created here becomes the foundation for:
-
-1. **Requirements Specification**: The brain dump informs the structured spec creation process in `HOW_TO_WRITE_A_SPEC.md`
-2. **Project Setup**: The context helps create appropriate Linear projects using `HOW_TO_WRITE_LINEAR_PROJECT.md`
-3. **Ticket Creation**: The requirements inform ticket breakdown using `HOW_TO_WRITE_LINEAR_TICKET.md`
-4. **Task Planning**: The scope and constraints guide task planning using `TASK_PLANNING_AND_PRIORITIZATION.md`
-
-Ensure the brain dump captures all information needed for these subsequent phases, and reference the appropriate documents when transitioning to the next stage of project planning. 
