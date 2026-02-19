@@ -67,6 +67,8 @@ For UI-related work:
 
 This provides a before/after baseline for visual comparison.
 
+**To-do ordering (MUST):** For UI changes, the FIRST to-do must be taking before screenshots; the LAST to-do must be taking after screenshots. No exceptions.
+
 ## Remember (include at top of every plan)
 
 ```markdown
@@ -91,11 +93,12 @@ This provides a before/after baseline for visual comparison.
 2. Create or refine the plan using the required structure.
 3. Ensure the Remember block is at the top.
 4. Use the plan asset path: `docs/plans/<YYYY-MM-DD>_<descriptor>_<6-digit hash>/`.
-5. For UI work: capture before screenshots in `.../images/before/`, after screenshots in `.../images/after/`.
+5. For UI work: first to-do = before screenshots; last to-do = after screenshots. Capture in `.../images/before/` and `.../images/after/`.
 6. Verify no anti-patterns are present.
 
 ## Constraints
 
 - Do not skip the Manual Verification section—it is required.
+- For UI changes: first to-do = before screenshots, last to-do = after screenshots. Mandatory.
 - Every task should have clear, verifiable outcomes.
 - Prefer specificity over brevity for critical steps.

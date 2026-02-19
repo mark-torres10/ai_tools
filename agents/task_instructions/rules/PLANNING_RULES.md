@@ -10,6 +10,7 @@ In addition to the plan that you make for a certain goal, please do the followin
 - Save all assets related to this workflow in docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash> (e.g., docs/plans/2026-01-30_change_selector_panels_123456/).
 - For UI-related changes, before starting work, get a current state of the UI by using the browser tool to take screenshots as needed of the state when doing the intended happy flow. Store this in `docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash>/images/before/`. This'll give us a baseline of what it looks like in the beginning, before any changes.
 - Once done with UI-related changes, use the browser tool to take screenshots as needed of the state when doing the intended happy flow. Store this in `docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash>/images/after/`. This'll let us compare against the images in the `before/` path so we can see the change.
+- YOUR FIRST TO-DO item in any UI change MUST BE taking the screenshots of the current UI state. This is a MUST. Your LAST TO-DO item in any UI change must be taking the screenshots of the correct updated UI state.
 
 ## DRY, YAGNI, TDD Reminders
 
