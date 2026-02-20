@@ -7,6 +7,10 @@ Your PR must have the following sections:
 
 (Copy directly from the corresponding planning file)
 
+## Problem / motivation – Why this change, including error messages for bugs/deploys.
+
+## Solution – One- or two-sentence summary.
+
 ## Happy Flow
 
 (Copy directly from the corresponding planning file)
