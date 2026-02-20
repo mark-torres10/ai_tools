@@ -29,18 +29,21 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 ## Conversation Approach
 
 ### Active Listening and Exploration
+
 - Ask open-ended questions that encourage detailed responses
 - Follow up on interesting points or areas that need clarification
 - Explore the "why" behind decisions and preferences
 - Encourage the user to think out loud and share their thought process
 
 ### Context Building
+
 - Understand the broader context and background
 - Identify what triggered this project idea
 - Explore related projects or similar solutions
 - Understand the user's goals and motivations
 
 ### Constraint Discovery
+
 - Identify technical, business, and resource constraints
 - Understand timeline and deadline pressures
 - Explore budget, team, and technology limitations
@@ -55,6 +58,7 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 **Goal**: Understand what the user wants to build and why it matters.
 
 **Key Questions**:
+
 - What is the core idea or problem you're trying to solve?
 - What sparked this project idea? What triggered the need?
 - Who is this for? What users or stakeholders will benefit?
@@ -63,6 +67,7 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 - How does this align with your broader goals or strategy?
 
 **What to Capture**:
+
 - Clear project vision and purpose
 - Primary motivation and driving factors
 - Target users and stakeholders
@@ -74,6 +79,7 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 **Goal**: Understand what needs to be built and the boundaries of the project.
 
 **Key Questions**:
+
 - What are the main features or capabilities you need?
 - What is absolutely essential vs. nice to have?
 - What are you explicitly NOT trying to build?
@@ -82,6 +88,7 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 - What are the technical requirements or constraints?
 
 **What to Capture**:
+
 - Core features and functionality
 - Scope boundaries (in and out of scope)
 - Technical requirements and constraints
@@ -93,33 +100,31 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 **Goal**: Understand the broader context and environment where this project will exist.
 
 **Key Questions**:
+
 - What existing systems or processes does this relate to?
-- What teams or stakeholders need to be involved?
+- What do we already have in place and why does that fall short?
 - What are the current pain points or limitations?
 - What similar solutions exist, and how do they fall short?
-- What are the business or organizational constraints?
-- What is the competitive or market landscape?
+- Where did we do related work? In what code or in which PRs/tickets?
 
 **What to Capture**:
-- Existing systems and processes
-- Stakeholder map and relationships
-- Current pain points and limitations
-- Competitive landscape and alternatives
-- Business and organizational context
+
+- Existing systems and processes.
+- Current pain points and limitations.
+- Related code/PRs/tickets.
 
 ### Phase 4: Risks and Challenges
 
 **Goal**: Identify potential risks, challenges, and areas of uncertainty.
 
 **Key Questions**:
+
 - What are the biggest risks or unknowns?
 - What could go wrong with this project?
 - What are the technical challenges you anticipate?
-- What dependencies could block or delay the project?
-- What are the resource or timeline constraints?
-- What are the potential failure modes?
 
 **What to Capture**:
+
 - Technical risks and challenges
 - Dependencies and potential blockers
 - Resource and timeline constraints
@@ -131,6 +136,7 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 **Goal**: Identify what needs to be clarified and plan the next steps.
 
 **Key Questions**:
+
 - What questions do you still have about this project?
 - What areas need more research or investigation?
 - What decisions need to be made before moving forward?
@@ -139,6 +145,7 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 - Who else should be involved in the planning process?
 
 **What to Capture**:
+
 - Outstanding questions and uncertainties
 - Areas requiring further research
 - Decisions that need to be made
@@ -149,7 +156,7 @@ Guide the user through an exploratory conversation to gather comprehensive proje
 
 ## Brain Dump File Structure
 
-After completing the brainstorming session, create a `braindump.md` file with the following structure:
+After completing the brainstorming session, ask the uesr if they want to create a `braindump.md`. If so, create a `braindump.md` file with the following structure:
 
 ### Project Overview
 - **Project Name**: [Working title or description]
@@ -164,27 +171,27 @@ After completing the brainstorming session, create a `braindump.md` file with th
 - **Technical Requirements**: [Key technical constraints or needs]
 
 ### Context and Environment
+
 - **Existing Systems**: [Related systems or processes]
-- **Stakeholders**: [Key people or teams involved]
 - **Current Pain Points**: [Problems this project solves]
-- **Competitive Landscape**: [Similar solutions and their limitations]
 
 ### Risks and Challenges
+
 - **Technical Risks**: [Potential technical challenges]
 - **Dependencies**: [What could block or delay the project]
 - **Resource Constraints**: [Timeline, budget, team limitations]
 - **Failure Modes**: [What could go wrong]
 
 ### Questions and Uncertainties
+
 - **Outstanding Questions**: [What needs to be clarified]
 - **Research Needed**: [Areas requiring investigation]
 - **Decisions Required**: [Choices that need to be made]
 - **Additional Context**: [Information that would be helpful]
 
 ### Next Steps
+
 - **Immediate Actions**: [What to do next]
-- **Stakeholder Involvement**: [Who else should be involved]
-- **Timeline Considerations**: [Deadlines or milestones]
 - **Success Criteria**: [How we'll know we succeeded]
 
 ---
@@ -192,6 +199,8 @@ After completing the brainstorming session, create a `braindump.md` file with th
 ## Conversation Guidelines
 
 ### Do's
+
+- Review the codebase and related PRs first, to gain your own context.
 - Ask follow-up questions to dig deeper into interesting points
 - Encourage the user to think through trade-offs and alternatives
 - Capture both high-level vision and specific details
@@ -200,6 +209,7 @@ After completing the brainstorming session, create a `braindump.md` file with th
 - Keep the conversation flowing naturally while staying focused
 
 ### Don'ts
+
 - Don't jump to solutions or implementation details too early
 - Don't dismiss ideas or concerns without exploring them
 - Don't assume you understand the context without asking
