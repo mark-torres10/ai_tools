@@ -1,5 +1,5 @@
 ---
-name: write-pr
+name: create-pr
 description: Drafts or refines PR descriptions following HOW_TO_WRITE_PR rules. Use when creating a PR, writing a PR description, or when the user asks for help with a pull request.
 disable-model-invocation: true
 metadata:
@@ -8,7 +8,7 @@ metadata:
   category: planning
 ---
 
-# Write PR
+# Create PR
 
 Draft or refine PR descriptions using the rules below.
 
