@@ -60,6 +60,7 @@ When opening a PR with direct edits:
 
 - **PR Title:** `[YYYY-MM-DD] Codex repo automation - Markdown scan`
 - **PR Description:** Automated scan of markdown vs. codebase. Drift fixed in-place in affected markdown files.
+- Add a tag "codex" so that I know that it was from the Codex agent.
 
 ---
 

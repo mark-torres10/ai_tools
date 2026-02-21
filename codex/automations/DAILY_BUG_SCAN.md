@@ -9,3 +9,4 @@ When you find them, please open a PR (using the Github CLI tools). When you open
 
 PR Title: "[YYYY-MM-DD] Codex repo automation - conventions"
 PR Description: Itemized list of improvements. Note that it is from Codex automation.
+Add a tag "codex" so that I know that it was from the Codex agent.

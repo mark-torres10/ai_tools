@@ -24,3 +24,4 @@ When you find them, please open a PR (using the Github CLI tools). When you open
 
 PR Title: "[YYYY-MM-DD] Codex repo automation - Weekly work update"
 PR Description: Automated synopsis of work updates.
+Add a tag "codex" so that I know that it was from the Codex agent.
