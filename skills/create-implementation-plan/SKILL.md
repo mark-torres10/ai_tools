@@ -91,6 +91,7 @@ For UI-related work, **the agent must capture before/after screenshots itself** 
 - Exact file paths always
 - Exact commands with expected output
 - DRY, YAGNI, TDD, frequent commits
+- UI changes: agent captures before/after screenshots itself (no README or instructions for the user)
 ```
 
 ## Anti-Patterns to Avoid
