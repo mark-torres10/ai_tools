@@ -1,6 +1,12 @@
 # Skills
 
-Cursor skills. Add to global Cursor with the same folder under `~/.cursor/skills/`.
+Cursor and Codex skills. Source of truth: `skills/` in this repo.
+
+## Sync to Cursor and Codex
+
+- **Cursor (global):** Copy each skill to `~/.cursor/skills/`
+- **Codex (global):** Copy each skill to `~/.codex/skills/`
+- **Codex (repo):** `.agents/skills` → symlink to `skills/` (already configured)
 
 | Skill | Description |
 |-------|-------------|
