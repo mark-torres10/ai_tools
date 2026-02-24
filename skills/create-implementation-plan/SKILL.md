@@ -56,18 +56,33 @@ docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash>/
 
 Example: `docs/plans/2026-01-30_change_selector_panels_123456/`
 
+## UI screenshots: agent responsibility (mandatory)
+
+This must be run for ANY UI-related change (i.e., anything in `ui/`)
+
+**The agent MUST capture before/after screenshots itself.** Do NOT:
+
+- Write a README or instructions for the user to take screenshots.
+- Add a to-do for "someone" to capture screenshots later.
+- Delegate screenshot capture to the user.
+
+**The agent MUST:** Use the browser (e.g. Cursor's browser tools or MCP) to:
+
+1. Capture the current UI state **before** implementation and save to `.../images/before/`.
+2. Capture the new UI state **after** implementation and save to `.../images/after/`.
+
+If the plan involves UI changes, the plan is **not complete** until these screenshots exist in the plan asset folder. No exceptions.
+
 ## UI-Related Changes (screenshots)
 
-For UI-related work:
+For UI-related work, **the agent must capture before/after screenshots itself** using the browser. Do not write instructions or a README for the user to do this.
 
-1. **Before starting** – Use the browser tool to capture the current UI state (happy flow). Save screenshots to:
+1. **Before implementation** – Use the browser to capture the current UI state (happy path). Save screenshots to:
    - `docs/plans/<YYYY-MM-DD>_<descriptor>_<hash>/images/before/`
-2. **After changes** – Capture the new UI state (happy flow). Save screenshots to:
+2. **After implementation** – Use the browser to capture the new UI state (happy path). Save screenshots to:
    - `docs/plans/<YYYY-MM-DD>_<descriptor>_<hash>/images/after/`
 
-This provides a before/after baseline for visual comparison.
-
-**To-do ordering (MUST):** For UI changes, the FIRST to-do must be taking before screenshots; the LAST to-do must be taking after screenshots. No exceptions.
+**To-do ordering (MUST):** For UI changes, the first to-do is the agent taking before screenshots; the last to-do is the agent taking after screenshots. The agent performs these steps; it does not document them for the user.
 
 ## Remember (include at top of every plan)
 
@@ -86,6 +101,7 @@ This provides a before/after baseline for visual comparison.
 - Implementation before tests
 - No verification steps
 - Assuming context
+- Writing a README or instructions for the user to take before/after UI screenshots (the agent must take them)
 
 ## Workflow
 
@@ -93,8 +109,17 @@ This provides a before/after baseline for visual comparison.
 2. Create or refine the plan using the required structure.
 3. Ensure the Remember block is at the top.
 4. Use the plan asset path: `docs/plans/<YYYY-MM-DD>_<descriptor>_<6-digit hash>/`.
-5. For UI work: first to-do = before screenshots; last to-do = after screenshots. Capture in `.../images/before/` and `.../images/after/`.
+5. For UI work: the agent captures before screenshots (first to-do) and after screenshots (last to-do) using the browser. Save to `.../images/before/` and `.../images/after/`. Do not substitute with written instructions for the user.
 6. Verify no anti-patterns are present.
+
+## Definition of done (UI work)
+
+For plans that include UI changes, the plan is only complete when:
+- [ ] Before screenshots exist in `.../images/before/` (captured by the agent).
+- [ ] After screenshots exist in `.../images/after/` (captured by the agent).
+- [ ] No README or instructions were added that ask the user to take screenshots.
+
+If you have not yet captured these screenshots, do so now before considering the plan complete.
 
 ## Constraints
 
