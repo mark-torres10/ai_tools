@@ -6,7 +6,6 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 
 - **Cursor (global):** Copy each skill to `~/.cursor/skills/`
 - **Codex (global):** Copy each skill to `~/.codex/skills/`
-- **Codex (repo):** `.agents/skills` → symlink to `skills/` (already configured)
 
 | Skill | Description |
 |-------|-------------|
