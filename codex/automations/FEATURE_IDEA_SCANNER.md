@@ -11,13 +11,13 @@ Include file path, line number, and the full comment or context for each item.
 
 ### 2. Proposed features by area
 
-Scan the following code paths and propose **2 UI features**, **1 ML feature**, and **1 backend feature**:
+Scan the following code paths and propose **3 UI features**, **3 ML features**, and **3 backend features**:
 
 | Area   | Paths                     | Count |
 |--------|---------------------------|-------|
-| UI     | `ui/`                     | 2     |
-| ML     | `simulation/core/`, `ml_tooling/` | 1     |
-| Backend| `simulation/api/`         | 1     |
+| UI     | `ui/`                     | 3     |
+| ML     | `simulation/core/`, `ml_tooling/` | 3     |
+| Backend| `simulation/api/`         | 3     |
 
 For each proposed feature:
 
@@ -51,7 +51,7 @@ Write results to `docs/feature_ideas/(YYYY-MM-DD)_feature_ideas.md`:
 
 ## Proposed features by area
 
-### UI (2 features)
+### UI (3 features)
 
 #### Feature 1: [Title]
 - **Rationale:** ...
@@ -63,19 +63,25 @@ Write results to `docs/feature_ideas/(YYYY-MM-DD)_feature_ideas.md`:
 - **Scope:** Large | Small
 - **Evidence:** ...
 
-### ML (1 feature)
+...
+
+### ML (3 features)
 
 #### Feature: [Title]
 - **Rationale:** ...
 - **Scope:** Large | Small
 - **Evidence:** ...
 
-### Backend (1 feature)
+...
+
+### Backend (3 features)
 
 #### Feature: [Title]
 - **Rationale:** ...
 - **Scope:** Large | Small
 - **Evidence:** ...
+
+...
 
 ## Markers and phrases
 
@@ -105,3 +111,4 @@ When opening a PR with the new report:
 
 - **PR Title:** `[YYYY-MM-DD] Codex repo automation - Feature ideas scan`
 - **PR Description:** Automated scan of feature ideas and technical debt markers. Attach the report file.
+- Add a Github tag "codex" so that I know that it was from the Codex agent.
