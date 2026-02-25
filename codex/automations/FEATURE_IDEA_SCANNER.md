@@ -11,6 +11,8 @@ Include file path, line number, and the full comment or context for each item.
 
 ### 2. Proposed features by area
 
+Review first the existing ideas in docs/feature_ideas/ to see previously mentioned ideas. AVOID REPEATING THESE.
+
 Scan the following code paths and propose **3 UI features**, **3 ML features**, and **3 backend features**:
 
 | Area   | Paths                     | Count |
@@ -104,6 +106,8 @@ Write results to `docs/feature_ideas/(YYYY-MM-DD)_feature_ideas.md`:
 - Proposed features must be grounded in the scanned code paths: cite files, endpoints, patterns, or adjacent capabilities that support each idea.
 - Exclude generated files, `node_modules`, `.venv`, and similar.
 - For large codebases, optionally scope to files changed in the last 7 days, or to specific dirs.
+
+Review first the existing ideas in docs/feature_ideas/ to see previously mentioned ideas. AVOID REPEATING THESE.
 
 ## PR setup
 
