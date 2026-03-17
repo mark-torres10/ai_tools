@@ -7,9 +7,14 @@ In addition to the plan that you make for a certain goal, please do the followin
 - Add a "Manual Verification" section with specific, step-by-step instructions for manual verification. This includes (1) running the test suite (e.g., "uv run pytest ..."), running servers, etc. For UI changes, specify the series of clicks to perform or screens to toggle or components to highlight during review. This should be in the form of a checklist.
 - Alternative approaches – Short note on options considered and why the chosen approach was selected (e.g. “We chose Y over X because…”)
 - Specificity: Avoid vague steps like “Add auth” or “Fix the bug”. Prefer exact commands, file paths, and component names where possible.
-- Save all assets related to this workflow in docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash> (e.g., docs/plans/2026-01-30_change_selector_panels_123456/).
-- For UI-related changes, before starting work, get a current state of the UI by using the browser tool to take screenshots as needed of the state when doing the intended happy flow. Store this in `docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash>/images/before/`. This'll give us a baseline of what it looks like in the beginning, before any changes.
-- Once done with UI-related changes, use the browser tool to take screenshots as needed of the state when doing the intended happy flow. Store this in `docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash>/images/after/`. This'll let us compare against the images in the `before/` path so we can see the change.
+- Plans must be written for maximum safely delegable parallel execution. Separate the work into a minimal serial coordination spine and as many independent parallel task packets as can be made safe.
+- A task may be delegated only if a small, weak, distilled coding agent could execute it correctly without interpretation, improvisation, or clarifying questions. If that standard is not met, the task must remain in the serial coordination spine.
+- Every plan that benefits from parallel work must include these sections: "Serial Coordination Spine", "Interface or Contract Freeze", "Parallel Task Packets", "Integration Order", and "Final Verification".
+- Each "Parallel Task Packet" must include: Task ID, one-sentence objective, why the task is parallelizable, exact files to inspect, exact files allowed to change, exact files forbidden to change, preconditions, dependency tasks, required contracts and invariants, step-by-step implementation instructions, exact verification commands, expected outputs from verification, done-when checklist, and coordinator review checklist.
+- Every delegated task must be independently executable and independently verifiable. Verification for a delegated task must not depend on unfinished work from another parallel task unless that dependency is explicitly listed and satisfied first.
+- Save all assets related to this workflow in `docs/plans/[YYYY-MM-DD]_[descriptor of change]_[6-digit hash]` (e.g., `docs/plans/2026-01-30_change_selector_panels_123456/`).
+- For UI-related changes, before starting work, get a current state of the UI by using the browser tool to take screenshots as needed of the state when doing the intended happy flow. Store this in `docs/plans/[YYYY-MM-DD]_[descriptor of change]_[6-digit hash]/images/before/`. This'll give us a baseline of what it looks like in the beginning, before any changes.
+- Once done with UI-related changes, use the browser tool to take screenshots as needed of the state when doing the intended happy flow. Store this in `docs/plans/[YYYY-MM-DD]_[descriptor of change]_[6-digit hash]/images/after/`. This'll let us compare against the images in the `before/` path so we can see the change.
 - YOUR FIRST TO-DO item in any UI change MUST BE taking the screenshots of the current UI state. This is a MUST. Your LAST TO-DO item in any UI change must be taking the screenshots of the correct updated UI state.
 
 ## DRY, YAGNI, TDD Reminders
@@ -21,6 +26,8 @@ Include at top of every plan:
 - Exact file paths always
 - Exact commands with expected output
 - DRY, YAGNI, TDD, frequent commits
+- Maximum safely delegable parallelism
+- Delegated tasks must be impossible to misread
 ```
 
 ## Anti-Patterns
@@ -33,3 +40,8 @@ Include at top of every plan:
 - Implementation before tests
 - No verification steps
 - Assuming context
+- Delegated tasks with ambiguous scope or ownership
+- Shared ownership of the same file across parallel tasks
+- "As needed", "etc.", or "follow the existing pattern" without naming the exact reference file or symbol
+- Verification steps that rely on unfinished parallel work
+- Any delegated step that requires hidden intent or unstated judgment
