@@ -11,6 +11,7 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 |-------|-------------|
 | **review-persona** | Review current work using a persona from `agents/personas/`. Slash-only. |
 | **review-rules** | Review current work against `agents/task_instructions/rules/`. Slash-only. |
+| **review-for-simplicity** | Review plans, proposals, and diffs for unnecessary complexity, premature abstraction, and unverified assumptions. Slash-only. |
 | **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
 | **create-implementation-plan** | Create implementation plans following `PLANNING_RULES` (Overview, Happy Flow, Manual Verification). Agent can auto-apply. |
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
