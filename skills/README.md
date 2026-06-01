@@ -17,3 +17,5 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
 | **review-security** | Instructs the agent to apply code-security (Semgrep) and security-best-practices (OpenAI). Requires both installed. Slash-only. |
 | **create-pr** | Drafts or refines PR descriptions following `HOW_TO_WRITE_PR` rules. Slash-only. |
+| **refactor-service** | Diagnose a microservice or pipeline, then plan a behavior-preserving refactor (modularity, tests, ruff/pyright, runbooks, READMEs). Planning only. Slash-only. |
+| **fix-ci** | Find or use a PR, triage failing checks, reproduce locally, fix, commit, push, and summarize. Slash-only. |
