@@ -1,6 +1,6 @@
 ---
 name: create-implementation-plan
-description: Creates implementation plans following PLANNING_RULES. Use when the user asks to create a plan, write an implementation plan, or plan out work. Ensures Overview, Happy Flow, Manual Verification, asset storage, and UI screenshots from planning rules.
+description: Creates implementation plans following PLANNING_RULES. Use when the user asks to create a plan, write an implementation plan, or plan out work. Ensures Overview, Happy Flow, Manual Verification, Update Runbooks (audit docs/runbooks/), parallel delegation, asset storage, and UI screenshots. Loads phase-specific reference files before each gate.
 disable-model-invocation: false
 metadata:
   owner: mark
@@ -10,7 +10,7 @@ metadata:
 
 # Create Implementation Plan
 
-Create implementation plans that follow the planning rules in `agents/task_instructions/rules/PLANNING_RULES.md`. Works alongside Cursor Plan Mode (or similar)—apply these rules to structure and enrich whatever plan mode produces.
+Orchestrate implementation plans using phased gates. **Do not skip reference reads.** **Do not deliver the plan until Phase 5 passes.**
 
 ## When to Use
 
@@ -20,182 +20,111 @@ Create implementation plans that follow the planning rules in `agents/task_instr
 
 ## Path Discovery
 
-Planning rules live inside an `ai_tools` tree. Resolve the **ai_tools root** first.
+### ai_tools root (planning rules)
 
-**Resolve ai_tools root in this order:**
+Planning rules live inside an `ai_tools` tree. Resolve **ai_tools root** in this order:
 
-1. **Submodule in workspace**  
-   Check for an `ai_tools` directory in the workspace root (e.g. `./ai_tools/`). If it exists and contains `agents/task_instructions/rules/PLANNING_RULES.md`, use it.
-2. **Fallback canonical path**  
-   If there is no such submodule, use: `/Users/mark/Documents/projects/ai_tools/`.
+1. **Submodule in workspace** — `./ai_tools/` containing `agents/task_instructions/rules/PLANNING_RULES.md`
+2. **Local clone** — `/Users/mark/Documents/projects/ai_tools/`
+3. **Global skill copy** — if this skill is loaded from `~/.cursor/skills/create-implementation-plan/`, use sibling references in that directory; for `PLANNING_RULES.md`, prefer steps 1–2 first
+4. **Remote fallback** — if none of the above exist, use the canonical repo: [https://github.com/mark-torres10/ai_tools](https://github.com/mark-torres10/ai_tools)
+   - Fetch or browse `agents/task_instructions/rules/PLANNING_RULES.md` from that repo (raw GitHub URL or clone instructions for the user)
+   - Apply the same rules; use this skill's `references/` and `checklist.md` for structure beyond what `PLANNING_RULES.md` covers
 
 **Planning rules file:** `<ai_tools_root>/agents/task_instructions/rules/PLANNING_RULES.md`
 
-If found, read `PLANNING_RULES.md` and apply it. If not found, apply the structure below (inline fallback).
+If found locally, read it. If only the GitHub fallback is available, read `PLANNING_RULES.md` from the repo before Phase 1.
 
-## Required Plan Structure
+### Skill references (this skill)
 
-In addition to the plan steps, include:
+Resolve the directory containing this `SKILL.md`, then read files relative to it:
 
-1. **Overview** – Brief 1-paragraph description of what we're building and why.
-2. **Happy Flow** – How data/logic flows end-to-end in this unit of work. Enumerated plain English with file references.
-3. **Manual Verification** – Checklist with step-by-step instructions:
-   - Test commands (e.g. `uv run pytest ...`)
-   - Server startup and checks
-   - For UI: clicks, screens, components to review
-4. **Alternative approaches** – Short note on options considered and why the chosen approach was selected.
-5. **Specificity** – Exact commands, file paths, and component names. No vague steps like "Add auth" or "Fix the bug".
-6. **Serial Coordination Spine** – The minimum set of tasks that must stay sequential because they define contracts, unblock dependencies, or integrate parallel work.
-7. **Interface or Contract Freeze** – Exact shared interfaces, schemas, types, endpoints, props, DB contracts, or invariants that must be fixed before parallel work starts.
-8. **Parallel Task Packets** – As many safely delegable tasks as possible, each specified so precisely that a small distilled coding agent could execute it without interpretation.
-9. **Integration Order** – Exact order for merging or landing completed parallel tasks.
-10. **Final Verification** – The end-to-end checks that prove the fully integrated change works.
+| File | When |
+|------|------|
+| [references/plan-structure.md](references/plan-structure.md) | Phase 1 |
+| [references/runbooks-audit.md](references/runbooks-audit.md) | Phase 2 (always) |
+| [references/runbook-template.md](references/runbook-template.md) | Phase 2 (when proposing new runbooks) |
+| [references/parallel-delegation.md](references/parallel-delegation.md) | Phase 3 |
+| [references/ui-screenshots.md](references/ui-screenshots.md) | Phase 4 (UI changes only) |
+| [checklist.md](checklist.md) | Phase 5 (always) |
 
-## Parallel-First Delegation (mandatory)
+### Target workspace runbooks
 
-Plans must be optimized for maximum safely delegable parallel execution.
+**Runbook root:** `<workspace_root>/docs/runbooks/` (the repo where the change lands—not ai_tools unless that is the target).
 
-This is a hard requirement:
+## Required Plan Structure (summary)
 
-- Minimize the serial coordination path.
-- Maximize the amount of work split into safe parallel tasks.
-- Do not delegate any task that could plausibly be misunderstood by a small, weak, distilled coding agent.
-- If a task cannot be specified unambiguously enough to survive delegation without clarifying questions, it must remain in the serial coordination spine.
+Every plan must include all 11 sections listed in [references/plan-structure.md](references/plan-structure.md). Do not omit **Update Runbooks** (use explicit no-impact when N/A).
 
-Prefer decomposition by stable ownership boundaries such as:
+## Phased Workflow (mandatory)
 
-- schema or contract work
-- backend handler or service work
-- frontend rendering work
-- tests or fixtures
-- docs or migration follow-up
+Complete each phase in order. Pass the phase gate before continuing.
 
-Do not split work across parallel tasks if they would share ownership of the same file unless the plan explicitly keeps that file in the serial coordinator track.
+### Phase 0 — Resolve paths
 
-## Parallel Task Packet Format (mandatory)
+- Resolve ai_tools root and read `PLANNING_RULES.md` (local or [GitHub fallback](https://github.com/mark-torres10/ai_tools)).
+- Resolve skill reference directory (this skill's folder).
+- Note target workspace root for `docs/runbooks/` and `docs/plans/`.
 
-Each delegated task must include all of the following:
+**Gate:** Paths documented; `PLANNING_RULES.md` loaded or GitHub fallback applied.
 
-- **Task ID**
-- **One-sentence objective**
-- **Why this task is parallelizable**
-- **Exact files to inspect**
-- **Exact files allowed to change**
-- **Exact files forbidden to change**
-- **Preconditions**
-- **Dependency tasks**
-- **Required contracts and invariants**
-- **Step-by-step implementation instructions**
-- **Exact verification commands**
-- **Expected outputs from verification**
-- **Done-when checklist**
-- **Coordinator review checklist**
+### Phase 1 — Core plan
 
-If any one of these fields is missing, the task is not safe to delegate and must not appear under Parallel Task Packets.
+**Read:** [references/plan-structure.md](references/plan-structure.md)
 
-## Delegation Validity Test (mandatory)
+Draft Overview, Happy Flow, Manual Verification, Alternative approaches, and choose plan asset path under `docs/plans/<YYYY-MM-DD>_<descriptor>_<6-digit hash>/`. Add Remember block at top.
 
-Before finalizing the plan, apply this test to every delegated task:
+**Gate:** Phase 1 checklist in `plan-structure.md` passes.
 
-1. Could a weak coding agent execute this task without asking a question?
-2. Could another agent execute a sibling task in parallel without file ownership conflict?
-3. Could the coordinator verify this task in isolation?
-4. Would two different agents likely make the same change from this description?
+### Phase 2 — Update Runbooks (every plan)
 
-If the answer to any question is "no", rewrite the task or move it out of parallel execution.
+**Read:** [references/runbooks-audit.md](references/runbooks-audit.md)
 
-## Plan Asset Storage
+Inventory `docs/runbooks/` in the target workspace. Write **Update Runbooks** section.
 
-Save all assets related to this workflow in:
+**Also read** [references/runbook-template.md](references/runbook-template.md) when proposing new runbooks.
 
-```text
-docs/plans/<YYYY-MM-DD>_<descriptor of change>_<6-digit hash>/
-```
+**Gate:** Phase 2 checklist in `runbooks-audit.md` passes.
 
-Example: `docs/plans/2026-01-30_change_selector_panels_123456/`
+### Phase 3 — Parallel delegation
 
-## UI screenshots: agent responsibility (mandatory)
+**Read:** [references/parallel-delegation.md](references/parallel-delegation.md)
 
-This must be run for ANY UI-related change (i.e., anything in `ui/`)
+Add Serial Coordination Spine, Interface or Contract Freeze, Parallel Task Packets, Integration Order, Final Verification. Apply validity test to every delegated task.
 
-**The agent MUST capture before/after screenshots itself.** Do NOT:
+**Gate:** Phase 3 checklist in `parallel-delegation.md` passes.
 
-- Write a README or instructions for the user to take screenshots.
-- Add a to-do for "someone" to capture screenshots later.
-- Delegate screenshot capture to the user.
+### Phase 4 — UI screenshots (conditional)
 
-**The agent MUST:** Use the browser (e.g. Cursor's browser tools or MCP) to:
+**Trigger:** Plan changes anything under `ui/` or equivalent frontend paths.
 
-1. Capture the current UI state **before** implementation and save to `.../images/before/`.
-2. Capture the new UI state **after** implementation and save to `.../images/after/`.
+**Read:** [references/ui-screenshots.md](references/ui-screenshots.md)
 
-If the plan involves UI changes, the plan is **not complete** until these screenshots exist in the plan asset folder. No exceptions.
+Set first to-do = before screenshots, last to-do = after screenshots. Agent captures screenshots—not the user.
 
-## UI-Related Changes (screenshots)
+**Gate:** Phase 4 checklist in `ui-screenshots.md` passes, or phase skipped with documented reason.
 
-For UI-related work, **the agent must capture before/after screenshots itself** using the browser. Do not write instructions or a README for the user to do this.
+### Phase 5 — Final gate
 
-1. **Before implementation** – Use the browser to capture the current UI state (happy path). Save screenshots to:
-   - `docs/plans/<YYYY-MM-DD>_<descriptor>_<hash>/images/before/`
-2. **After implementation** – Use the browser to capture the new UI state (happy path). Save screenshots to:
-   - `docs/plans/<YYYY-MM-DD>_<descriptor>_<hash>/images/after/`
+**Read:** [checklist.md](checklist.md)
 
-**To-do ordering (MUST):** For UI changes, the first to-do is the agent taking before screenshots; the last to-do is the agent taking after screenshots. The agent performs these steps; it does not document them for the user.
+Verify every applicable checkbox. Fix failures and re-run Phase 5.
 
-## Remember (include at top of every plan)
+**Gate:** All applicable items in `checklist.md` checked. **Only then deliver the plan.**
 
-```markdown
-## Remember
-- Exact file paths always
-- Exact commands with expected output
-- DRY, YAGNI, TDD, frequent commits
-- Maximum safely delegable parallelism
-- Delegated tasks must be impossible to misread
-- UI changes: agent captures before/after screenshots itself (no README or instructions for the user)
-```
+## Hard Constraints
 
-## Anti-Patterns to Avoid
-
-- Vague task descriptions
-- Missing file paths
-- Incomplete code snippets
-- Implementation before tests
-- No verification steps
-- Assuming context
-- Delegated tasks with ambiguous scope or ownership
-- Shared ownership of the same file across parallel tasks
-- "As needed", "etc.", or "follow the existing pattern" without naming the exact reference file or symbol
-- Verification steps that rely on unfinished parallel work
-- Any delegated step that requires hidden intent or unstated judgment
-- Writing a README or instructions for the user to take before/after UI screenshots (the agent must take them)
-
-## Workflow
-
-1. Resolve ai_tools root and read `PLANNING_RULES.md` if available.
-2. Create or refine the plan using the required structure.
-3. Minimize the serial coordination spine, freeze shared contracts, and split the remaining work into the maximum safely delegable set of parallel task packets.
-4. For each delegated task, include every field from the Parallel Task Packet Format. Do not omit any field.
-5. Apply the Delegation Validity Test to every delegated task and rewrite or reclassify any task that fails.
-6. Ensure the Remember block is at the top.
-7. Use the plan asset path: `docs/plans/<YYYY-MM-DD>_<descriptor>_<6-digit hash>/`.
-8. For UI work: the agent captures before screenshots (first to-do) and after screenshots (last to-do) using the browser. Save to `.../images/before/` and `.../images/after/`. Do not substitute with written instructions for the user.
-9. Verify no anti-patterns are present.
-
-## Definition of done (UI work)
-
-For plans that include UI changes, the plan is only complete when:
-
-- [ ] Before screenshots exist in `.../images/before/` (captured by the agent).
-- [ ] After screenshots exist in `.../images/after/` (captured by the agent).
-- [ ] No README or instructions were added that ask the user to take screenshots.
-
-If you have not yet captured these screenshots, do so now before considering the plan complete.
-
-## Constraints
-
-- Do not skip the Manual Verification section—it is required.
-- For UI changes: first to-do = before screenshots, last to-do = after screenshots. Mandatory.
-- Every task should have clear, verifiable outcomes.
-- Prefer specificity over brevity for critical steps.
+- Do not skip Manual Verification or Update Runbooks.
 - Plans are invalid if they do not maximize safely delegable parallel work.
-- Delegated tasks are invalid if they omit exact file boundaries, dependencies, contracts, verification commands, or completion criteria.
+- Delegated tasks are invalid without exact file boundaries, dependencies, contracts, verification commands, and completion criteria.
+- Do not skip linked reference files for a phase you are executing.
+- Prefer specificity over brevity for critical steps.
+
+## Anti-Patterns (summary)
+
+See reference files for full lists. Never:
+
+- Deliver a plan before Phase 5 passes
+- Skip runbook inventory when ops behavior changes
+- Delegate ambiguous tasks or share file ownership across parallel tasks without serial coordination
+- Ask the user to take UI screenshots

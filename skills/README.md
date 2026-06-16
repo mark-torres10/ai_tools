@@ -13,9 +13,10 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **review-rules** | Review current work against `agents/task_instructions/rules/`. Slash-only. |
 | **review-for-simplicity** | Review plans, proposals, and diffs for unnecessary complexity, premature abstraction, and unverified assumptions. Slash-only. |
 | **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
-| **create-implementation-plan** | Create implementation plans following `PLANNING_RULES` (Overview, Happy Flow, Manual Verification). Agent can auto-apply. |
+| **create-implementation-plan** | Phase-gated implementation plans (`PLANNING_RULES`, runbooks, parallel delegation, UI screenshots). Reference files under `skills/create-implementation-plan/`. Agent can auto-apply. |
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
 | **review-security** | Instructs the agent to apply code-security (Semgrep) and security-best-practices (OpenAI). Requires both installed. Slash-only. |
 | **create-pr** | Drafts or refines PR descriptions following `HOW_TO_WRITE_PR` rules. Slash-only. |
 | **refactor-service** | Diagnose a microservice or pipeline, then plan a behavior-preserving refactor (modularity, tests, ruff/pyright, runbooks, READMEs). Planning only. Slash-only. |
 | **fix-ci** | Find or use a PR, triage failing checks, reproduce locally, fix, commit, push, and summarize. Slash-only. |
+| **handoff** | End-of-session handoff generator that writes `handoff.md` with PR link, done summary, remaining to-dos, and last left off. |
