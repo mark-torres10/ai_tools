@@ -1,6 +1,10 @@
 ---
 name: create-pr
-description: Drafts or refines PR descriptions following HOW_TO_WRITE_PR rules. Use when creating a PR, writing a PR description, or when the user asks for help with a pull request.
+description: >-
+  Drafts or refines PR descriptions for human reviewers: always-on skim core
+  (Problem, Solution, Manual Verification), then optional Details when depth
+  gates fire (multi-step, data, backend, experimental, UI). Use when creating
+  a PR, writing a PR description, or refining a pull request.
 disable-model-invocation: true
 metadata:
   owner: mark
@@ -10,7 +14,11 @@ metadata:
 
 # Create PR
 
-Draft or refine PR descriptions using the rules below.
+Draft PR descriptions for human reviewers. Skim first; add depth only when a gate fires.
+
+**Audience:** mostly humans (~30s skim at the top).  
+**Shape:** always-on Layer 0; optional Layer 1 under `## Details`.  
+**Do not** paste plan sections wholesale. Condense. No empty N/A sections.
 
 ## When to Use
 
@@ -18,174 +26,164 @@ Draft or refine PR descriptions using the rules below.
 - User wants help refining an existing PR description.
 - User asks how to structure a PR for this project.
 
-## Workflow
+## Writing rules
 
-1. Gather context: changed files, planning file (if any), related docs.
-2. Draft or refine the PR description using the required sections below.
-3. Ensure tone: terse, direct, present tense. No filler.
-
----
-
-## Tone and conventions
-
-**Tone:** Keep descriptions terse and direct. Use present tense. Avoid filler.
-
-**When a planning file exists:** Copy Overview, Happy Flow, Data Flow, and Manual Verification directly from it. Fill in Problem, Solution, and Changes yourself.
-
----
+- Terse, professional, present tense. Short sentences. No filler. Err on the side of being an executive summary, presentable to engineering audiences who are short on time and context.
+- Provide sufficient context in the writeup that a human engineer without knowledge of this workstream can pick up the PR.
+- Avoid run-on sentences. Avoid excessive bolding (prefer plain headings and lists).
+- Simplify. Prefer fewer sections over a complete template.
+- When a planning file exists: mine it for facts; rewrite into Layer 0 / Details. Do not copy Overview, Happy Flow, or Data Flow verbatim.
 
 ## PR title
 
-Use a verb + what. Be specific. Keep it short (under ~60 chars when possible).
+Verb + what. Specific. Under ~60 chars when possible.
 
-- **Add** – New feature or capability
-- **Update** – Change to existing behavior (including config/fixes)
-- **Disable** / **Enable** – Toggle behavior
-- **Migrate** – Refactor or move to new pattern
-- **Connect** – Wire UI to backend, or integrate systems
-- **Improve** – Better error handling, UX, or implementation
+| Verb | Use |
+|------|-----|
+| Add | New feature or capability |
+| Update | Change to existing behavior (including config/fixes) |
+| Disable / Enable | Toggle behavior |
+| Migrate | Refactor or move to a new pattern |
+| Connect | Wire UI to backend, or integrate systems |
+| Improve | Better error handling, UX, or implementation |
+| Fix | Bug fix |
 
-*Examples:*
-- `Add OAuth with Supabase`
-- `Add slowapi rate limiter on POST endpoints`
-- `Disable auth during local dev`
-- `Update docker remove nonroot user`
-- `Migrate feed ranking algorithms to a registry pattern`
-- `Add stronger feed algorithm typing and contracts`
-- `Connect UI and backend so default config is fetched from the backend`
-- `Improve fetch error handling and structured API errors`
+Examples: `Add OAuth with Supabase`, `Update release pipeline: migrations then smoke`, `Fix event time shown in UTC instead of local`.
+
+## Workflow (mandatory)
+
+Complete phases in order. Pass each gate before continuing. Read linked references only when that phase needs them.
+
+| Phase | Read | Gate |
+|-------|------|------|
+| 0 — Context | — | Diff + plan understood; project-type signals noted |
+| 1 — Layer 0 | (this file) | Title + Problem + Solution + Manual Verification drafted |
+| 2 — Depth gates | Matching `references/*.md` only | Details added only if a gate fired; otherwise stop |
+| 3 — Done | [checklist.md](checklist.md) | Checklist passes |
+
+### Phase 0 — Gather context
+
+Collect: changed files, planning file (if any), related docs. Record which signals apply (multiple may apply):
+
+- Multi-step path (CI/CD/release, deploy, multi-stage job chain, etc.)
+- Data (pipelines, ETL, warehouse, dataset movement)
+- Backend (API/service/worker request or I/O path through the change)
+- Experimental (primarily under `experiments/` or repo experiment root)
+- UI (`ui/` or equivalent frontend)
+- Large layout refactor / non-trivial file-level Changes (optional)
+
+**Gate:** Signals recorded (yes/no per type; for path changes, existing vs new).
+
+### Phase 1 — Layer 0 (always)
+
+Draft only:
+
+#### Problem
+
+Why this change. For bugs or deploy failures, include the actual error when available. A few short sentences.
+
+#### Solution
+
+One or two sentences on what was done.
+
+#### Manual Verification
+
+Exact commands or steps and expected outcomes. Checkboxes OK.
+
+For deploy-related PRs, add live URLs when available (e.g. health → expected JSON).
+
+**Gate:** A reviewer can skim Problem → Solution → Manual Verification in ~30s and know what changed and how to check it.
+
+### Phase 2 — Depth gates (optional Layer 1)
+
+Evaluate gates. **If none fire, do not add `## Details`.** Do not invent filler sections. Multiple gates may fire; merge into one `## Details` with clear subheadings.
+
+| Gate | When | Read | Add under `## Details` |
+|------|------|------|-------------------------|
+| Multi-step path | Diff changes a multi-step path | [references/layer-1-details.md](references/layer-1-details.md) | End-to-end steps; before/after mermaid |
+| Data | Data movement / pipeline / ETL / warehouse path | [references/data-flow.md](references/data-flow.md) | Data flow narrative + how data moves (mermaid) |
+| Backend | Request or I/O path through a backend change | [references/backend-flow.md](references/backend-flow.md) | Request/I/O flow narrative + mermaid |
+| Experimental | Primarily under `experiments/` | [references/experimental.md](references/experimental.md) | Executive results summary + results table |
+| UI screenshots | UI/frontend change | [references/ui-screenshots.md](references/ui-screenshots.md) | State (Before) / State (After) or prompt user |
+| Target structure | Large refactor of layout | [references/layer-1-details.md](references/layer-1-details.md) | Optional tree block |
+| File-level Changes | Helps review of a non-trivial diff | [references/layer-1-details.md](references/layer-1-details.md) | Optional short bullet list |
+
+**Overlap:** If multi-step and backend/data all apply, prefer one coherent diagram set — do not duplicate the same flow three times. Use the most specific heading (Data flow vs Request flow vs End-to-end).
+
+**Gate:** Either no Details section, or Details contains only gated content (no Happy Flow / Overview dumps).
+
+### Phase 3 — Checklist
+
+Read [checklist.md](checklist.md). Fix gaps before delivering the PR body.
+
+## Output shape
+
+**Simple PR (no gates):**
+
+```markdown
+## Problem
+...
+
+## Solution
+...
+
+## Manual Verification
+...
+```
+
+**PR with depth (gates fired):**
+
+```markdown
+## Problem
+...
+
+## Solution
+...
+
+## Manual Verification
+...
 
 ---
 
-## Required sections
+## Details
 
-### Overview
+### End-to-end / Data flow / Request flow
+(as gated)
 
-Copy from the corresponding planning file. One paragraph: what we're building and why.
+### Before
+(mermaid — existing path only)
 
-*Example:*
-> Add OAuth with Supabase Auth for the app. Enable Sign-In with Google and GitHub. We don't do user-level tracking yet—just gate unauthenticated access to the app itself.
+### After
+(mermaid — proposed path)
 
----
+### Results summary
+(experimental only)
 
-### Problem / motivation
-
-Why this change. For bugs or deploy fixes, include the actual error message.
-
-*Example (bug/deploy):*
-> Deploys in prod were failing:
-> ```
-> error: failed to create directory `/app/.venv`: Permission denied (os error 13)
-> ```
-> `appuser` couldn't create the virtualenv because `/app` wasn't writable.
-
-*Example (feature):*
-> After PR #96 (OAuth), every API call requires a JWT. Local dev and headless tests need OAuth + session setup, slowing iteration.
-
----
-
-### Solution
-
-One or two sentences summarizing what was done.
-
-*Example:*
-> Opt-in bypass via `DISABLE_AUTH=1` (backend) and `NEXT_PUBLIC_DISABLE_AUTH=true` (frontend). Local-only; never in production.
-
----
-
-### Happy Flow
-
-Copy from the planning file. Enumerated steps with file references.
-
-*Example:*
-> 1. **Run creation** – `RunRequest` accepts `feed_algorithm`; validation via `feeds.algorithms.validators.validate_feed_algorithm`.
-> 2. **Feed generation** – `feeds/feed_generator.py` calls `registry.get_feed_generator(feed_algorithm)`, runs it on candidate posts, persists `GeneratedFeed`.
-> 3. **API exposure** – `GET /v1/simulations/feed-algorithms` returns registered algorithms.
-
----
-
-### Data Flow
-
-Copy from the planning file when present. How data or logic moves end-to-end.
-
----
+### Results
+(experimental table only)
 
 ### Changes
+(optional)
 
-Bulleted list of file-level changes. One line per file or logical group.
-
-*Example:*
-> - `simulation/api/dependencies/auth.py`: when `DISABLE_AUTH=1`, return mock payload instead of validating JWT
-> - `ui/contexts/AuthContext.tsx`: when `NEXT_PUBLIC_DISABLE_AUTH=true`, treat as authenticated with mock user
-> - `docs/runbooks/LOCAL_DEV_AUTH.md`: usage and session persistence
-
----
-
-### Manual Verification
-
-Copy from the planning file. Exact commands and expected outcomes.
-
-*Example:*
-> - `uv run pytest tests/feeds/test_feed_generator.py -v` — all pass
-> - `curl -s http://localhost:8000/v1/simulations/feed-algorithms` — returns 200 with `[{"id":"chronological",...}]`
-> - `POST /v1/simulations/run` with `{"feed_algorithm": "invalid"}` — returns 422
-
-For deploy-related PRs, add live URLs:
-> - Health: https://app.example.com/health → `{"status":"ok"}`
-
----
-
-## UI changes: State (Before) / State (After)
-
-Include before and after screenshots from `docs/plans/<folder>/images/before/` and `docs/plans/<folder>/images/after/`.
-
-*Example:*
-```markdown
-## State (Before)
-
-![Sign-in required](docs/plans/2026-02-20_auth_phase1_gate_app_382915/images/before/sign_in_prompt.png)
-
-## State (After)
-
-![Authenticated sidebar](docs/plans/2026-02-20_auth_phase1_gate_app_382915/images/after/sidebar_user.png)
+### State (Before) / State (After)
+(UI only)
 ```
-
-Or reference the folder: `Screenshots: docs/plans/2026-02-20_auth_phase1_gate_app_382915/`
-
-If you don't have these pictures, prompt the user for further instruction.
-
----
-
-## Optional: Target structure
-
-For refactors, show new layout in a code block.
-```text
-feeds/
-├── algorithms/
-│   ├── registry.py
-│   └── implementations/chronological.py
-└── feed_generator.py
-```
-
----
-
-## Reference PRs
-
-Example PRs that follow these conventions:
-
-| PR | Title | Notes |
-|----|-------|-------|
-| [96](https://github.com/METResearchGroup/social_agent_simulation_platform/pull/96) | Add OAuth with Supabase | Overview, verification screenshots |
-| [98](https://github.com/METResearchGroup/social_agent_simulation_platform/pull/98) | Disable auth during local dev | Problem/Solution/Changes, screenshots path |
-| [92](https://github.com/METResearchGroup/social_agent_simulation_platform/pull/92) | Migrate feed ranking algorithms to a registry pattern | Happy Flow, Target Structure, Manual Verification |
-| [93](https://github.com/METResearchGroup/social_agent_simulation_platform/pull/93) | Add slowapi rate limiter on POST endpoints | Solution, implementation details |
-| [95](https://github.com/METResearchGroup/social_agent_simulation_platform/pull/95) | Update docker remove nonroot user | Problem with error, Verification with live URLs |
-| [97](https://github.com/METResearchGroup/social_agent_simulation_platform/pull/97) | Add stronger feed algorithm typing and contracts | Happy Flow, minimal |
-
----
 
 ## Constraints
 
-- Do not skip required sections. Use placeholders or "N/A" only when truly inapplicable.
-- When a planning file exists, copy Overview, Happy Flow, Data Flow, Manual Verification from it.
-- If UI screenshots are missing, prompt the user for instruction.
+- Always produce Layer 0. Never skip Problem, Solution, or Manual Verification.
+- Never add empty sections or "N/A" placeholders.
+- Never require Overview, Happy Flow, or Data Flow as always-on PR headings (data-flow *content* belongs under Details when the data gate fires).
+- Path-changing gates (multi-step, data, backend) require narrative + mermaid(s) per their reference files; existing paths need Before and After.
+- Experimental PRs under `experiments/` require the results summary + table per [references/experimental.md](references/experimental.md); do not invent metrics.
+- If UI screenshots are required and missing, prompt the user; do not invent image paths.
+
+## Additional resources
+
+- Multi-step: [references/layer-1-details.md](references/layer-1-details.md)
+- Data: [references/data-flow.md](references/data-flow.md)
+- Backend: [references/backend-flow.md](references/backend-flow.md)
+- Experimental: [references/experimental.md](references/experimental.md)
+- UI screenshots: [references/ui-screenshots.md](references/ui-screenshots.md)
+- Final checklist: [checklist.md](checklist.md)
+- Canonical rules twin: `agents/task_instructions/rules/HOW_TO_WRITE_PR.md`
