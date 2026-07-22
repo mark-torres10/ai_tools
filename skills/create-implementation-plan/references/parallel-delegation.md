@@ -1,19 +1,28 @@
-# Parallel Delegation Reference
+# Parallel Delegation Reference (Approach A)
 
-Apply in Phase 3 when splitting work into serial vs parallel tasks.
+Apply when the **parallel / multi-agent** gate or **heavy contracts** gate fires (Phase 2).
 
-## Parallel-first delegation (mandatory)
+**Artifact placement (mandatory):**
 
-Plans must be optimized for maximum safely delegable parallel execution.
+| Content | File |
+|---------|------|
+| Full Interface / Contract Freeze | `contracts.md` at plan asset root |
+| Serial Coordination Spine | `spine.md` at plan asset root |
+| Each parallel task packet (14 fields) | `packets/T<n>_<slug>.md` |
+| Tasks (in order) table | **Index in `plan.md` only** (ID \| Task description \| File) |
 
-This is a hard requirement:
+`plan.md` must **not** contain full packet bodies, frozen-symbol lists, or spine task lines. It points at `contracts.md` / `spine.md` and lists tasks in execution order (ID → one-sentence description → detail file link).
 
-- Minimize the serial coordination path.
-- Maximize the amount of work split into safe parallel tasks.
-- Do not delegate any task that could plausibly be misunderstood by a small, weak, distilled coding agent.
-- If a task cannot be specified unambiguously enough to survive delegation without clarifying questions, it must remain in the serial coordination spine.
+## Parallel-first delegation (mandatory when gate fires)
 
-Prefer decomposition by stable ownership boundaries such as:
+Plans must maximize safely delegable parallel execution:
+
+- Minimize the serial coordination path (`spine.md`).
+- Maximize safe parallel tasks (`packets/`).
+- Do not delegate any task a weak coding agent could misread.
+- If a task cannot be specified unambiguously, keep it on the serial spine.
+
+Prefer decomposition by stable ownership:
 
 - schema or contract work
 - backend handler or service work
@@ -22,59 +31,133 @@ Prefer decomposition by stable ownership boundaries such as:
 - docs or migration follow-up
 - runbook updates under `docs/runbooks/` (one file per parallel task when possible)
 
-Do not split work across parallel tasks if they would share ownership of the same file unless the plan explicitly keeps that file in the serial coordinator track.
+Do not share ownership of the same file across parallel packets unless that file stays on the serial spine.
 
-## Parallel task packet format (mandatory)
+## Heavy contracts only
 
-Each delegated task must include all of the following:
+If shared schemas/APIs must freeze but work does **not** safely split:
 
-- **Task ID**
-- **One-sentence objective**
-- **Why this task is parallelizable**
-- **Exact files to inspect**
-- **Exact files allowed to change**
-- **Exact files forbidden to change**
-- **Preconditions**
-- **Dependency tasks**
-- **Required contracts and invariants**
-- **Step-by-step implementation instructions**
-- **Exact verification commands**
-- **Expected outputs from verification**
-- **Done-when checklist**
-- **Coordinator review checklist**
+- Write `contracts.md` only.
+- Skip `spine.md` and `packets/` unless the parallel gate also fires.
+- `plan.md` includes a short pointer to `contracts.md` (no frozen-symbol list).
 
-If any one of these fields is missing, the task is not safe to delegate and must not appear under Parallel Task Packets.
+## Parallel task packet format (mandatory — 14 fields)
+
+Each `packets/T<n>_<slug>.md` must include **all** of:
+
+1. **Task ID**
+2. **One-sentence objective**
+3. **Why this task is parallelizable**
+4. **Exact files to inspect**
+5. **Exact files allowed to change**
+6. **Exact files forbidden to change**
+7. **Preconditions**
+8. **Dependency tasks**
+9. **Required contracts and invariants** (point at `contracts.md` symbols by name)
+10. **Step-by-step implementation instructions**
+11. **Exact verification commands**
+12. **Expected outputs from verification**
+13. **Done-when checklist**
+14. **Coordinator review checklist**
+
+If any field is missing, the packet is unsafe—rewrite or move the work to `spine.md`.
+
+### Suggested packet file skeleton
+
+```markdown
+# T1 — <slug>
+
+## Task ID
+T1
+
+## One-sentence objective
+…
+
+## Why this task is parallelizable
+…
+
+## Exact files to inspect
+- `path/to/file.py`
+
+## Exact files allowed to change
+- `path/to/file.py`
+
+## Exact files forbidden to change
+- `path/to/other.py`
+
+## Preconditions
+- …
+
+## Dependency tasks
+- None | T0, …
+
+## Required contracts and invariants
+- See `contracts.md`: `SymbolName`, …
+
+## Step-by-step implementation instructions
+1. …
+
+## Exact verification commands
+```bash
+uv run pytest path/to/test.py -q
+```
+
+## Expected outputs from verification
+```text
+…
+```
+
+## Done-when checklist
+- [ ] …
+
+## Coordinator review checklist
+- [ ] …
+```
+
+## `spine.md` (short, ordered)
+
+List only serial coordination work: freeze, shared-file edits, integration glue. Keep each spine item shorter than a full packet; if a spine item grows to 14-field rigor, consider whether it should be a packet after a prior freeze.
+
+## `contracts.md`
+
+Exact shared interfaces, schemas, types, endpoints, props, DB contracts, or invariants that must be fixed before parallel work. Name symbols agents can grep. Prefer examples or signature sketches over prose.
 
 ## Delegation validity test (mandatory)
 
-Before finalizing the plan, apply this test to every delegated task:
+Before finalizing, apply to every packet:
 
-1. Could a weak coding agent execute this task without asking a question?
-2. Could another agent execute a sibling task in parallel without file ownership conflict?
-3. Could the coordinator verify this task in isolation?
-4. Would two different agents likely make the same change from this description?
+1. Could a weak coding agent execute this without asking a question?
+2. Could another agent run a sibling packet in parallel without file ownership conflict?
+3. Could the coordinator verify this packet in isolation?
+4. Would two agents likely make the same change from this description?
 
-If the answer to any question is "no", rewrite the task or move it out of parallel execution.
+If any answer is "no", rewrite the packet or move it to `spine.md`.
 
-## Anti-patterns to avoid
+## `plan.md` index requirements (when parallel gate fires)
 
-- Vague task descriptions
-- Missing file paths
-- Incomplete code snippets
-- Implementation before tests
-- No verification steps
-- Assuming context
-- Delegated tasks with ambiguous scope or ownership
-- Shared ownership of the same file across parallel tasks
-- "As needed", "etc.", or "follow the existing pattern" without naming the exact reference file or symbol
-- Verification steps that rely on unfinished parallel work
-- Any delegated step that requires hidden intent or unstated judgment
+In Layer 0 only:
 
-## Phase 3 gate
+- Short **contracts** pointer → `[contracts.md](contracts.md)` (no symbol lists)
+- Short **spine** pointer → `[spine.md](spine.md)` (no task lines)
+- **Tasks (in order)** table: ID | Task description | File — covers spine steps and packets in execution/integration order (no separate Integration order section)
 
-Do not proceed to Phase 4 until:
+## Anti-patterns
 
-- [ ] Serial Coordination Spine, Interface or Contract Freeze, Parallel Task Packets, Integration Order, and Final Verification are present.
-- [ ] Every delegated task includes all packet fields.
-- [ ] Every delegated task passes the validity test.
-- [ ] Runbook parallel tasks (if any) have exclusive `docs/runbooks/` file ownership and land after contract freeze in Integration Order.
+- Inlining full packets into `plan.md`
+- Vague task descriptions; missing file paths; incomplete snippets
+- Implementation before tests in packet steps
+- No verification steps; assuming context
+- Shared file ownership across parallel packets
+- "As needed", "etc.", or "follow the existing pattern" without naming the reference file/symbol
+- Verification that depends on unfinished sibling packets
+- Empty `contracts.md` / `spine.md` / packet stubs
+
+## Phase gate (parallel / contracts)
+
+Do not proceed to Phase 3 assembly until:
+
+- [ ] If parallel gate: `contracts.md`, `spine.md`, and every `packets/T*.md` exist
+- [ ] If heavy-contracts only: `contracts.md` exists
+- [ ] Every packet includes all 14 fields and passes the validity test
+- [ ] Runbook parallel packets (if any) have exclusive `docs/runbooks/` ownership and appear after contract freeze in the Tasks (in order) table
+- [ ] Nothing required above was stuffed into `plan.md` as a full dump
