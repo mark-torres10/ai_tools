@@ -15,7 +15,7 @@ metadata:
 
 # Write PR Description
 
-Draft a PR description for one of: **experiment**, **feature**, **bug**, or **default**. This skill is the single source of truth for PR bodies—read the matching type pack and follow it. Do not invent a hybrid outline.
+Draft a PR description. This skill is the single source of truth for PR bodies—read the matching type pack and follow it. Do not invent a hybrid outline.
 
 ## Workflow
 
