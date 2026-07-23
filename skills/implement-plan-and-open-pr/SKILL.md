@@ -1,6 +1,6 @@
 ---
 name: implement-plan-and-open-pr
-description: Implements an existing implementation plan to completion, verifies the result, creates a pull request using the local create-pr skill, and returns the PR URL. Use only when the user explicitly asks to execute a plan end-to-end, open a PR, and provide the link.
+description: Implements an existing implementation plan to completion, verifies the result, creates a pull request using write-pr-description for the PR body, and returns the PR URL. Use only when the user explicitly asks to execute a plan end-to-end, open a PR, and provide the link.
 disable-model-invocation: true
 metadata:
   owner: mark
@@ -27,7 +27,7 @@ Do not use this skill unless the user explicitly asked for the full implementati
 - The user provides a plan and asks to implement it to completion.
 - The user asks to execute a plan created earlier in `docs/plans/...`.
 - The user wants the final deliverable to be an open PR and a returned PR URL.
-- The user expects the existing `create-pr` skill to be used for the PR title/body.
+- The user expects `write-pr-description` to be used for the PR title/body.
 
 ## Do Not Use
 
@@ -46,12 +46,12 @@ Resolve the `ai_tools` root in this order:
 Required files:
 
 - Plan source: user-provided path, or an explicitly referenced file in `docs/plans/...`
-- PR skill: `<ai_tools_root>/skills/create-pr/SKILL.md`
+- PR skill: `<ai_tools_root>/skills/write-pr-description/SKILL.md`
 - Planning skill: `<ai_tools_root>/skills/create-implementation-plan/SKILL.md`
 
 If the plan path is ambiguous, stop and ask the user to identify the exact plan file.
 
-If `create-pr` is missing, stop and ask the user how to proceed. Do not improvise a different PR format when this skill is expected.
+If `write-pr-description` is missing, stop and ask the user how to proceed. Do not improvise a different PR format when this skill is expected.
 
 ## Preconditions
 
@@ -92,7 +92,7 @@ If any precondition fails, stop and ask instead of guessing.
    - contracts and invariants
    - verification commands
    - screenshot requirements
-3. Read `skills/create-pr/SKILL.md` so the PR description uses the project's required format.
+3. Read `skills/write-pr-description/SKILL.md` so the PR description uses the project's required format.
 4. Inspect the current git state.
 5. If currently on `main` or `master`, create a feature branch named from the plan descriptor.
 6. If the plan includes UI work and before screenshots are missing, capture them before editing.
@@ -104,9 +104,11 @@ If any precondition fails, stop and ask instead of guessing.
 10. Review the final diff to ensure the implemented changes match the plan.
 11. Stage only the relevant files.
 12. Create the commit.
-13. Draft the PR title and body by applying `create-pr`:
-   - copy `Overview`, `Happy Flow`, `Data Flow`, and `Manual Verification` from the plan when required by that skill
-   - fill in `Problem / motivation`, `Solution`, and `Changes` from the actual implementation
+13. Draft the PR title and body by applying `write-pr-description`:
+   - classify the PR as experiment, feature, bug, or default
+   - read the matching type guide (and template when present)
+   - mine the plan and final diff for facts; follow that type's outline
+   - omit empty or N/A sections
 14. Push the branch.
 15. Open the PR.
 16. Return:
@@ -129,11 +131,11 @@ The change is not complete until all of the following are true:
 
 ## PR Creation Rules
 
-Use the repository's existing PR-writing workflow from `skills/create-pr/SKILL.md`.
+Use the repository's PR-writing workflow from `skills/write-pr-description/SKILL.md`.
 
 Do not invent a new PR structure if that file is available.
 
-If the plan has a matching asset folder in `docs/plans/...`, include screenshot paths or references exactly as required by `create-pr`.
+If the plan has a matching asset folder in `docs/plans/...` with UI screenshots, include those paths in the PR body when the type guide or verification section calls for them.
 
 ## Stop Conditions
 
@@ -144,7 +146,7 @@ Stop and ask the user if any of the following occurs:
 - Required local services or credentials are unavailable.
 - The git worktree contains conflicting unrelated edits in files the plan requires changing.
 - The PR cannot be opened because authentication, remote permissions, or branch protection prevent it.
-- The `create-pr` skill is missing or clearly incompatible with the current repo workflow.
+- The `write-pr-description` skill is missing or clearly incompatible with the current repo workflow.
 
 ## Final Response Format
 
@@ -161,4 +163,3 @@ If blocked before PR creation, return:
 - what was completed
 - the exact blocking condition
 - the next action required from the user
-
