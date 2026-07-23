@@ -230,3 +230,7 @@ Verify that:
 - Required services are mentioned.
 - Paths assume a clear working directory.
 - Examples use good placeholder values.
+
+### 7. Screenshots
+
+For UI changes or for backend changes whose terminal output can be verified, add a "Screenshots" section. Insert a .png of the change before and after the change. For terminal changes, take a screenshot of the results from running the commands.
