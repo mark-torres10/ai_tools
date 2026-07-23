@@ -61,10 +61,10 @@ Before making changes, confirm all of the following:
 - The exact plan file is known.
 - The plan contains enough specificity to implement safely:
   - Overview
-  - Happy Flow
-  - Manual Verification
-  - exact file paths or exact components to inspect
-  - exact verification commands or exact manual checks
+  - Happy flow
+  - What "done" looks like
+  - `steps/stepN.md` files (or equivalent detail) with exact file paths to inspect/change/forbid
+  - exact verification commands or exact pass/fail checks per step
 - Any required credentials or local tooling needed for verification are available.
 - If the plan includes UI work and before screenshots are required, they already exist or can be captured before the first code edit.
 
