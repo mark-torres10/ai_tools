@@ -10,17 +10,9 @@ metadata:
 
 # Implement Plan And Open PR
 
-Execute a previously written implementation plan end-to-end.
+Execute a plan end-to-end.
 
-This skill is for high-side-effect work:
-- code edits
-- test and build execution
-- branch creation
-- commits
-- push
-- PR creation
-
-Do not use this skill unless the user explicitly asked for the full implementation + PR workflow.
+Do not use this skill unless the user explicitly asked for the full implementation + PR workflow and explicitly cites it.
 
 ## When to Use
 
@@ -36,45 +28,21 @@ Do not use this skill unless the user explicitly asked for the full implementati
 - Do not use when the plan is ambiguous or incomplete.
 - Do not use when the repo is in a conflicting dirty state and the relevant files already contain unrelated user changes that would be risky to touch.
 
-## Path Discovery
-
-Resolve the `ai_tools` root in this order:
-
-1. Check for `./ai_tools/` in the workspace root.
-2. Otherwise use `/Users/mark/Documents/projects/ai_tools/`.
-
-Required files:
-
-- Plan source: user-provided path, or an explicitly referenced file in `docs/plans/...`
-- PR skill: `<ai_tools_root>/skills/write-pr-description/SKILL.md`
-- Planning skill: `<ai_tools_root>/skills/create-implementation-plan/SKILL.md`
-
-If the plan path is ambiguous, stop and ask the user to identify the exact plan file.
-
-If `write-pr-description` is missing, stop and ask the user how to proceed. Do not improvise a different PR format when this skill is expected.
-
-## Preconditions
+## Setup
 
 Before making changes, confirm all of the following:
 
 - The user explicitly asked for implementation plus PR creation.
 - The exact plan file is known.
-- The plan contains enough specificity to implement safely:
-  - Overview
-  - Happy flow
-  - What "done" looks like
-  - `steps/stepN.md` files (or equivalent detail) with exact file paths to inspect/change/forbid
-  - exact verification commands or exact pass/fail checks per step
+- The plan contains enough specificity to implement.
 - Any required credentials or local tooling needed for verification are available.
-- If the plan includes UI work and before screenshots are required, they already exist or can be captured before the first code edit.
 
-If any precondition fails, stop and ask instead of guessing.
+If any of these steps fail, stop and ask instead of guessing.
 
 ## Execution Rules
 
 - Follow the plan. Do not silently redesign it.
 - Preserve the plan's contract and invariants.
-- Prefer the plan's serial coordination spine for shared-contract work.
 - Only parallelize tasks that are clearly independent and safe.
 - Never revert unrelated user changes.
 - If unexpected unrelated changes appear in files you need to edit, stop and ask the user how to proceed.
@@ -104,18 +72,10 @@ If any precondition fails, stop and ask instead of guessing.
 10. Review the final diff to ensure the implemented changes match the plan.
 11. Stage only the relevant files.
 12. Create the commit.
-13. Draft the PR title and body by applying `write-pr-description`:
-   - classify the PR as experiment, feature, bug, or default
-   - read the matching type guide (and template when present)
-   - mine the plan and final diff for facts; follow that type's outline
-   - omit empty or N/A sections
+13. Draft the PR title and body by applying `write-pr-description`.
 14. Push the branch.
 15. Open the PR.
-16. Return:
-   - PR URL
-   - branch name
-   - verification summary
-   - any known follow-ups or residual risks
+16. Return PR URL, executive summary of what was built,verification summary, and any known follow-ups.
 
 ## Required Verification Standard
 
@@ -135,7 +95,7 @@ Use the repository's PR-writing workflow from `skills/write-pr-description/SKILL
 
 Do not invent a new PR structure if that file is available.
 
-If the plan has a matching asset folder in `docs/plans/...` with UI screenshots, include those paths in the PR body when the type guide or verification section calls for them.
+If the plan has a matching asset folder in `docs/plans/...`, include those paths in the PR body when the type guide or verification section calls for them.
 
 ## Stop Conditions
 
@@ -146,7 +106,6 @@ Stop and ask the user if any of the following occurs:
 - Required local services or credentials are unavailable.
 - The git worktree contains conflicting unrelated edits in files the plan requires changing.
 - The PR cannot be opened because authentication, remote permissions, or branch protection prevent it.
-- The `write-pr-description` skill is missing or clearly incompatible with the current repo workflow.
 
 ## Final Response Format
 
