@@ -105,16 +105,128 @@ A reader should be able to answer questions like:
 
 An example:
 
-```markdown
+````markdown
+## Architecture
 
+Components:
+
+- `Export API` — validates the request, creates an export job, returns a job ID.
+- `Export Worker` — runs the query, writes CSV, uploads to S3, updates job status.
+- `Job Store` — holds job state (`pending` / `running` / `completed` / `failed`).
+- `S3` — stores the generated CSV; the worker writes a temporary download URL on completion.
+
+Existing flow:
+
+```mermaid
+flowchart LR
+  subgraph before [Before]
+    C1[Client] --> A1[Query API]
+    A1 --> Q1[Run query + build CSV]
+    Q1 --> C1
+  end
 ```
+
+New flow:
+
+```mermaid
+flowchart LR
+  subgraph after [After]
+    C2[Client] --> A2[Export API]
+    A2 --> J[Job Store]
+    A2 -.->|job_id| C2
+    W[Export Worker] --> J
+    W --> S3[(S3)]
+    C2 -->|poll status| A2
+    A2 -->|download URL| C2
+  end
+```
+````
 
 ### 5. Interfaces and contracts
 
-Document externally meaningful contracts.
+Document externally meaningful contracts. What this looks like depends on the feature, but this might include:
 
-...
+- API endpoints.
+- Request and response schemas
+- Events or queue messages
+- Database records
+- Configuration
+
+An example:
+
+```markdown
+## Interfaces
+
+### Endpoints
+
+Endpoint: `POST /exports`
+Returns: `{"query_id": "query_123", "format": "csv"}`
+
+### Job record
+
+Stored in the job store. Worker and API share this shape.
+
+- export_id
+  - Type: `string`  
+  - Notes: Primary key
+- query_id  
+  - Type: `string`  
+  - Notes: Source query
+- format  
+  - Type: `"csv"`  
+  - Notes: Extensible later
+- status  
+  - Type: `pending | running | completed | failed`
+- s3_key  
+  - Type: `string | null`  
+  - Notes: Set on success
+- error  
+  - Type: `string | null`  
+  - Notes: Set on failure
+
+### Queue message
+
+Published when an export is created. Consumed by the export worker.
+
+{
+  "export_id": "exp_456",
+  "query_id": "query_123",
+  "format": "csv",
+  "requested_at": "2026-07-23T17:00:00Z"
+}
+
+### Configuration
+
+Key configuration variables:
+
+- EXPORT_BUCKET: Bucket containing generated exports.
+- EXPORT_TTL_HOURS: Export retention period. Defaults to 24 hours.
+```
 
 ### 6. How to run
 
-...
+Provide a terse, simple list of commands to run the feature.
+
+An example:
+
+````markdown
+## How to run
+
+```bash
+docker compose up api worker
+```
+
+```bash
+curl ... {curl command}
+```
+
+{Note any expected results}
+
+````
+
+Verify that:
+
+- Commands are current
+- Required services are mentioned.
+- Paths assume a clear working directory.
+- Examples use good placeholder values.
