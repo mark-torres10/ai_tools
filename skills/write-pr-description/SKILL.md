@@ -1,10 +1,11 @@
 ---
 name: write-pr-description
 description: >-
-  Writes type-specific PR descriptions for experiments, features, or bug fixes
-  using the matching guide, template, and examples under types/. Use when the
-  user asks to write a PR description, draft experiment/feature/bug PR text, or
-  refine a pull request body by PR kind.
+  Writes type-specific PR descriptions for experiments, features, bug fixes, or
+  a default catch-all using the matching guide, template, and examples under
+  types/. Use when the user asks to write a PR description, draft
+  experiment/feature/bug/default PR text, or refine a pull request body by PR
+  kind.
 disable-model-invocation: true
 metadata:
   owner: mark
@@ -14,13 +15,11 @@ metadata:
 
 # Write PR Description
 
-Draft a PR description for one of three kinds: **experiment**, **feature**, or **bug**. This skill is a router—read the matching type pack and follow it. Do not invent a hybrid outline.
-
-**Not** the Layer 0 skim format in `create-pr` (Problem / Solution / Manual Verification). Use this skill for the fuller type-specific body.
+Draft a PR description for one of: **experiment**, **feature**, **bug**, or **default**. This skill is the single source of truth for PR bodies—read the matching type pack and follow it. Do not invent a hybrid outline.
 
 ## Workflow
 
-1. **Classify** the PR as experiment, feature, or bug. If unclear, ask once.
+1. **Classify** the PR as experiment, feature, or bug when clear. If none fit, use **default**. If unclear between two specific kinds, ask once.
 2. **Read** that type's `guide.md` (required).
 3. **Read** `template.md` when present (scaffold).
 4. **Skim** 1–2 examples only if the shape or tone is unclear.
@@ -29,8 +28,8 @@ Draft a PR description for one of three kinds: **experiment**, **feature**, or *
 
 ## Shared rules
 
-- Summary and Purpose may be a bit fuller; keep every other section terse.
-- Terse, professional, present tense. Short sentences. No filler. Minimal bolding.
+- Summary and Purpose may be a bit fuller (for default: Problem / Purpose); keep every other section terse.
+- Terse, professional, present tense. Short sentences. No filler. Minimal bolding. Executive-style McKinsey-style direct communication.
 - Describe behavior and outcomes, not a file changelog or stale implementation detail.
 - Audience: engineers (or researchers for experiments) who know the project broadly but not this change.
 
@@ -43,5 +42,6 @@ Resolve paths relative to this `SKILL.md`.
 | Experiment | Ablations, comparisons, evals, research trials | [types/experiments/guide.md](types/experiments/guide.md) | [types/experiments/template.md](types/experiments/template.md) | [types/experiments/examples/](types/experiments/examples/) |
 | Feature | New capability or behavior | [types/feature/guide.md](types/feature/guide.md) | [types/feature/template.md](types/feature/template.md) | [types/feature/examples/](types/feature/examples/) |
 | Bug | Defect fix; broken → corrected behavior | [types/bugs/guide.md](types/bugs/guide.md) | — | [types/bugs/examples/](types/bugs/examples/) |
+| Default | Catch-all when no other type fits (refactors, chores, infra, docs, deps, …) | [types/default/guide.md](types/default/guide.md) | — | — |
 
 Type index: [types/README.md](types/README.md)

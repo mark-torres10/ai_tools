@@ -16,9 +16,8 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **create-implementation-plan** | Phase-gated implementation plans (`PLANNING_RULES`, runbooks, parallel delegation, UI screenshots). Reference files under `skills/create-implementation-plan/`. Agent can auto-apply. |
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
 | **review-security** | Instructs the agent to apply code-security (Semgrep) and security-best-practices (OpenAI). Requires both installed. Slash-only. |
-| **create-pr** | PR descriptions for human reviewers: Layer 0 skim (Problem/Solution/Manual Verification), gated Details (multi-step, data, backend, experimental, UI). Slash-only. Refs under `skills/create-pr/`. |
-| **write-pr-description** | Type-specific PR bodies for experiments, features, or bugs (guide/template/examples under `types/`). Slash-only. Router skill; detail lives in type packs. |
-| **write-pr-description** | Type-specific PR bodies for experiments, features, or bugs (guide/template/examples under `types/`). Slash-only. Router skill; detail lives in type packs. |
+| **write-pr-description** | Type-specific PR bodies for experiments, features, bugs, or default (guide/template/examples under `types/`). Slash-only. Single source of truth for PR descriptions. |
+| **implement-plan-and-open-pr** | Execute a plan end-to-end, verify, open a PR using `write-pr-description`, return the URL. Slash-only. |
 | **refactor-service** | Diagnose a microservice or pipeline, then plan a behavior-preserving refactor (modularity, tests, ruff/pyright, runbooks, READMEs). Planning only. Slash-only. |
 | **fix-ci** | Find or use a PR, triage failing checks, reproduce locally, fix, commit, push, and summarize. Slash-only. |
 | **handoff** | End-of-session handoff generator that writes `handoff.md` with PR link, done summary, remaining to-dos, and last left off. |
