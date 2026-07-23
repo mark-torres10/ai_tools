@@ -28,7 +28,7 @@ Diagnose an existing microservice-level or pipeline-level code area, then produc
 
 ## Relationship to `create-implementation-plan`
 
-Use `create-implementation-plan` for the final plan scaffold, asset location rules, manual verification structure, and parallel task packet rules. Do not duplicate those instructions here.
+Use `create-implementation-plan` for the final plan scaffold (`plan.md` + `steps/`), asset location rules, and done criteria. Do not duplicate those instructions here.
 
 This skill contributes the service-refactor-specific diagnosis and planning content that should be inserted into that plan:
 

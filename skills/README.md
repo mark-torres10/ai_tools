@@ -13,7 +13,7 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **review-rules** | Review current work against `agents/task_instructions/rules/`. Slash-only. |
 | **review-for-simplicity** | Review plans, proposals, and diffs for unnecessary complexity, premature abstraction, and unverified assumptions. Slash-only. |
 | **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
-| **create-implementation-plan** | Phase-gated implementation plans (`PLANNING_RULES`, runbooks, parallel delegation, UI screenshots). Reference files under `skills/create-implementation-plan/`. Agent can auto-apply. |
+| **create-implementation-plan** | Draft-then-confirm implementation plans (`plan.md` router + `steps/`), then expand step details via `implement-from-spec`. Examples under `skills/create-implementation-plan/examples/`. Agent can auto-apply. |
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
 | **review-security** | Instructs the agent to apply code-security (Semgrep) and security-best-practices (OpenAI). Requires both installed. Slash-only. |
 | **write-pr-description** | Type-specific PR bodies for experiments, features, bugs, or default (guide/template/examples under `types/`). Slash-only. Single source of truth for PR descriptions. |
