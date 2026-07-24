@@ -161,4 +161,33 @@ def test_complex_business_logic(self):
     # Test implementation
 ```
 
-... Add more examples
+```python
+class TestCalculateDiscount:
+    """Tests for calculate_discount()."""
+```
+
+```python
+def test_applies_percentage_to_subtotal(self):
+    """Verifies the discount percentage is applied to the subtotal."""
+    # Test implementation
+```
+
+```python
+@pytest.mark.parametrize(
+    "subtotal,rate,expected",
+    [
+        (100.0, 0.10, 90.0),  # 10% off
+        (50.0, 0.0, 50.0),  # no discount
+        (200.0, 1.0, 0.0),  # 100% off
+    ],
+)
+def test_discount_rates(self, subtotal, rate, expected):
+    """Verifies calculate_discount for common rate cases.
+
+    Parameters:
+        subtotal: Pre-discount amount
+        rate: Discount rate in [0.0, 1.0]
+        expected: Amount after discount
+    """
+    # Test implementation
+```
