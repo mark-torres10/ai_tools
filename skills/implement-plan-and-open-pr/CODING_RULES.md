@@ -7,6 +7,27 @@
 - Interface Segregation: Define narrow, focused interfaces rather than monolithic ones
 - Composition over Inheritance: Favor composition to avoid deep inheritance hierarchies
 - Keep changes narrowly scoped: When updating an existing file, make only minimal changes, emphasizing changes that are directly related to your purpose for refactoring that file.
+- Abstraction levels should be consistent within a function: A function should either coordinate high-level operations or implement low-level details, but should not mix both. Extract low-level parsing, serialization, validation, or database operations into focused helpers.
+
+Bad:
+
+```python
+def generate_report(report_id: str) -> Report:
+  connection = psycopg.connect(DATABASE_URL)
+  cursor = connection.cursor()
+  cursor.execute("SELECT payload FROM reports WHERE id = %s", (report_id,))
+  raw_payload = cursor.fetchone()[0]
+  parsed_payload = json.loads(raw_payload)
+  return render_report(parsed_payload)
+```
+
+Good:
+
+```python
+def generate_report(report_id: str) -> Report:
+  report_data = load_report_data(report_id)
+  return render_report(report_data)
+```
 
 ## Database & Data Management
 
@@ -22,136 +43,24 @@
 
 - Meaningful Names: Variables and functions should be self-documenting
 
-Bad:
-
-...
-
-Good:
-
-...
+| Original name              | Why it's bad                                                                               | Suggested replacement          | Why it's better                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------------- |
+| `data` (variable)          | Too generic; it doesn't communicate what the data represents.                              | `customer_records`             | Describes both the contents and the domain, making the code self-documenting.               |
+| `temp` (variable)          | Indicates a temporary value but not its purpose or meaning.                                | `normalized_text`              | Explains what transformation the value represents.                                          |
+| `x` (variable)             | Single-letter names are hard to follow outside of short mathematical contexts.             | `retry_count`                  | Clearly communicates the variable's role.                                                   |
+| `stuff` (variable)         | Vague catch-all name that forces readers to inspect the implementation.                    | `pending_jobs`                 | Makes the contents and intent immediately obvious.                                          |
+| `flag` (variable)          | Doesn't indicate what condition the boolean is tracking.                                   | `is_authenticated`             | Boolean naming makes the condition explicit and naturally readable.                         |
+| `do_it()` (function)       | Gives no clue about what action the function performs.                                     | `process_uploaded_files()`     | Clearly describes the operation and the object being acted upon.                            |
+| `handle_data()` (function) | "Handle" is an overloaded verb that could mean almost anything.                            | `validate_user_profile()`      | Uses a specific verb and object to describe the function's responsibility.                  |
+| `get_info()` (function)    | "Info" is ambiguous and doesn't reveal what is being retrieved.                            | `fetch_weather_forecast()`     | Identifies both the source action and the returned data.                                    |
+| `process()` (function)     | Generic verbs hide the actual behavior and often indicate too many responsibilities.       | `generate_monthly_report()`    | Specifies the concrete outcome of the function.                                             |
+| `run()` (function)         | Meaning depends entirely on surrounding context and becomes confusing in larger codebases. | `train_recommendation_model()` | States exactly what operation is being executed, improving readability and discoverability. |
 
 - Function Length: Keep functions under 20 lines, methods under 50
 
 - Cyclomatic Complexity: Maximum complexity of 10 per function. For Python, enforce with `radon`, and for other libraries, enforce with the appropriate package.
 
 - No magic numbers or literal values: Use named constants for all literal values
-
-- Early Returns: Reduce nesting with guard clauses and early returns
-
-- Type Hints: All public APIs must have complete type annotations
-
-- Avoid excessive nullability: parameters should be strictly required by default unless it would break existing functionality. By default, make parameters required and not nullable. Avoid default behavior within a function.
-
-Bad:
-
-```python
-def foo(total_values: int | None):
-  n = total_values or NUMBER_OF_VALUES
-```
-
-Good:
-
-```python
-def foo(total_values: int):
-  n = total_values
-```
-
-- Avoid "God" functions that take a variety of arguments. Parameters for a function should be explicitly required for the unit of work that the function does. If you must have a container, err on the side of creating container classes for the arguments.
-
-Bad:
-
-```python
-def main(
-  user_ids: list[str],
-  input_path: str,
-  output_path: str,
-  prompt: str,
-  llm_model_name: str,
-  temperature: float,
-  enable_tracing: bool,
-  tracing_provider: str,
-  save_to_db: bool,
-  app_db_backend: AppDbBackend,
-  memory_db_backend: MemoryDbBackend,
-  checkpointer_backend: CheckpointerBackend,
-)
-```
-
-Good:
-
-```python
-class LLMConfig:
-  llm_model_name: str
-  temperature: float
-
-class TelemetrySettings:
-  enable_tracing: bool,
-  tracing_provider: str
-
-class DbSettings:
-  app_db_backend: AppDbBackend,
-  memory_db_backend: MemoryDbBackend,
-  checkpointer_backend: CheckpointerBackend,
-  input_path: str,
-  output_path: str,
-  save_to_db: bool
-
-def main(
-  user_ids: list[str],
-  llm_config: LLMConfig,
-  telemetry_settings: TelemetrySettings,
-  db_settings: DbSettings
-)
-```
-
-- Default constants should only be used by the highest-level caller for a function.
-
-Bad:
-
-```python
-NUMBER_OF_VALUES = 1
-
-def foo(total_values: int | None):
-  n = total_values or NUMBER_OF_VALUES
-
-def main():
-  foo()
-```
-
-Good:
-
-```python
-NUMBER_OF_VALUES = 1
-
-def foo(total_values: int):
-  n = total_values
-
-def main():
-  foo(NUMBER_OF_VALUES)
-```
-
-Avoid excessive use of `*` in parameter signatures. This is noisy and doesn't help downstream callers.
-
-Bad:
-
-```python
-def _resolve_active_model_id(
-    *,
-    provider: str,
-    bedrock_model_id: str,
-    openai_model_id: str,
-) -> str:
-```
-
-Good:
-
-```python
-def _resolve_active_model_id(
-    provider: str,
-    bedrock_model_id: str,
-    openai_model_id: str,
-) -> str:
-```
 
 - Avoid excessive if/else usage and use a registry pattern when there are >= 3 options.
 
@@ -261,6 +170,220 @@ def load_llm_config(*, config_path: Path) -> LlmConfig:
         raw = yaml.safe_load(handle)
 
     config_values: dict = _return_validated_llm_config_values(raw)
+```
+
+- Make state changes explicit: Avoid in-place mutation. Avoid functions that silently mutate arguments or shared module-level state. Prefer returning a new value or making the mtutation clear through the function name and return type.
+
+Bad:
+
+```python
+def normalize(records: list[Record]) -> None:
+  for record in records:
+    record.name = record.name.strip().lower()
+```
+
+Good:
+
+```python
+def normalize_records(records: list[Record]) -> list[Record]:
+  return [
+    replace(record, name=record.name.strip().lower())
+    for record in records
+  ]
+```
+
+### Data models
+
+- Prefer explicit data models over unstructured dictionaries. Avoid unstructured dictionaries at all cost. Use `dataclass`, `Pydantic`, or `TypedDict`, when data has a known schema. Reserve `dict[str, Any]` for truly dynamic data (err on the side of assuming it's not truly dynamic).
+
+Bad:
+
+```python
+def process_user(user: dict[str, Object]) -> str:
+  return str(user["email"])
+```
+
+Good:
+
+```python
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class User:
+  email: str
+
+def get_user_email(user: User) -> str:
+  return user.email
+```
+
+- Enums Over String/Bool Literals: Use Enum for any fixed, known set of values instead of raw strings or booleans, to get type safety and autocomplete.
+
+Bad:
+
+```python
+def get_chat_model(provider: str) -> ChatModel:
+    if provider == "bedrock":
+        ...
+```
+
+Good:
+
+```python
+class LlmProvider(str, Enum):
+    BEDROCK = "bedrock"
+    GEMINI = "gemini"
+    OPENAI = "openai"
+
+def get_chat_model(provider: LlmProvider) -> ChatModel:
+    if provider is LlmProvider.BEDROCK:
+        ...
+```
+
+- Named Tuples/Enums Over Positional Tuple Returns: Avoid returning bare tuples for multi-value returns; use a NamedTuple, dataclass, or small return type so callers don't have to guess positional order.
+
+Bad:
+
+```python
+def get_model_settings() -> tuple[str, float, bool]:
+    return "bedrock", 0.7, True
+
+provider, temp, tracing = get_model_settings()  # order-dependent, error-prone
+```
+
+Good:
+
+```python
+class ModelSettings(NamedTuple):
+    provider: str
+    temperature: float
+    enable_tracing: bool
+
+def get_model_settings() -> ModelSettings:
+    return ModelSettings(provider="bedrock", temperature=0.7, enable_tracing=True)
+
+settings = get_model_settings()
+print(settings.temperature)  # self-documenting access
+```
+
+### Arguments, parameters, and return signatures
+
+- Early Returns: Reduce nesting with guard clauses and early returns
+
+- Type Hints: All public APIs must have complete type annotations
+
+- Avoid excessive nullability: parameters should be strictly required by default unless it would break existing functionality. By default, make parameters required and not nullable. Avoid default behavior within a function.
+
+Bad:
+
+```python
+def foo(total_values: int | None):
+  n = total_values or NUMBER_OF_VALUES
+```
+
+Good:
+
+```python
+def foo(total_values: int):
+  n = total_values
+```
+
+- Avoid "God" functions that take a variety of arguments. Parameters for a function should be explicitly required for the unit of work that the function does. If you must have a container, err on the side of creating container classes for the arguments.
+
+Bad:
+
+```python
+def main(
+  user_ids: list[str],
+  input_path: str,
+  output_path: str,
+  prompt: str,
+  llm_model_name: str,
+  temperature: float,
+  enable_tracing: bool,
+  tracing_provider: str,
+  save_to_db: bool,
+  app_db_backend: AppDbBackend,
+  memory_db_backend: MemoryDbBackend,
+  checkpointer_backend: CheckpointerBackend,
+)
+```
+
+Good:
+
+```python
+class LLMConfig:
+  llm_model_name: str
+  temperature: float
+
+class TelemetrySettings:
+  enable_tracing: bool,
+  tracing_provider: str
+
+class DbSettings:
+  app_db_backend: AppDbBackend,
+  memory_db_backend: MemoryDbBackend,
+  checkpointer_backend: CheckpointerBackend,
+  input_path: str,
+  output_path: str,
+  save_to_db: bool
+
+def main(
+  user_ids: list[str],
+  llm_config: LLMConfig,
+  telemetry_settings: TelemetrySettings,
+  db_settings: DbSettings
+)
+```
+
+- Default constants should only be used by the highest-level caller for a function.
+
+Bad:
+
+```python
+NUMBER_OF_VALUES = 1
+
+def foo(total_values: int | None):
+  n = total_values or NUMBER_OF_VALUES
+
+def main():
+  foo()
+```
+
+Good:
+
+```python
+NUMBER_OF_VALUES = 1
+
+def foo(total_values: int):
+  n = total_values
+
+def main():
+  foo(NUMBER_OF_VALUES)
+```
+
+- Avoid default arguments altogether where possible. Prefer callers to explicitly pass a global constant rather than having a function signature include a default argument.
+
+- Avoid excessive use of `*` in parameter signatures. This is noisy and doesn't help downstream callers.
+
+Bad:
+
+```python
+def _resolve_active_model_id(
+    *,
+    provider: str,
+    bedrock_model_id: str,
+    openai_model_id: str,
+) -> str:
+```
+
+Good:
+
+```python
+def _resolve_active_model_id(
+    provider: str,
+    bedrock_model_id: str,
+    openai_model_id: str,
+) -> str:
 ```
 
 ## Docstrings
