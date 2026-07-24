@@ -68,12 +68,79 @@ last_updated: 2026-02-17
 
 - **Meaningful Names**: Variables and functions should be self-documenting
 - **Function Length**: Keep functions under 20 lines, methods under 50
-- **Cyclomatic Complexity**: Maximum complexity of 10 per function
-- **No Magic Numbers**: Use named constants for all literal values
-- **Early Returns**: Reduce nesting with guard clauses and early returns
-- **Type Hints**: All public APIs must have complete type annotations
+
+- Cyclomatic Complexity: Maximum complexity of 10 per function. For Python, enforce with `radon`, and for other libraries, enforce with the appropriate package.
+
+- No magic numbers or literal values: Use named constants for all literal values
+
+- Early Returns: Reduce nesting with guard clauses and early returns
+
+- Type Hints: All public APIs must have complete type annotations
+
 - Avoid excessive nullability: parameters should be strictly required by default unless it would break existing functionality. By default, make parameters required and not nullable. Avoid default behavior within a function.
+
+Bad:
+
+```python
+def foo(total_values: int | None):
+  n = total_values or NUMBER_OF_VALUES
+```
+
+Good:
+
+```python
+def foo(total_values: int):
+  n = total_values
+```
+
 - Avoid "God" functions that take a variety of arguments. Parameters for a function should be explicitly required for the unit of work that the function does. If you must have a container, err on the side of creating container classes for the arguments.
+
+Bad:
+
+```python
+def main(
+  user_ids: list[str],
+  input_path: str,
+  output_path: str,
+  prompt: str,
+  llm_model_name: str,
+  temperature: float,
+  enable_tracing: bool,
+  tracing_provider: str,
+  save_to_db: bool,
+  app_db_backend: AppDbBackend,
+  memory_db_backend: MemoryDbBackend,
+  checkpointer_backend: CheckpointerBackend,
+)
+```
+
+Good:
+
+```python
+class LLMConfig:
+  llm_model_name: str
+  temperature: float
+
+class TelemetrySettings:
+  enable_tracing: bool,
+  tracing_provider: str
+
+class DbSettings:
+  app_db_backend: AppDbBackend,
+  memory_db_backend: MemoryDbBackend,
+  checkpointer_backend: CheckpointerBackend,
+  input_path: str,
+  output_path: str,
+  save_to_db: bool
+
+def main(
+  user_ids: list[str],
+  llm_config: LLMConfig,
+  telemetry_settings: TelemetrySettings,
+  db_settings: DbSettings
+)
+```
+
 - Default constants should only be used by the highest-level caller for a function.
 
 Bad:
@@ -117,8 +184,3 @@ def main():
 - **Graceful Degradation**: System should degrade gracefully under load
 - **Health Checks**: Implement comprehensive health check endpoints
 - **Metrics Collection**: Instrument critical code paths with metrics
-
-## Debugging
-
-- **Evaluate current behaviors**: Evaluate the current behaviors. Note one by one each observed behavior and if it is intended or not. Make a note of what results are incorrect and what the intended results are. Then, for the incorrect results, make an action plan of how to fix those results and include what the expected results should look like instead.
-- **Diagnose the bug and create a plan**: When asked by the user to fix the bug, propose a plan to fix it comprehensively, and propose how to create tests to ensure that the bug is fixed. Return this proposed plan before actually making any changes.
