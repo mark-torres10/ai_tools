@@ -265,6 +265,88 @@ settings = get_model_settings()
 print(settings.temperature)  # self-documenting access
 ```
 
+- Use domain-specific types when doing so would add readability without cluttering the interface.
+
+Bad:
+
+```python
+def transfer_funds(
+  source_id: str,
+  destination_id: str,
+  amount: float
+) -> None:
+  ...
+```
+
+Good:
+
+```python
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class AccountId:
+  value: str
+
+
+def transfer_funds(
+  source_account_id: AccountId,
+  destination_account_id: AccountId,
+  amount: float
+) -> None:
+  ...
+```
+
+However, this can be taken to an extreme. Avoid every single permutation of domain-specific type and only add when doing so would be tasteful for the context of work and improve future readability.
+
+For example, in the above example, we could've done:
+
+Bad (too much domain-specific typing)
+
+```python
+... # everything from before
+
+@dataclass(frozen=True)
+class Money:
+  amount: Decimal
+
+
+def transfer_funds(
+  source_account_id: AccountId,
+  destination_account_id: AccountId,
+  amount: Money
+) -> None:
+  ...
+```
+
+This would've been unnecessary. There is only 1 `amount` field, and a reader can easily infer that the float parameter is because it is a financial amount. A more useful custom type could have, for example, added validation (e.g., making sure it is >0):
+
+```python
+... # everything from before
+
+from pydantic import BaseModel, validator
+from decimal import Decimal, ROUND_DOWN
+
+class Money(BaseModel):
+    amount: Decimal
+
+    @validator("amount")
+    def validate_amount(cls, v: Decimal) -> Decimal:
+        if v <= 0:
+            raise ValueError("Amount must be greater than 0")
+        quantized = v.quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+        # Check for exactly 2 decimal places
+        if v != quantized:
+            raise ValueError("Amount must have exactly 2 decimal places")
+        return quantized
+
+def transfer_funds(
+  source_account_id: AccountId,
+  destination_account_id: AccountId,
+  amount: Money
+) -> None:
+  ...
+```
+
 ### Arguments, parameters, and return signatures
 
 - Early Returns: Reduce nesting with guard clauses and early returns
