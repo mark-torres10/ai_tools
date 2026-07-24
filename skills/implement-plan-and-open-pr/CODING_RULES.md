@@ -53,21 +53,19 @@ last_updated: 2026-02-17
 - **Migration Safety**: All schema changes must be backward compatible
 - **Prepared Statements**: Use parameterized queries to prevent SQL injection
 
-## Testing Standards
-
-- **Test Coverage**: Maintain >90% line coverage, >80% branch coverage
-- **Test Isolation**: Each test must be independent and idempotent
-- **Test Naming**: Use descriptive names that explain the scenario being tested
-- **Mock External Dependencies**: Never hit real databases/APIs in unit tests
-- **Integration Tests**: Test critical paths end-to-end with real components
-- **Property-Based Testing**: Use for complex business logic validation
-- **Testing against expected results**: Write the expected output and save it to a "expected_result" variable. Then have your assertions, where relevant, test directly against the "expected_result" to see if the content is correct. This helps with improving readability of tests.
-- **Make sure all tests can run in CI**: This means no browser requirements, no GUI access, and the like. For any UI tests, if necessary, it must be headless.
-
 ## Code Style & Readability
 
-- **Meaningful Names**: Variables and functions should be self-documenting
-- **Function Length**: Keep functions under 20 lines, methods under 50
+- Meaningful Names: Variables and functions should be self-documenting
+
+Bad:
+
+...
+
+Good:
+
+...
+
+- Function Length: Keep functions under 20 lines, methods under 50
 
 - Cyclomatic Complexity: Maximum complexity of 10 per function. For Python, enforce with `radon`, and for other libraries, enforce with the appropriate package.
 
@@ -166,6 +164,13 @@ def foo(total_values: int):
 def main():
   foo(NUMBER_OF_VALUES)
 ```
+
+## Python environment
+
+- Unless explicitly stated by the user, assume that `uv` (with `pyproject.toml`) is the default package manager.
+- Require that all code can be run from the root of the repo, via a `uv run python ...` pattern.
+- Add numpy-style docstrings.
+- In the file-level docstring, always add the relevant `uv run python ...` command.
 
 ## Performance & Scalability
 
