@@ -72,6 +72,33 @@ last_updated: 2026-02-17
 - **No Magic Numbers**: Use named constants for all literal values
 - **Early Returns**: Reduce nesting with guard clauses and early returns
 - **Type Hints**: All public APIs must have complete type annotations
+- Avoid excessive nullability: parameters should be strictly required by default unless it would break existing functionality. By default, make parameters required and not nullable. Avoid default behavior within a function.
+- Avoid "God" functions that take a variety of arguments. Parameters for a function should be explicitly required for the unit of work that the function does. If you must have a container, err on the side of creating container classes for the arguments.
+- Default constants should only be used by the highest-level caller for a function.
+
+Bad:
+
+```python
+NUMBER_OF_VALUES = 1
+
+def foo(total_values: int | None):
+  n = total_values or NUMBER_OF_VALUES
+
+def main():
+  foo()
+```
+
+Good:
+
+```python
+NUMBER_OF_VALUES = 1
+
+def foo(total_values: int):
+  n = total_values
+
+def main():
+  foo(NUMBER_OF_VALUES)
+```
 
 ## Performance & Scalability
 

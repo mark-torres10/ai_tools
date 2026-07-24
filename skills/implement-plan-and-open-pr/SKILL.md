@@ -41,7 +41,8 @@ If any of these steps fail, stop and ask instead of guessing.
 
 ## Execution Rules
 
-- Follow the plan. Do not silently redesign it.
+- Follow the plan. Do not silently redesign it. Do NOT make updates to plan.md or any step files.
+- Review CODING_RULES.md before any implementation, and make sure to follow the rules
 - Preserve the plan's contract and invariants.
 - Only parallelize tasks that are clearly independent and safe.
 - Never revert unrelated user changes.
