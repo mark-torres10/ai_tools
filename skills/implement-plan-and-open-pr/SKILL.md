@@ -76,7 +76,8 @@ If any of these steps fail, stop and ask instead of guessing.
 13. Draft the PR title and body by applying `write-pr-description`.
 14. Push the branch.
 15. Open the PR.
-16. Return PR URL, executive summary of what was built,verification summary, and any known follow-ups.
+16. Update the CHANGELOG.md, using the `write-changelog` skill. If the CHANGELOG.md file doesn't exist, create it. Then commit to the PR and push.
+17. Return PR URL, executive summary of what was built,verification summary, and any known follow-ups.
 
 ## Required Verification Standard
 
