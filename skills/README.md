@@ -17,7 +17,9 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
 | **review-security** | Instructs the agent to apply code-security (Semgrep) and security-best-practices (OpenAI). Requires both installed. Slash-only. |
 | **write-pr-description** | Type-specific PR bodies for experiments, features, bugs, or default (guide/template/examples under `types/`). Slash-only. Single source of truth for PR descriptions. |
-| **implement-plan-and-open-pr** | Execute a plan end-to-end, verify, open a PR using `write-pr-description`, return the URL. Slash-only. |
+| **write-docstring** | Writes Python function, class, or module docstrings (numpy-style) via routed guides. Slash-only. |
+| **write-changelog** | Writes terse CHANGELOG entries for shipped PRs. Slash-only. |
+| **implement-plan-and-open-pr** | Execute a plan end-to-end, verify, apply `write-docstring` for docstrings, open a PR using `write-pr-description`, update CHANGELOG via `write-changelog`, return the URL. Slash-only. |
 | **refactor-service** | Diagnose a microservice or pipeline, then plan a behavior-preserving refactor (modularity, tests, ruff/pyright, runbooks, READMEs). Planning only. Slash-only. |
 | **fix-ci** | Find or use a PR, triage failing checks, reproduce locally, fix, commit, push, and summarize. Slash-only. |
 | **handoff** | End-of-session handoff generator that writes `handoff.md` with PR link, done summary, remaining to-dos, and last left off. |
