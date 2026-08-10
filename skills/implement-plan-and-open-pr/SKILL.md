@@ -62,7 +62,7 @@ If any of these steps fail, stop and ask instead of guessing.
    - verification commands
    - screenshot requirements
 3. Read `skills/write-pr-description/SKILL.md` so the PR description uses the project's required format.
-4. Review CODING_RULES.md and UNIT_TESTING_STANDARDS.md. 
+4. Review CODING_RULES.md and UNIT_TESTING_STANDARDS.md.
 5. Inspect the current git state.. If currently on `main` or `master`, create a feature branch named from the plan descriptor.
 6. If the plan includes UI work and before screenshots are missing, capture them before editing.
 7. Implement the plan in the required order.
@@ -70,7 +70,7 @@ If any of these steps fail, stop and ask instead of guessing.
 9. If verification fails, iterate until:
    - all required checks pass, or
    - you are blocked by an external dependency, missing credential, or pre-existing unrelated failure
-10. Review the final diff to ensure the implemented changes match the plan. Ensure that your implementation complies with CODING_RULES.md and UNIT_TESTING_STANDARDS.md
+10. Review the final diff to ensure the implemented changes match the plan. Ensure that your implementation complies with CODING_RULES.md and UNIT_TESTING_STANDARDS.md. For docstrings, apply the `write-docstring` skill.
 11. Stage only the relevant files.
 12. Create the commit.
 13. Draft the PR title and body by applying `write-pr-description`.
