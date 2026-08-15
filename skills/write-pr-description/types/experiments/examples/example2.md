@@ -1,8 +1,5 @@
 # Training-Set Size Ablation
 
-**Date:** 2026-07-22
-**Status:** Complete
-
 ## Summary
 
 Trained the same ModernBERT classifier on 10%, 25%, 50%, and 100% of the available labeled training data.
@@ -11,42 +8,53 @@ Performance improved consistently as the training set grew, but the largest gain
 
 ## Purpose
 
-Measure how sensitive model performance is to the amount of labeled training data.
+Measure how sensitive model performance is to the amount of labeled training data and identify a smaller subset suitable for faster development.
 
 The experiment is intended to identify:
 
-* Whether additional labeled data remains valuable
-* A smaller training subset suitable for faster development
-* Whether the current learning curve suggests prioritizing more labels or improvements to the modeling approach
+- Whether additional labeled data remains valuable
+- A smaller training subset suitable for faster development
+- Whether the current learning curve suggests prioritizing more labels or improvements to the modeling approach
 
 ## Setup
 
-* Dataset: `data/splits/`
-* Model: `modernbert-base`
-* Training sizes:
-
-  * 10%
-  * 25%
-  * 50%
-  * 100%
-* Validation and test sets: Fixed across conditions
-* Primary metric: F1 for `is_remove=1`
-* Secondary metrics: Accuracy and ROC-AUC
-* Seeds: `42`, `43`, and `44`
-* Epochs: `5`
-* Early stopping: Validation F1
-
-Training subsets were stratified by label and nested so that smaller conditions were contained within larger conditions.
+- Dataset: `data/splits/`
+- Model: `modernbert-base`
+- Conditions:
+  - 10% of training data
+  - 25% of training data
+  - 50% of training data
+  - 100% of training data
+- Validation and test sets: Fixed across conditions
+- Primary metric: F1 for `is_remove=1`
+- Secondary metrics: Accuracy and ROC-AUC
+- Seeds: `42`, `43`, and `44`
+- Epochs: `5`
+- Early stopping: Validation F1
 
 ## Flow
 
-```text
-training data
-→ create stratified subsets
-→ train each condition
-→ evaluate on fixed test set
-→ aggregate across seeds
-→ compare learning curve
+Stages:
+
+- `Training data` — full labeled train split; source of nested stratified subsets.
+- `Subset construction` — 10% / 25% / 50% / 100% nested draws, repeated per seed.
+- `Train` — same ModernBERT recipe and early stopping on the shared validation set.
+- `Evaluate` — scores each trained model on the fixed test set; aggregates across seeds.
+
+```mermaid
+flowchart TD
+  TrainAll[Full training split] --> Subsets[Create nested stratified subsets]
+  Subsets --> S10[10%]
+  Subsets --> S25[25%]
+  Subsets --> S50[50%]
+  Subsets --> S100[100%]
+  S10 --> Fit[Train per seed]
+  S25 --> Fit
+  S50 --> Fit
+  S100 --> Fit
+  Fit --> Eval[Evaluate on fixed test set]
+  Eval --> Agg[Aggregate across seeds]
+  Agg --> Curve[Compare learning curve]
 ```
 
 ## Run
@@ -69,13 +77,7 @@ Results are averaged across three random seeds.
 
 Outputs:
 
-* `outputs/run_metrics.csv`
-* `outputs/aggregate_metrics.csv`
-* `outputs/learning_curve.png`
-* `outputs/predictions/`
-
-## Conclusion
-
-Use the full dataset for final reported models and the 50% subset for routine development.
-
-The results suggest that additional labeled data still helps, but future data collection may be most useful when targeted toward rare or difficult examples rather than simply increasing the dataset uniformly.
+- `outputs/run_metrics.csv`
+- `outputs/aggregate_metrics.csv`
+- `outputs/learning_curve.png`
+- `outputs/predictions/`

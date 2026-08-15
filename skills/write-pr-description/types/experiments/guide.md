@@ -17,9 +17,6 @@ The tone and voice here is intended to be presentation-worthy, McKinsey-style ex
 
 ```markdown
 # <Experiment Name>
-
-**Date:** YYYY-MM-DD
-**Status:** Planned | Running | Complete | Abandoned
 ```
 
 Use a descriptive title that identifies the experimental variable or comparison.
@@ -112,8 +109,6 @@ The experiment is intended to identify:
 - <decision or question 3>
 ```
 
-The purpose should not merely restate the mechanics of the experiment.
-
 Weak:
 
 ```markdown
@@ -173,34 +168,54 @@ This helps readers understand what conclusions the experiment can support.
 
 ## 5. Flow
 
-The flow should show the happy path through the experiment. The flow should describe conceptual stages, not every function call.
+The flow should show the happy path through the experiment as pipeline stages.
 
-Weak:
+Include:
 
-```text
-main.py
-→ utils.py
-→ client.py
-→ metrics.py
-````
+- A short list of named stages with one-line responsibilities
+- A Mermaid flowchart of those stages
 
-Stronger:
+Prefer branching when conditions differ (fork per condition, join at scoring). Use a linear diagram only when the sole variable is which model or size runs the same path. Use before/after diagrams only if this PR changes the experiment harness itself.
 
-```text
-labeled posts
-→ construct context variants
-→ run inference
-→ calculate metrics
-→ compare changed predictions
+A reader should be able to answer:
+
+- What is shared across conditions?
+- Where does the path fork?
+- Where are metrics computed?
+
+Weak: a file chain (`main.py` → `utils.py` → `metrics.py`), ASCII arrows, or invented services (`Metrics Service`) that are not real components.
+
+An example:
+
+````markdown
+## Flow
+
+Stages:
+
+- `Labeled posts` — fixed evaluation targets for every condition.
+- `Context construction` — builds target-only, parent, and full-thread inputs.
+- `Inference` — scores each variant with the same model and prompt.
+- `Metrics` — computes accuracy, precision, recall, and F1; diffs changed predictions.
+
+```mermaid
+flowchart TD
+  Posts[Labeled target posts] --> Construct[Construct context variants]
+  Construct --> C1[Target only]
+  Construct --> C2[Target + parent]
+  Construct --> C3[Full thread]
+  C1 --> Inf[Run inference]
+  C2 --> Inf
+  C3 --> Inf
+  Inf --> Metrics[Calculate metrics]
+  Metrics --> Compare[Compare changed predictions]
 ```
-
-Use architecture diagrams only when the experiment has enough components to justify one. A simple text flow is usually sufficient.
+````
 
 ---
 
 ## 6. Run
 
-Provide the canonical command for reproducing the experiment.
+Provide the canonical command for reproducing the experiment. Note the expected observable (metrics table written, artifacts produced) when it is not obvious.
 
 ```bash
 python run_experiment.py \
@@ -245,34 +260,4 @@ Outputs:
 - `outputs/comparison.csv`
 ```
 
-Do not copy every output file into the description.
-
----
-
-## 8. Conclusion
-
-The conclusion should translate the results into a decision.
-
-It should answer:
-
-> What did we learn?
-
-> What should we do because of it?
-
-> What is the most important next experiment, if any?
-
-Recommended length: **1–3 short paragraphs**. Terse, executive-summary style.
-
-Avoid conclusions such as:
-
-```markdown
-Condition B performed best.
-```
-
-Prefer:
-
-```markdown
-Use the target post and its direct parent as the default input representation.
-It improved F1 without introducing the additional false positives observed
-with full-thread context.
-```
+Do not copy every output file into the description. Just mention the key files.

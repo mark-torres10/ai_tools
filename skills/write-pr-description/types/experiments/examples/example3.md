@@ -1,8 +1,5 @@
 # Zero-Shot Model Comparison
 
-**Date:** 2026-07-22
-**Status:** Complete
-
 ## Summary
 
 Compared Qwen3-8B, Qwen3-32B, and Ministral-3-14B on the same zero-shot post-removal classification task.
@@ -13,33 +10,39 @@ Qwen3-32B achieved the strongest overall performance and the highest positive-cl
 
 Select two baselines for subsequent experiments:
 
-* A quality baseline representing the strongest available model
-* A lower-cost baseline suitable for prompt iteration, pipeline testing, and fine-tuning
+- A quality baseline representing the strongest available model
+- A lower-cost baseline suitable for prompt iteration, pipeline testing, and fine-tuning
 
 The experiment also tests whether the performance improvement from using a larger model is meaningful for this task.
 
 ## Setup
 
-* Dataset: `data/eval/test.csv`
-* Models:
-
-  * `qwen3-8b`
-  * `qwen3-32b`
-  * `ministral-3-14b`
-* Prompt: `prompts/zero_shot_v1.txt`
-* Primary metric: F1 for `is_remove=1`
-* Secondary metrics: Accuracy, precision, and recall
-* Temperature: `0`
+- Dataset: `data/eval/test.csv`
+- Models:
+  - `qwen3-8b`
+  - `qwen3-32b`
+  - `ministral-3-14b`
+- Prompt: `prompts/zero_shot_v1.txt`
+- Primary metric: F1 for `is_remove=1`
+- Secondary metrics: Accuracy, precision, and recall
+- Temperature: `0`
 
 ## Flow
 
-```text
-test data
-→ format prompts
-→ run inference
-→ parse predictions
-→ calculate metrics
-→ compare models
+Stages:
+
+- `Test data` — shared evaluation set for every model.
+- `Prompt format` — renders the same zero-shot template per example.
+- `Inference` — runs each model independently with the same decoding.
+- `Metrics` — parses labels, computes metrics, and compares models on the same items.
+
+```mermaid
+flowchart TD
+  Data[Test data] --> Format[Format prompts]
+  Format --> Inf[Run inference]
+  Inf --> Parse[Parse predictions]
+  Parse --> Metrics[Calculate metrics]
+  Metrics --> Compare[Compare models]
 ```
 
 ## Run
@@ -59,12 +62,6 @@ python run_experiment.py \
 
 Outputs:
 
-* `outputs/predictions_<model>.csv`
-* `outputs/model_comparison.csv`
-* `outputs/metrics.json`
-
-## Conclusion
-
-Use Qwen3-32B as the quality baseline and Qwen3-8B as the lower-cost development baseline.
-
-The next experiment should compare their errors to determine where the larger model improves and whether the two models fail on the same examples.
+- `outputs/predictions_<model>.csv`
+- `outputs/model_comparison.csv`
+- `outputs/metrics.json`

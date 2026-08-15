@@ -8,3 +8,5 @@ Pick one kind, then follow its guide (and template when present). Use **default*
 | Feature | [feature/guide.md](feature/guide.md) | [feature/template.md](feature/template.md) | [feature/examples/](feature/examples/) |
 | Bug | [bugs/guide.md](bugs/guide.md) | — | [bugs/examples/](bugs/examples/) |
 | Default | [default/guide.md](default/guide.md) | — | — |
+
+Once you create the draft PR description, run the `/plain-writing` skill to clean up the language.

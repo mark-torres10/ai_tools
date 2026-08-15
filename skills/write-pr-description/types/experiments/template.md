@@ -1,8 +1,5 @@
 # <Experiment Name>
 
-**Date:** YYYY-MM-DD
-**Status:** Planned | Running | Complete | Abandoned
-
 ## Summary
 
 Compared <conditions or methods> on <task, dataset, or evaluation>.
@@ -30,17 +27,25 @@ The experiment is intended to identify:
 - Random seeds:
 - Important fixed parameters:
 
-<Optional sentence explaining what changed and what remained fixed.>
-
 ## Flow
 
-```text
-input data
-→ prepare conditions
-→ run experiment
-→ calculate results
-→ compare conditions
-````
+Stages:
+
+- `<Stage>` — <responsibility>
+- `<Stage>` — <responsibility>
+- `<Stage>` — <responsibility>
+- `<Stage>` — <responsibility>
+
+```mermaid
+flowchart TD
+  In[<Input data>] --> Prep[<Prepare conditions>]
+  Prep --> A[<Condition A>]
+  Prep --> B[<Condition B>]
+  A --> Run[<Run experiment>]
+  B --> Run
+  Run --> Metrics[<Calculate results>]
+  Metrics --> Compare[<Compare conditions>]
+```
 
 ## Run
 
@@ -60,9 +65,3 @@ Outputs:
 
 * `outputs/<artifact>`
 * `outputs/<artifact>`
-
-## Conclusion
-
-<Decision supported by the results>.
-
-<Important qualification or highest-value follow-up experiment>.
