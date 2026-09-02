@@ -8,7 +8,7 @@ Apply in Phase 4. Tests are the executable spec for the slice. Design before imp
 2. Real tests — each scenario becomes a named test; leave them failing until Phase 5.
 3. Do not implement production code in this phase to make tests pass.
 
-Commit test design as its own Git commit before fleshing any unit of work.
+Commit test design as its own Git commit before implementing any unit of work.
 
 ## Pseudocode shape
 

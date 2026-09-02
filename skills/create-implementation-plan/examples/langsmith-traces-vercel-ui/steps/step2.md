@@ -47,7 +47,7 @@ Fixed window: start = now − 24h, end = now. Project name always from env. No p
    - Detail error run: stub includes error → error text present on detail.
    - Upstream 401/403 → fetcher throws a distinct auth/config error (not an empty list).
    - Upstream 404 on get-by-id → distinct not-found error.
-4. **Flesh:** implement client + mapper + list/get until those tests pass. No UI.
+4. **Implement:** client + mapper + list/get until those tests pass. No UI.
 
 ## Commands (exact)
 

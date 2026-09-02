@@ -53,7 +53,7 @@ Caller = `create_app()` in `main.py` registering middleware. Unit of work = one 
 
 ### Phase 2 — Scaffold
 
-Add `middleware/request_id.py` with a stub `RequestIdMiddleware` imported and added in `main.py`. Stub `__call__` / `dispatch` raises `NotImplementedError` only if tests are not yet written; prefer thin stub that calls `call_next` without logging so the app still boots, then flesh in Phase 5.
+Add `middleware/request_id.py` with a stub `RequestIdMiddleware` imported and added in `main.py`. Stub `__call__` / `dispatch` raises `NotImplementedError` only if tests are not yet written; prefer thin stub that calls `call_next` without logging so the app still boots, then implement in Phase 5.
 
 ### Phase 3 — Contracts
 
@@ -69,7 +69,7 @@ Using TestClient + caplog or a custom logging handler that captures stdout/logge
 4. **Given** `GET /health` **when** request completes **then** `X-Request-ID` is present; **no** `request_start` / `request_end` access events.
 5. **Given** `GET /ready` **then** same as health (id present, no access events).
 
-### Phase 5 — Flesh units of work (order)
+### Phase 5 — Implement units of work (order)
 
 1. Resolve + bind + response header echo.
 2. Start/end logging with latency for non-skip paths.

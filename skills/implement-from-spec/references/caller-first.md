@@ -21,7 +21,7 @@ Ask: *“If we only finish one path, which entrypoint proves the design works?�
 
 ## Dependency order (for Phase 5)
 
-Flesh units along the caller path’s dependency order, not “easiest file first”:
+Implement units along the caller path’s dependency order, not “easiest file first”:
 
 1. Leaves the caller needs first (e.g. repository `get`)
 2. Then siblings the path needs (e.g. `write`, then `transform`)

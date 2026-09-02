@@ -46,7 +46,7 @@ If a plan has parallel task packets: one packet = one run. Honor contracts agree
 2. Scaffold files and imports — wiring only.
 3. Confirm models / interfaces / boundaries — approve before behavior.
 4. Design tests (pseudocode → real failing tests).
-5. Flesh one unit of work until green; repeat until the caller path is complete.
+5. Implement one unit of work until green; repeat until the caller path is complete.
 
 Example walkthrough: [examples/pipeline-memory-repo.md](examples/pipeline-memory-repo.md).
 
@@ -60,7 +60,7 @@ Complete each phase in order. Pass the phase gate before continuing. Read the li
 | 2 — Scaffold | [references/phase-gates.md](references/phase-gates.md) (Phase 2) | Imports resolve; stub bodies only; commit |
 | 3 — Contracts | [references/contracts.md](references/contracts.md) | Signatures match design; stop for approval unless user said full auto; commit |
 | 4 — Test design | [references/test-design.md](references/test-design.md) | Pseudocode → failing tests; happy + key failures; commit |
-| 5 — Flesh units of work (loop) | [references/flesh-unit.md](references/flesh-unit.md) | One unit of work per iteration; one commit per unit of work; dependency order |
+| 5 — Implement units of work (loop) | [references/implement-unit.md](references/implement-unit.md) | One unit of work per iteration; one commit per unit of work; dependency order |
 | 6 — Done | [checklist.md](checklist.md) | All applicable boxes checked |
 
 Per-phase pass/fail criteria: [references/phase-gates.md](references/phase-gates.md).
@@ -89,7 +89,7 @@ Write given/when/then pseudocode, then real failing tests. Do not implement to m
 
 Gate: Tests cover happy path + key failures from the spec; they fail for the right reasons.
 
-### Phase 5 — Flesh units of work (loop)
+### Phase 5 — Implement units of work (loop)
 
 Implement along dependency order of the caller path (not “easiest file first”). One function/path per iteration; run targeted tests; report newly green vs still red. Commit each unit of work before starting the next.
 

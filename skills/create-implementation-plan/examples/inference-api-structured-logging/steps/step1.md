@@ -110,7 +110,7 @@ Pseudocode → real tests in `test_request_context.py`:
 
 ### Phase 5–6
 
-Do **not** flesh middleware behavior in this step. Optional: implement the pure helpers so contract tests go green—allowed only for `resolve_request_id` and event builders. Middleware remains unwired.
+Do **not** implement middleware behavior in this step. Optional: implement the pure helpers so contract tests go green—allowed only for `resolve_request_id` and event builders. Middleware remains unwired.
 
 ## Pass / fail
 

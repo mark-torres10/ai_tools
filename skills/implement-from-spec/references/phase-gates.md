@@ -77,7 +77,7 @@ Fail / stop
 
 ---
 
-## Phase 5 — Flesh unit of work (each iteration)
+## Phase 5 — Implement unit of work (each iteration)
 
 Pass
 

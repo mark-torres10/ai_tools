@@ -1,4 +1,4 @@
-# Flesh One Unit of Work
+# Implement One Unit of Work
 
 Apply in Phase 5. Loop until the caller path for this slice is complete. Each unit of work is a separate Git commit.
 
@@ -41,7 +41,7 @@ See [../examples/pipeline-memory-repo.md](../examples/pipeline-memory-repo.md).
 ## Anti-patterns
 
 - Multi-unit “big bang” implementation
-- Refactoring neighbors while fleshing a unit
+- Refactoring neighbors while implementing a unit
 - Changing contracts in Phase 5 without returning to Phase 3 approval
 - Marking the slice done while the caller is still a stub
 - Combining several units of work into one commit

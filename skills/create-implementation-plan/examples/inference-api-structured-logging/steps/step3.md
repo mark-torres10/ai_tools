@@ -63,7 +63,7 @@ Error payload = existing keys + required `request_id: str`. No other new require
 3. **Given** unhandled exception path (if the app has a catch-all handler) **when** triggered **then** 500 body includes `request_id`.
 4. **Given** successful infer **when** 200 **then** body does **not** contain `request_id`.
 
-### Phase 5 — Flesh units of work
+### Phase 5 — Implement units of work
 
 1. Central `error_body` / helper reads `request.state.request_id`.
 2. Validation exception handler.

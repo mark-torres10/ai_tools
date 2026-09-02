@@ -12,7 +12,7 @@ Task: Build a simple script that loads data from the DB, transforms it, and writ
 | 2 — Scaffold | Step 1 |
 | 3 — Contracts | Step 2 |
 | 4 — Test design | Step 3 |
-| 5 — Flesh units of work | Steps 4–7 (`get` → `write` → `transform` → `run`) |
+| 5 — Implement units of work | Steps 4–7 (`get` → `write` → `transform` → `run`) |
 | 6 — Done | All designed tests green |
 
 ---
@@ -175,11 +175,11 @@ def test_run_load_transform_write():
     assert result == TransformedRecord(id="1", value=20, label="doubled")
 ```
 
-Commit this step before fleshing any unit of work.
+Commit this step before implementing any unit of work.
 
 ---
 
-## Step 4 — Flesh out one unit of work: `MemoryRepository.get`
+## Step 4 — Implement one unit of work: `MemoryRepository.get`
 
 ```python
 # repository.py
@@ -246,4 +246,4 @@ if __name__ == "__main__":
     print(run(repo, "1"))
 ```
 
-Now `test_run_load_transform_write` passes. Main caller is fully fleshed out; all designed tests are green. Commit this unit of work.
+Now `test_run_load_transform_write` passes. Main caller is fully implemented; all designed tests are green. Commit this unit of work.
