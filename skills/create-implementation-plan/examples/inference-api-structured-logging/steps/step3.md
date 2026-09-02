@@ -5,7 +5,7 @@ Wire the shared error path so every 4xx/5xx JSON body includes `request_id` equa
 ## Scope
 
 - **Caller:** Existing FastAPI exception handlers / `inference-api/app/errors.py` helpers used when validation fails or `POST /v1/infer` raises.
-- **Slice:** Attach `request_id` on error responses for (1) request validation errors, (2) handler-raised HTTP errors, (3) unhandled exceptions mapped to 500.
+- **Task:** Attach `request_id` on error responses for (1) request validation errors, (2) handler-raised HTTP errors, (3) unhandled exceptions mapped to 500.
 - **Out of scope:** Changing success payload shape; new error taxonomy; client SDK changes; metrics/tracing.
 
 ## Files
@@ -46,7 +46,7 @@ Wire the shared error path so every 4xx/5xx JSON body includes `request_id` equa
 
 ### Phase 1
 
-Caller = exception handlers registered on the app (entry from `errors.py` / `main.py`). Slice = build_error_body(request, ...) → JSONResponse.
+Caller = exception handlers registered on the app (entry from `errors.py` / `main.py`). Task = build_error_body(request, ...) → JSONResponse.
 
 ### Phase 2 — Scaffold
 

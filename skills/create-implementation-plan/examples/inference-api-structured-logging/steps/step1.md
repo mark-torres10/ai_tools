@@ -5,7 +5,7 @@ Confirm contracts before behavior. Scaffold modules and write failing tests that
 ## Scope
 
 - **Caller (for later steps):** ASGI middleware registered from `inference-api/app/main.py` that wraps every HTTP request.
-- **This slice:** Types, constants, pure helpers (resolve id, serialize log events), and failing tests for those contracts.
+- **This task:** Types, constants, pure helpers (resolve id, serialize log events), and failing tests for those contracts.
 - **Out of scope:** Middleware wiring, error-body attachment, changing `POST /v1/infer`, metrics/tracing vendors.
 
 ## Files
@@ -140,4 +140,4 @@ Expected (helpers implemented): all tests in `test_request_context.py` green; ex
 
 ## Done when
 
-Contracts and tests encode header rules, log fields, skip paths, and the error-body key name. Ready for Step 2 to implement middleware against these seams.
+Contracts and tests encode header rules, log fields, skip paths, and the error-body key name. Ready for Step 2 to implement middleware against these boundaries.

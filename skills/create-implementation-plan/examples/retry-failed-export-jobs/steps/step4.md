@@ -3,7 +3,7 @@
 ## Scope
 
 - **Caller:** End-to-end proof via pytest (and optional local curl) against job store + retry worker + existing export worker fakes—not a new production entrypoint.
-- **Slice:** Lock the four behaviors from the plan: success after one failure; backoff gating; exhaustion → dead letter with last error; over-cap never requeued; poll returns `dead_letter`.
+- **Task:** Lock the four behaviors from the plan: success after one failure; backoff gating; exhaustion → dead letter with last error; over-cap never requeued; poll returns `dead_letter`.
 - **Out of scope:** Load/performance testing; multi-format exports; admin UI; changing defaults from Step 2.
 
 ## Files to inspect

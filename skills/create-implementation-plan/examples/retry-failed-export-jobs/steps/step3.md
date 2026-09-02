@@ -3,7 +3,7 @@
 ## Scope
 
 - **Caller:** `src/exports/retry_worker.py` → `run_once(now)` / `main()` process entry (compose service `retry_worker`).
-- **Slice:** Claim eligible failures → either requeue as `pending` onto the existing export queue (increment attempt, clear/set timing fields) or mark `dead_letter` with last error when exhausted.
+- **Task:** Claim eligible failures → either requeue as `pending` onto the existing export queue (increment attempt, clear/set timing fields) or mark `dead_letter` with last error when exhausted.
 - **Out of scope:** Changing CSV generation, S3 upload, or export worker success path; new HTTP endpoints; new export formats.
 
 ## Files to inspect

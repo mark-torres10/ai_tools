@@ -70,7 +70,7 @@ Expected: HTML or text that includes a clear "up" / health indicator; must not i
 | App directory exists | `apps/langsmith-trace-viewer/src/app/page.tsx` present | Missing app or wrong path |
 | Local boot | `curl` returns `200` | Non-200 or process exits |
 | Secrets not leaked | Health response body does not contain the API key | Key appears in HTML |
-| Env contract | Missing API key or project name causes a clear server error when env helpers are invoked in a one-off script or later step | Silent empty defaults |
+| Env contract | Missing API key or project name causes a clear server error when env helpers are run in a one-off script or later step | Silent empty defaults |
 | Scope | No LangSmith HTTP calls yet | Fetcher or UI list/detail added early |
 
 ## Out of scope

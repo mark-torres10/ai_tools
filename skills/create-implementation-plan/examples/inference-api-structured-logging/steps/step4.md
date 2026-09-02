@@ -5,7 +5,7 @@ Prove the full happy and failure paths on `POST /v1/infer` against the plan’s 
 ## Scope
 
 - **Caller:** `POST /v1/infer` through middleware + routes + error handlers.
-- **Slice:** Automated regression suite + short manual checklist; dependency audit for vendor APM/metrics.
+- **Task:** Automated regression suite + short manual checklist; dependency audit for vendor APM/metrics.
 - **Out of scope:** New log fields, sampling, trace export, dashboards, cross-service propagation.
 
 ## Files

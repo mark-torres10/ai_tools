@@ -48,7 +48,7 @@ Prefer one edge middleware that owns correlation and access logging so handlers 
 
 1. **Incoming header:** Accept `X-Request-ID`. Valid = non-empty string, max 128 chars, printable ASCII only (`0x20`–`0x7E`). Invalid or missing → generate a new UUID4 string.
 2. **Success bodies:** Response header only; do not change success JSON payloads.
-3. **Log destination:** stdout JSON only (one line per event). No dual human-readable formatter in this slice.
+3. **Log destination:** stdout JSON only (one line per event). No dual human-readable formatter in this task.
 4. **Route scope:** Middleware registered for the whole app. Access start/end logs emitted for all routes except `/health` and `/ready`. Request id is still assigned and echoed on those health routes.
 
 ## Steps

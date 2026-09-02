@@ -5,7 +5,7 @@ Implement and register ASGI/HTTP middleware that resolves the request id, binds 
 ## Scope
 
 - **Caller:** `inference-api/app/main.py` — app factory registers the middleware so every request (including `POST /v1/infer`) passes through it.
-- **Slice:** resolve id → bind state → optional start log → call next → set response header → optional end log with status + latency.
+- **Task:** resolve id → bind state → optional start log → call next → set response header → optional end log with status + latency.
 - **Out of scope:** Changing error JSON bodies (Step 3); changing infer business logic; metrics/tracing exporters.
 
 ## Files

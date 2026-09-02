@@ -3,7 +3,7 @@
 ## Scope
 
 - **Caller:** Job-store read/write used by `src/exports/api.py` (`GET /exports/{export_id}`) and `src/exports/worker.py` (mark failed / completed). This step only extends persistence and models; no retry loop.
-- **Slice:** Persist attempt count, next-retry time, last error, and `dead_letter` status; status poll returns the new status when set.
+- **Task:** Persist attempt count, next-retry time, last error, and `dead_letter` status; status poll returns the new status when set.
 - **Out of scope:** Backoff math, eligibility queries, requeue, compose process for retry worker.
 
 ## Files to inspect
