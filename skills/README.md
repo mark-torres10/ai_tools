@@ -21,7 +21,7 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **write-pr-description** | Type-specific PR bodies for experiments, features, bugs, or default (guide/template/examples under `types/`). Slash-only. Single source of truth for PR descriptions. |
 | **write-docstring** | Writes Python function, class, or module docstrings (numpy-style) via routed guides. Slash-only. |
 | **write-changelog** | Writes terse CHANGELOG entries for shipped PRs. Slash-only. |
-| **implement-plan-and-open-pr** | Execute a plan end-to-end, verify, apply `write-docstring` for docstrings, open a PR using `write-pr-description`, update CHANGELOG via `write-changelog`, return the URL. Slash-only. |
+| **implement-plan-and-open-pr** | One plan as one PR. Uses `implement-from-spec` for coding, then verify, `write-docstring`, `write-pr-description`, `write-changelog`, post-PR review, return the URL. Slash-only. |
 | **interactive-implementation** | Run a plan step-by-step via `implement-plan-and-open-pr`, then at each step run `write-docstring` and `review-for-simplicity` and await approval before committing. Slash-only. |
 | **refactor-service** | Diagnose a microservice or pipeline, then plan a behavior-preserving refactor (modularity, tests, ruff/pyright, runbooks, READMEs). Planning only. Slash-only. |
 | **fix-ci** | Find or use a PR, triage failing checks, reproduce locally, fix, commit, push, and summarize. Slash-only. |
@@ -30,10 +30,19 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **create-advisory-brief** | Distills repo context into a copy-paste markdown prompt for an external AI (no codebase access) to evaluate options and recommend a path. Slash-only. |
 | **implement-from-spec** | Implements a scoped unit of work from an approved design/plan: caller-first scaffold, contracts agreed upon, test design, then one-function-at-a-time. References under `skills/implement-from-spec/`. Agent can auto-apply. |
 
-## Some notes on how these fit together:
+## Some notes on how these fit together
 
-The `create-epic` and `create-implementation-plan` skills are related. `create-epic` files the parent and children (and may open a docs-only plan PR). `implement-epic` implements those children as a stacked PR.
+The `implement-*` skills fit as part of a stack. We structure multi-PR builds as epics, managed by `implement-epic`. Each PR is then built using `implement-plan-and-open-pr`, which uses `impleent-from-spec` to actually write the code.
 
-The `implement-from-spec`, `implement-plan-and-open-pr`, and `implement-epic` are intended to be similar.
-
-(TODO: figure out if we can use or call `implement-from-spec` within `implement-plan-and-open-pr`)
+```
+implement-epic                         # manager: stack, CI, children
+  per child:
+    create-implementation-plan          # one-PR plan against current stack base
+    implement-plan-and-open-pr        # one plan → one PR (`gh stack` instead of `gh pr create`)
+      implement-from-spec             # write code for one task; commits as it goes
+      write-docstring
+      verify
+      write-pr-description
+      write-changelog
+      post-PR review                   # comprehensive-code-review, plain-writing, review-for-simplicity
+```
