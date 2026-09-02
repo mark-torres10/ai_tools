@@ -161,4 +161,4 @@ Ship as one PR. Do not bundle with sibling issues.
 
 ### 7. Once the issues are created, open a PR with the plan
 
-Open a PR with the plan files (if they're not already merged into main) and reference the container and child issues in the PR description.
+Open a PR with the plan files (if they're not already merged into main) and reference the container and child issues in the PR description. That PR is plan and docs files only. It must not contain product code. Implementing the children as a stacked PR is `/implement-epic`, not this skill.
