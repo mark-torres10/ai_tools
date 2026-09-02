@@ -10,3 +10,4 @@ Use these terms when discussing technical or software engineering-related concep
 - Instead of "load-bearing", use "important"
 - Instead of "slice", use "task"
 - Instead of "seam", use "boundary"
+- Instead of "flesh", use "implement"
