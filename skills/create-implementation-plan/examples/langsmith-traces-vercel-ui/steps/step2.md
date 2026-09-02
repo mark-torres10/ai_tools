@@ -29,7 +29,7 @@ Unit tests under `apps/langsmith-trace-viewer/src/lib/langsmith/__tests__/` call
 - Vercel / CI deploy configs
 - Any write/update/delete LangSmith APIs
 
-## Contracts (freeze before behavior)
+## Contracts (confirm before behavior)
 
 List item fields exposed to later UI: id, name, status, latency (ms), start time.
 
@@ -40,7 +40,7 @@ Fixed window: start = now − 24h, end = now. Project name always from env. No p
 ## Work (implement-from-spec order)
 
 1. **Scaffold:** empty `types.ts`, `client.ts`, `fetch-traces.ts` with stub bodies; test file imports the public functions.
-2. **Contracts:** freeze the list/detail types and function signatures; stop if reviewing in a live run—this example assumes approval already given.
+2. **Contracts:** confirm the list/detail types and function signatures; stop if reviewing in a live run—this example assumes approval already given.
 3. **Test design (write failing tests first):**
    - Happy list: stub returns two runs → mapped list items with name, status, latency, start time.
    - Happy detail: stub returns one run → mapped detail including inputs/outputs.

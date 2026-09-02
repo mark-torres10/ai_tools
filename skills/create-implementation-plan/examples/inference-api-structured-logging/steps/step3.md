@@ -44,33 +44,33 @@ Wire the shared error path so every 4xx/5xx JSON body includes `request_id` equa
 
 ## Implement-from-spec phases
 
-### Phase 0
+### Phase 1
 
 Caller = exception handlers registered on the app (entry from `errors.py` / `main.py`). Slice = build_error_body(request, ...) → JSONResponse.
 
-### Phase 1 — Scaffold
+### Phase 2 — Scaffold
 
 Add a typed helper signature, e.g. `error_body(request, *, status_code, **existing_fields) -> dict`, stubbed if needed; wire handlers to call it.
 
-### Phase 2 — Contracts
+### Phase 3 — Contracts
 
 Error payload = existing keys + required `request_id: str`. No other new required keys.
 
-### Phase 3 — Test design
+### Phase 4 — Test design
 
 1. **Given** invalid infer body **when** `POST /v1/infer` **then** status 4xx; body has `request_id`; header `X-Request-ID` equals body `request_id`; end access log `status_code` matches.
 2. **Given** a forced handler error (use existing failure fixture or a test-only dependency override) **when** infer fails **then** error body and header share the client-supplied valid id.
 3. **Given** unhandled exception path (if the app has a catch-all handler) **when** triggered **then** 500 body includes `request_id`.
 4. **Given** successful infer **when** 200 **then** body does **not** contain `request_id`.
 
-### Phase 4 — Flesh UoWs
+### Phase 5 — Flesh units of work
 
 1. Central `error_body` / helper reads `request.state.request_id`.
 2. Validation exception handler.
 3. HTTPException / domain handler.
 4. Unhandled exception handler (if present).
 
-### Phase 5
+### Phase 6
 
 All error-path tests green; success tests still assert no body `request_id`.
 

@@ -1,12 +1,14 @@
 # Test Design
 
-Apply in Phase 3. Tests are the executable spec for the slice. **Design before implementing.**
+Apply in Phase 4. Tests are the executable spec for the slice. Design before implementing.
 
 ## Required order
 
-1. **Pseudocode** — given / when / then scenarios covering the caller happy path and key failures from the design.
-2. **Real tests** — each scenario becomes a named test; leave them failing until Phase 4.
-3. **Do not** implement production code in this phase to make tests pass.
+1. Pseudocode — given / when / then scenarios covering the caller happy path and key failures from the design.
+2. Real tests — each scenario becomes a named test; leave them failing until Phase 5.
+3. Do not implement production code in this phase to make tests pass.
+
+Commit test design as its own Git commit before fleshing any unit of work.
 
 ## Pseudocode shape
 
@@ -25,13 +27,13 @@ then raise KeyError
 ## Real tests
 
 - One test (or focused group) per scenario.
-- Prefer asserting on **public APIs** the caller uses.
+- Prefer asserting on public APIs the caller uses.
 - Failures should be assertion / NotImplemented—not missing imports (fix scaffold first).
 
 ## Test seams
 
 - Prefer a public seed/fixture/factory when the real boundary is not a private dict.
-- Seeding private fields (e.g. `repo._store[...]`) is acceptable only for throwaway demos; **note the exception** in the test or a comment.
+- Seeding private fields (e.g. `repo._store[...]`) is acceptable only for throwaway demos; note the exception in the test or a comment.
 - Do not bake private-field access into production patterns without calling it out.
 
 ## Coverage minimum for the slice

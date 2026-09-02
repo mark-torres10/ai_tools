@@ -1,23 +1,23 @@
 # Example: Pipeline + MemoryRepository
 
-Canonical walkthrough for `implement-from-spec`. Mirror this order; do not invent a different sequence.
+Example walkthrough for `implement-from-spec`. Mirror this order; do not invent a different sequence. Each step below is a separate Git commit.
 
-**Task:** Build a simple script that loads data from the DB, transforms it, and writes it back via `MemoryRepository`.
+Task: Build a simple script that loads data from the DB, transforms it, and writes it back via `MemoryRepository`.
 
 ## Phase ↔ step map
 
 | Skill phase | This example |
 |-------------|----------------|
-| 0 — Scope | Caller = `run`; files under `pipeline/` |
-| 1 — Scaffold | Step 0 |
-| 2 — Contracts | Step 1 |
-| 3 — Test design | Step 2 |
-| 4 — Flesh UoWs | Steps 3–6 (`get` → `write` → `transform` → `run`) |
-| 5 — Done | All designed tests green |
+| 1 — Scope | Caller = `run`; files under `pipeline/` |
+| 2 — Scaffold | Step 1 |
+| 3 — Contracts | Step 2 |
+| 4 — Test design | Step 3 |
+| 5 — Flesh units of work | Steps 4–7 (`get` → `write` → `transform` → `run`) |
+| 6 — Done | All designed tests green |
 
 ---
 
-## Step 0 — Scaffold files and wiring
+## Step 1 — Scaffold files and wiring
 
 ```text
 pipeline/
@@ -48,9 +48,11 @@ if __name__ == "__main__":
     run(repo, record_id="1")
 ```
 
+Commit this step before adding contracts.
+
 ---
 
-## Step 1 — Models and boundaries (contracts only)
+## Step 2 — Models and boundaries (contracts only)
 
 ```python
 # models.py
@@ -106,9 +108,11 @@ def run(repo: MemoryRepository, record_id: str) -> TransformedRecord:
     return repo.write(transformed)
 ```
 
+Commit this step after contracts are agreed upon.
+
 ---
 
-## Step 2 — Expected tests (pseudocode → real)
+## Step 3 — Expected tests (pseudocode → real)
 
 Pseudocode:
 
@@ -171,9 +175,11 @@ def test_run_load_transform_write():
     assert result == TransformedRecord(id="1", value=20, label="doubled")
 ```
 
+Commit this step before fleshing any unit of work.
+
 ---
 
-## Step 3 — Flesh out one unit of work: `MemoryRepository.get`
+## Step 4 — Flesh out one unit of work: `MemoryRepository.get`
 
 ```python
 # repository.py
@@ -184,11 +190,11 @@ def get(self, record_id: str) -> Record:
 ```
 
 Now `test_get_returns_seeded_record` and `test_get_missing_raises` pass.
-Everything else still fails.
+Everything else still fails. Commit this unit of work.
 
 ---
 
-## Step 4 — Next unit: `MemoryRepository.write`
+## Step 5 — Next unit: `MemoryRepository.write`
 
 ```python
 # repository.py
@@ -199,11 +205,11 @@ def write(self, record: TransformedRecord) -> TransformedRecord:
 ```
 
 Now `test_write_persists_and_returns` passes.
-`transform` and `run` still unfinished.
+`transform` and `run` still unfinished. Commit this unit of work.
 
 ---
 
-## Step 5 — Next unit: `transform_record`
+## Step 6 — Next unit: `transform_record`
 
 ```python
 # transform.py
@@ -215,11 +221,11 @@ def transform_record(record: Record) -> TransformedRecord:
     )
 ```
 
-Now `test_transform_doubles_value_and_sets_label` passes.
+Now `test_transform_doubles_value_and_sets_label` passes. Commit this unit of work.
 
 ---
 
-## Step 6 — Close the caller path: `run`
+## Step 7 — Close the caller path: `run`
 
 ```python
 # main.py
@@ -240,4 +246,4 @@ if __name__ == "__main__":
     print(run(repo, "1"))
 ```
 
-Now `test_run_load_transform_write` passes. Main caller is fully fleshed out; all designed tests are green.
+Now `test_run_load_transform_write` passes. Main caller is fully fleshed out; all designed tests are green. Commit this unit of work.

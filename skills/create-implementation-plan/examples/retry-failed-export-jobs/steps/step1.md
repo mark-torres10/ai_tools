@@ -42,7 +42,7 @@
 4. Job store: get/update must round-trip the new fields; add or extend `mark_dead_letter(export_id, error)` and ensure `mark_failed` still sets `failed` + `error` without clearing attempt fields incorrectly.
 5. API: `GET /exports/{export_id}` returns `status: "dead_letter"` and `error` when applicable. No new endpoints.
 
-## Contracts to freeze before behavior (implement-from-spec Phase 2)
+## Contracts to confirm before behavior (implement-from-spec Phase 3)
 
 - Status union includes `dead_letter`.
 - Job record includes `attempt_count`, `next_retry_at`, `error`.

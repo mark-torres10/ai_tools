@@ -1,11 +1,11 @@
 # Contracts Only
 
-Apply in Phase 2. Freeze models, interfaces, and boundaries **without** behavior.
+Apply in Phase 3. Confirm models, interfaces, and boundaries without behavior.
 
 ## What to define
 
 - Data models / schemas (e.g. Pydantic `BaseModel`, dataclasses, types)
-- Repository / port interfaces and concrete class **signatures**
+- Repository / port interfaces and concrete class signatures
 - Function signatures the caller will invoke
 - Error types the design specifies (as types or documented raises)—not full handlers yet
 
@@ -13,7 +13,7 @@ Apply in Phase 2. Freeze models, interfaces, and boundaries **without** behavior
 
 - `...` / `pass` / `raise NotImplementedError`
 - Trivial constructors that only hold empty state (e.g. `self._store: dict = {}`)
-- Caller wiring that **calls** stubs in the correct order (typed shape), still without real logic inside callees
+- Caller wiring that calls stubs in the correct order (typed shape), still without real logic inside callees
 
 ## What is forbidden
 
@@ -29,9 +29,11 @@ Apply in Phase 2. Freeze models, interfaces, and boundaries **without** behavior
 
 ## Approval gate
 
-**Default:** stop after Phase 2 and present contracts (file list + key signatures) for user approval.
+Default: stop after Phase 3 and present contracts (file list + key signatures) for user approval.
 
-**Skip approval only if** the user said full auto, unattended, or explicitly waived the pause.
+Skip approval only if the user said full auto, unattended, or explicitly waived the pause.
+
+Commit contracts as their own Git commit after approval (or after an explicit waiver).
 
 ## Anti-patterns
 

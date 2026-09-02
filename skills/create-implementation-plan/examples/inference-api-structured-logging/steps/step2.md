@@ -47,19 +47,19 @@ Implement and register ASGI/HTTP middleware that resolves the request id, binds 
 
 ## Implement-from-spec phases
 
-### Phase 0
+### Phase 1
 
-Caller = `create_app()` in `main.py` registering middleware. UoW = one request through middleware.
+Caller = `create_app()` in `main.py` registering middleware. Unit of work = one request through middleware.
 
-### Phase 1 — Scaffold
+### Phase 2 — Scaffold
 
-Add `middleware/request_id.py` with a stub `RequestIdMiddleware` imported and added in `main.py`. Stub `__call__` / `dispatch` raises `NotImplementedError` only if tests are not yet written; prefer thin stub that calls `call_next` without logging so the app still boots, then flesh in Phase 4.
+Add `middleware/request_id.py` with a stub `RequestIdMiddleware` imported and added in `main.py`. Stub `__call__` / `dispatch` raises `NotImplementedError` only if tests are not yet written; prefer thin stub that calls `call_next` without logging so the app still boots, then flesh in Phase 5.
 
-### Phase 2 — Contracts
+### Phase 3 — Contracts
 
 Public surface: middleware constructor takes the app (and optionally a logger). No new request/response body schemas.
 
-### Phase 3 — Test design (failing then green)
+### Phase 4 — Test design (failing then green)
 
 Using TestClient + caplog or a custom logging handler that captures stdout/logger records:
 
@@ -69,14 +69,14 @@ Using TestClient + caplog or a custom logging handler that captures stdout/logge
 4. **Given** `GET /health` **when** request completes **then** `X-Request-ID` is present; **no** `request_start` / `request_end` access events.
 5. **Given** `GET /ready` **then** same as health (id present, no access events).
 
-### Phase 4 — Flesh UoWs (order)
+### Phase 5 — Flesh units of work (order)
 
 1. Resolve + bind + response header echo.
 2. Start/end logging with latency for non-skip paths.
 3. Skip-path behavior for health/ready.
 4. Confirm registration order in `main.py`.
 
-### Phase 5
+### Phase 6
 
 All new middleware tests green; existing `test_infer_api.py` still green.
 
@@ -87,7 +87,7 @@ All new middleware tests green; existing `test_infer_api.py` still green.
 - [ ] `pytest inference-api/tests/test_request_context.py -q` green for middleware cases above.
 - [ ] `pytest inference-api/tests/test_infer_api.py -q` green (behavior unchanged aside from new response header).
 - [ ] Successful `POST /v1/infer` responses include `X-Request-ID` and do **not** gain a new JSON body field for the id.
-- [ ] Access logs are single-line JSON with the frozen fields from Step 1.
+- [ ] Access logs are single-line JSON with the agreed-upon fields from Step 1.
 
 ### Must fail / must not happen
 
