@@ -97,8 +97,7 @@ Then spawn **one** per-PR orchestrator. It does not talk to the user. Give it: o
 3. Read `implement-plan-and-open-pr` and execute it with the overlay above (including `write-docstring` during implementation).
 4. `gh stack submit --open` (not `gh pr create`). Then `gh pr edit` so the body from `write-pr-description` includes `Fixes #{child}` and `Part of #{parent}`. Never a closing keyword on the parent.
 5. Changelog via `write-changelog`, commit, push.
-6. Spawn three review subagents on the PR: `comprehensive-code-review`, `plain-writing`, `review-for-simplicity`. Not a merge gate. Fix **clear correctness bugs** (broken contract, failing tests) and push. Style and optional notes are for the final summary only.
-7. Return to the manager only: PR URL, branch, title, verification, review notes worth reading, blockers.
+6. Return to the manager only: PR URL, branch, title, verification, review notes worth reading, blockers.
 
 **Manager, after it returns:**
 
