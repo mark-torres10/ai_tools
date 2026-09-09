@@ -42,7 +42,7 @@ Follow `/delegate-work-to-subagents`, with these notes:
 When the per-PR orchestrator runs `/create-implementation-plan`:
 
 - Kickoff `go` is the plan confirm. Do not wait for a per-child draft accept.
-- Still write the plan, then run `plain-writing`, then `review-for-simplicity`. Apply obvious cuts.
+- Still write the plan, then run `/comprehensive-writing-cleanup`, then `review-for-simplicity`. Apply obvious cuts.
 - The plan must be independently mergeable as one PR.
 - Stop and ask (manager reports to the user) if research finds an open design choice, or if simplicity review wants to drop something the GitHub issue requires.
 
@@ -113,7 +113,7 @@ Then spawn **one** per-PR orchestrator. It does not talk to the user. Give it: o
 **Per-PR orchestrator must:**
 
 1. Read `create-implementation-plan` and run it for this child. Input: child issue body and any cited step file. New plan files ship **in this branch**. Notes above apply.
-2. Edit that plan with `plain-writing`, then `review-for-simplicity`. Notes above apply.
+2. Edit that plan with `/comprehensive-writing-cleanup`, then `review-for-simplicity`. Notes above apply.
 3. Read `implement-plan-and-open-pr` and run it. Notes above apply. That includes `/implement-from-spec`, `write-docstring`, verification, `write-pr-description`, `write-changelog`, `gh stack submit --open`, and the post-PR review subagents.
 4. `gh pr edit` so the body includes `Fixes #{child}` and `Part of #{parent}`. Never a closing keyword on the parent.
 5. Return to the manager only: PR URL, branch, title, verification, review notes worth reading, blockers.

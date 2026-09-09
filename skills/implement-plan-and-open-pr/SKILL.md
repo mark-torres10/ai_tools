@@ -85,7 +85,7 @@ If any of these steps fail, stop and ask instead of guessing.
 12. Push the branch.
 13. Open the PR.
 14. Update the CHANGELOG.md, using the `write-changelog` skill. If the CHANGELOG.md file doesn't exist, create it. Then commit to the PR and push.
-15. Spawn three review subagents on the PR: `comprehensive-code-review`, `plain-writing`, `review-for-simplicity`. Not a merge gate. Fix clear correctness bugs (broken contract, failing tests) and address other feedback and push.
+15. Spawn three review subagents on the PR: `comprehensive-code-review`, `comprehensive-writing-cleanup`, `review-for-simplicity`. Not a merge gate. Fix clear correctness bugs (broken contract, failing tests) and address other feedback and push.
 16. Return PR URL, executive summary of what was built, verification summary, review notes worth reading, and any known follow-ups.
 
 ## Required Verification Standard

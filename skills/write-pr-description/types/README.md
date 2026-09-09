@@ -9,4 +9,4 @@ Pick one kind, then follow its guide (and template when present). Use **default*
 | Bug | [bugs/guide.md](bugs/guide.md) | — | [bugs/examples/](bugs/examples/) |
 | Default | [default/guide.md](default/guide.md) | — | — |
 
-Once you create the draft PR description, run the `/plain-writing` skill to clean up the language.
+Once you create the draft PR description, run the `/comprehensive-writing-cleanup` skill to clean up the language.

@@ -12,6 +12,7 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **review-persona** | Review current work using a persona from `agents/personas/`. Slash-only. |
 | **review-rules** | Review current work against `agents/task_instructions/rules/`. Slash-only. |
 | **review-for-simplicity** | Review plans, proposals, and diffs for unnecessary complexity, premature abstraction, and unverified assumptions. Slash-only. |
+| **comprehensive-writing-cleanup** | Full prose cleanup: `/plain-writing`, `/anti-slop-writing`, `/humanizer-writing`, Addy Osmani clear writing principles, then `conventions/vocabulary.md`. Slash-only. |
 | **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
 | **create-implementation-plan** | Draft-then-confirm implementation plans (`plan.md` router + `steps/`), then expand step details via `implement-from-spec`. Examples under `skills/create-implementation-plan/examples/`. Agent can auto-apply. |
 | **create-epic** | From a complete plan, file a GitHub parent issue plus one child sub-issue per step (each child = one future PR). Slash-only. |
@@ -44,5 +45,5 @@ implement-epic                         # manager: stack, CI, children
       verify
       write-pr-description
       write-changelog
-      post-PR review                   # comprehensive-code-review, plain-writing, review-for-simplicity
+      post-PR review                   # comprehensive-code-review, comprehensive-writing-cleanup, review-for-simplicity
 ```
