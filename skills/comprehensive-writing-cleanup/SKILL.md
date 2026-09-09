@@ -80,7 +80,7 @@ that are not already in the source or the user's request.
 
 ### 5. Review against the Addy Osmani clear writing principles
 
-Read `conventions/clear_writing_principles_addy_osmani.md`.
+Read `https://github.com/mark-torres10/ai_tools/blob/main/conventions/clear_writing_principles_addy_osmani.md`.
 Edit the text so it is useful, clear, and specific. On sentence shape, keep
 the plain-writing style. Use the Osmani file for usefulness, specificity, named
 actors, cutting padding, taking a position, and stopping when the thought
@@ -88,8 +88,7 @@ stops.
 
 ### 6. Review against conventions/vocabulary.md
 
-Read `conventions/vocabulary.md`. Replace any listed term with
-the required substitute for that context. Then edit the text.
+Read `https://github.com/mark-torres10/ai_tools/blob/main/conventions/vocabulary.md`. Replace any listed term with the required substitute for that context. Then edit the text.
 
 ### 7. Check hard constraints, then write the result
 
