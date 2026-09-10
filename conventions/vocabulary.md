@@ -13,6 +13,7 @@ Use these terms when discussing technical or software engineering-related concep
 - Instead of "flesh", use "implement"
 - Instead of "provenance", use "audit log", "log", "record", metadata", or "parameters", depending on context.
 - Instead of "sink" as a place to store logs, data, etc., use "storage", "destination", or "target".
+- If referring to something taking a long time, use "stalled" instead of "stuck".
 - For data moving over the network somehow (e.g., getting data to/from AWS), prefer download/upload. For data moving from local file storage or referencing another local file, prefer import/export or load/write. For example, getting a model from HuggingFace = `download_model`. In contrast, working with models locally = `load_model/write_model`. Sending records to a third-party provider (e.g., Weights and Biases) = `upload_records`. Writing local metadata = `write_metadata`. For functions that have both a local and an over-the-network component, prefer `load/write` but add a `_local` suffix for any local ops. For example:
 
 ```python
