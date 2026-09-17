@@ -132,7 +132,21 @@ CI: green | none | red (stopped)
 Next: {next child title} | done | stopped
 ```
 
-### 5. Print the table and stop
+### 5. After each PR is implemented, do a final review pass
+
+Do a review pass across the entire stack. Look for areas for simplification and consolidation. Some things to flag include:
+
+- Duplicated/similar interfaces
+- Duplicated/similar functions
+- Inconsistent interfaces (e.g., one PR implements something as a series of class-based methods, while another does it as a chain of cuntions).
+- Inconsistent public/private interfaces (e.g., one PR implements something as all public interfaces, while another as private interfaces).
+- Inconsistent naming (e.g., one PR calls something "flag" while another calls it "sentinel".)
+
+Complement this with a pass of the /review-persona, /review-simplicity, and /comprehensive-code-review skills.
+
+Then, open a PR with any revisions as needed. Add this to the stack.
+
+### 6. Print the table and stop
 
 ```markdown
 | PR or issue | Title | What's accomplished |
