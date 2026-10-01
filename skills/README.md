@@ -33,12 +33,13 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 
 ## Some notes on how these fit together
 
-The `implement-*` skills fit as part of a stack. We structure multi-PR builds as epics, managed by `implement-epic`. Each PR is then built using `implement-plan-and-open-pr`, which uses `impleent-from-spec` to actually write the code.
+The `implement-*` skills fit as part of a stack. Before any of them run, `create-high-level-proposal` writes a `proposal.md` that the user confirms. We structure multi-PR builds as epics, managed by `implement-epic`. Each PR is then built using `implement-plan-and-open-pr`, which uses `implement-from-spec` to actually write the code.
 
 ```
+create-high-level-proposal             # proposal.md: scope, file structure, schemas, decisions; user confirms
 implement-epic                         # manager: stack, CI, children
   per child:
-    create-implementation-plan          # one-PR plan against current stack base
+    create-implementation-plan          # one-PR plan against current stack base; builds on proposal.md if it exists
     implement-plan-and-open-pr        # one plan → one PR (`gh stack` instead of `gh pr create`)
       implement-from-spec             # write code for one task; commits as it goes
       write-docstring

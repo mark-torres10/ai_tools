@@ -1,7 +1,8 @@
 ---
 name: create-implementation-plan
 description: >-
-  Use when the user asks for an implementation plan.
+  Use when the user asks for an implementation plan. If a proposal.md from
+  /create-high-level-proposal exists, plan from it.
 disable-model-invocation: false
 metadata:
   owner: mark
@@ -25,6 +26,28 @@ Anti-patterns:
 - Avoid vague modifiers and dangling modifiers, such as "as needed", "etc.", or "follow the existing pattern", without naming the exact reference file or symbol
 - Avoid verification steps that rely on unfinished parallel work. Assume that the work in `plan.md` is self-encompassed.
 - Avoid delegated steps that requires hidden intent or unstated judgment.
+- Do not copy the proposal's code, schema tables, or file trees into `plan.md`. Link to `proposal.md` instead.
+
+## Using `proposal.md`
+
+`/create-high-level-proposal` writes a `proposal.md` before the plan. When one exists, the plan builds on it.
+
+Find the proposal in this order:
+
+1. A path the user named.
+2. A `proposal.md` in the plan folder the user named, or one that is clearly in the thread.
+3. The newest `docs/plans/*/proposal.md` whose folder has no `plan.md` yet. Use it only if its scope matches the request.
+
+If two proposals look plausible, ask. If none exists, plan without one.
+
+When you use a proposal:
+
+- Write the plan into the proposal's folder. Do not create a new folder.
+- Treat the proposal's scope, cross-cutting concerns, file structure, schema models, and confirmed decisions as settled. Do not reopen them.
+- If any item under "Decisions to confirm" is still open, meaning it is not marked confirmed or changed, stop and ask the user before you draft.
+- Build `plan.md` from the proposal. The overview and approach come from the proposal's overview and cross-cutting concerns. The steps start from the proposal's steps. "What done looks like" comes from the proposal's expected results. If you split or merge a proposal step, say why in the plan.
+- In each step file, cite the proposal sections the step implements. Take reused paths and symbols from the proposal, and use its file structure to set the files allowed to change.
+- If research contradicts the proposal, e.g., a file or symbol it names does not exist, stop and ask. Do not edit `proposal.md` yourself.
 
 Include at the top of every plan:
 
@@ -39,12 +62,14 @@ Include at the top of every plan:
 Relevant filepaths:
 
 - `<workspace_root>/docs/plans`: where to put the work when generating a plan.
+- `<workspace_root>/docs/plans/<folder>/proposal.md`: the high-level proposal, if one exists. See "Using `proposal.md`" above.
 - `<workspace_root>/docs/runbooks/`: runbooks for that repo.
 
 Target file layout:
 
 ```text
 docs/plans/<YYYY-MM-DD>_<descriptor>_<6-digit hash>/
+  proposal.md             # from /create-high-level-proposal, only if it exists
   plan.md                 # router + executive summary
   steps/
     step1.md
@@ -67,6 +92,8 @@ Start with a draft version of `plan.md`. It should have this setup:
 - Delegated tasks must be impossible to misread.
 
 ## Overview
+
+(If `proposal.md` exists, link it here first.)
 
 ## Happy flow
 
