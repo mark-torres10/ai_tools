@@ -50,7 +50,7 @@ If Mark gives a file path, use that file. If he does not, find the newest sessio
 | Cursor IDE | `~/.cursor/projects/<workspace-slug>/agent-transcripts/<session-id>/<session-id>.jsonl` | Messages and tool-call inputs. Tool results are omitted. Reasoning is often `[REDACTED]`. Do not read `state.vscdb`. |
 | Cursor CLI | A `stream-json` capture if Mark has one. Else `~/.cursor/chats/<hash>/<session-id>/store.db` and `meta.json`. | `stream-json` has the model, tool args, tool results, and `duration_ms`. It has no documented token counts. `store.db` is best-effort. |
 | Codex CLI | `$CODEX_HOME/sessions/YYYY/MM/DD/rollout-<timestamp>-<uuid>.jsonl`, default home `~/.codex`. Also read `.jsonl.zst`. `session_index.jsonl` maps an id to a file. | Messages, tool calls, tool results, timestamps, `token_count` events. Model slug is on `turn_context` when present. No documented dollar cost. |
-| Cursor Cloud | `GET /v0/agents/{id}/conversation` for text. `GET /v1/agents/{id}/usage` for tokens. `GET /v1/agents/{id}/runs/{runId}` for `durationMs` and the final text. A saved SSE stream file for tool calls. | Durable API text has no tool calls. Set tool results to `absent` unless a saved stream has them. Drop a user message whose text is `Reminder to commit and push if appropriate.` |
+| Cursor Cloud | Prefer `<TRACE_DIR>/<agentId>/<runId>.jsonl` from `tools/cursor_cloud_recorder/archive_cloud_runs.py`. The run file is `session-trace/0.1`, captured by replaying `GET /v1/agents/{id}/runs/{runId}/stream` within about 24 hours of the run. The user prompt, when the recorder saved it, is in `<agentId>/conversation.json` from `GET /v0/agents/{id}/conversation`. | The run file has assistant text, thinking, tool calls, and tool results. Large payloads are marked `truncated`. Token counts are on the usage line, and so is `cost.chargedCents` when the usage payload has it. v0 ids looked stable in SpecStory's spike (`turn-0:step:22:assistant`). Use the id in the file. Drop a user message whose text is `Reminder to commit and push if appropriate.` If the run file is missing because the stream expired, grade the v0 text and mark tool results `absent`. |
 
 The encoded Claude directory replaces non-alphanumeric characters in the working directory with `-`. Codex files are grouped by the day the session started, not by the repo, so resolve them from `session_index.jsonl` or by scanning. IDE and CLI session ids are not interchangeable.
 
@@ -64,7 +64,7 @@ The first line is the session header.
 {"record_type":"session","schema":"session-trace/0.1","gen_ai.conversation.id":"<session id>","agent_trace.source":"claude_code","agent_trace.source_path":"<file or URL>","agent_trace.cwd":"<cwd>","agent_trace.git_branch":"<branch or null>","agent_trace.harness_version":"<version or null>","gen_ai.provider.name":"<provider or null>","gen_ai.request.model":"<model or null>","agent_trace.started_at":"<ISO-8601 or null>","agent_trace.cost_usd":null}
 ```
 
-`agent_trace.source` is `claude_code`, `cursor_ide`, `cursor_cli`, `codex_cli`, or `cursor_cloud`. Leave `cost_usd` null unless the source file contains a dollar amount. Do not multiply tokens by a price table.
+`agent_trace.source` is `claude_code`, `cursor_ide`, `cursor_cli`, `codex_cli`, or `cursor_cloud`. Leave `cost_usd` null unless the source file contains a dollar amount. If a Cloud usage payload has `chargedCents`, set `cost_usd` to that number divided by 100. Do not multiply tokens by a price table.
 
 Later lines use these types.
 
