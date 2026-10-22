@@ -55,7 +55,8 @@ Include at the top of every plan:
 ## Remember
 - Exact file paths always
 - Exact commands with expected output
-- DRY, YAGNI, TDD, frequent commits
+- DRY, YAGNI, frequent commits
+- Tests only for production logic with real behavior
 - Delegated tasks must be impossible to misread.
 ```
 
@@ -88,7 +89,8 @@ Start with a draft version of `plan.md`. It should have this setup:
 ## Remember
 - Exact file paths always
 - Exact commands with expected output
-- DRY, YAGNI, TDD, frequent commits
+- DRY, YAGNI, frequent commits
+- Tests only for production logic with real behavior
 - Delegated tasks must be impossible to misread.
 
 ## Overview
@@ -136,5 +138,7 @@ For writing each step, use the `/implement-from-spec` skill to design implementa
 Some additional rules while writing each step:
 
 - Include a list of files to inspect, files allowed to change, and files forbidden to change.
-- Include what must pass/fail for each step.
-- For ui changes, require screenshots before and after. Put these in `{workspace root}/docs/plans/{doc plan folder}/images/{before/after}/`.
+- Include what must pass or fail for each step.
+- For a UI change, require screenshots before and after. Put these in `{workspace root}/docs/plans/{doc plan folder}/images/{before/after}/`.
+- Include a test in a step only when that step changes production logic with real behavior. Do not plan a unit test for a script, a notebook, a one-off analysis, a prototype, exploratory code (including code under `experiments/`), a constant, config, static data, or code that does not run production logic.
+- When a step needs tests, name the behaviors those tests check. Do not tell the implementer to write a failing test before the code. Do not add a pass that exists only to make a failing test pass and then refactor.

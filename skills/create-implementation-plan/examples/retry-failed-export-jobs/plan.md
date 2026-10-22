@@ -4,7 +4,8 @@
 
 - Exact file paths always
 - Exact commands with expected output
-- DRY, YAGNI, TDD, frequent commits
+- DRY, YAGNI, frequent commits
+- Tests only for production logic with real behavior
 - Delegated tasks must be impossible to misread.
 
 ## Overview
