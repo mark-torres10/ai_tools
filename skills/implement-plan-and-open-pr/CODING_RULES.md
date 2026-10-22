@@ -1,5 +1,23 @@
 # Rules for software development
 
+## Smallest change
+
+Write the smallest change that satisfies the spec. When a later rule in this file would add a file, a function, a config key, or a type the spec does not need, skip that addition.
+
+Prefer fewer files, fewer functions, and fewer lines. Reuse a utility that already exists. Delete code when deletion satisfies the spec.
+
+Do not add any of the following unless the spec asks for it:
+
+- a speculative abstraction, such as a base class or an interface with one implementation
+- extra config
+- a module that only forwards calls to another module
+- a defensive check for a case that cannot happen
+- a feature the spec does not name
+
+Do not add a comment or docstring that only restates the code.
+
+Before you finish, read the diff and ask what you can remove. Remove it when the spec still holds.
+
 ## Code Quality & Architecture
 
 - Single Responsibility Principle: Each class/function should have one clear purpose

@@ -7,7 +7,7 @@ Pass/fail criteria for each phase. Use as a copy-paste checklist before advancin
 Pass
 
 - [ ] Exactly one main caller named (function, class used from `main`, route, job handler, CLI entry).
-- [ ] Proposed file tree listed (including tests).
+- [ ] Proposed file tree listed. Include test files only when tests belong.
 - [ ] Unit of work / happy-path slice stated in one sentence.
 - [ ] Out-of-scope listed (sibling packets, future paths, polish).
 
@@ -59,7 +59,9 @@ Fail / stop
 
 ## Phase 4 — Test design
 
-Pass
+Skip this phase when `SKILL.md` says tests do not belong. When you skip it, write a short note of why, and do not add a test file.
+
+Pass, when tests belong
 
 - [ ] Pseudocode scenarios use given / when / then.
 - [ ] Each scenario maps to a named real test.
@@ -68,7 +70,7 @@ Pass
 - [ ] Tests fail for the right reason (NotImplemented / wrong result), not import errors from missing scaffold.
 - [ ] Test design is its own Git commit.
 
-Fail / stop
+Fail, when tests belong
 
 - Writing tests only after implementation
 - Accidental green from empty stubs
@@ -84,7 +86,8 @@ Pass
 - [ ] Exactly one unit of work chosen (one function or one path segment).
 - [ ] Choice follows dependency order of the caller path (e.g. `get` → `write` → `transform` → `run`).
 - [ ] Diff primarily touches that unit’s module.
-- [ ] Targeted tests run; newly green vs still-red reported.
+- [ ] When this task has tests, you ran the targeted tests and reported which are newly green and which are still red.
+- [ ] When this task has no tests, the caller path for this unit ran.
 - [ ] No drive-by refactors or unrelated features.
 - [ ] This unit of work is its own Git commit.
 
@@ -102,10 +105,11 @@ Fail / stop
 Pass
 
 - [ ] [checklist.md](../checklist.md) fully checked for applicable items.
-- [ ] Designed tests for this slice all green.
-- [ ] Main caller path executable for the slice.
+- [ ] Designed tests for this task are all green, or the task has no tests under the testing policy in `SKILL.md`.
+- [ ] Main caller path executable for the task.
+- [ ] You reviewed the diff, and you deleted code the spec does not need.
 
 Fail / stop
 
 - Shipping with TODO to wire the caller
-- Declaring done while designed tests for the slice still fail
+- Declaring done while a designed test for this task is still failing

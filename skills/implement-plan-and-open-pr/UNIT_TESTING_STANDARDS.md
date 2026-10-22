@@ -1,19 +1,23 @@
 # Unit Testing Standards
 
-This document outlines the testing standards and best practices for all engineering work. These standards ensure consistent, maintainable, and comprehensive test coverage across the codebase.
+Write a unit test for production logic that has real behavior. The sections below describe how to structure a test after you have decided that a test belongs.
 
-## Core Testing Principles
+## When to write a unit test
 
-### When NOT to write unit tests
+Write a test when the code makes a decision or transforms data in production. A function that decides whether a failed job is eligible to retry gets a test, because that function has real behavior.
 
-- Configuration changes.
-- Setting up access to resources like AWS and Terraform.
-- Work in experimental code (typically code added to `experiments/`).
+Do not write a unit test for any of the following:
 
-### Test Coverage Requirements
+- Code that is clearly experimental, such as a script, a notebook, a one-off analysis, a prototype, or exploratory code, including a file under `experiments/` and a one-off script in any other folder. A notebook that plots a sample does not get a unit test.
+- A constant, a config value, or other static data. `MAX_RETRIES = 3` does not get a unit test, and a change that only edits configuration does not get a unit test either.
+- Code that does not run production logic, such as a type alias, a re-export, or a stub that only wires calls.
+- Setup for access to a resource such as AWS or Terraform.
 
-- Public functions, classes, and methods must have corresponding tests
-- Edge cases and error conditions must be covered
+Do not add a test to raise a coverage percentage.
+
+## What a test should cover
+
+When you write tests, check the behavior the spec names. Include a failure case when the spec names one.
 
 ## Best practices
 
@@ -25,7 +29,9 @@ This document outlines the testing standards and best practices for all engineer
 
 ### Test Organization
 
-- One test class per function** - Each function gets its own test class
+Use the class and method names below only for a test you decided to write under "When to write a unit test".
+
+- One test class per function. Each function that you test gets its own test class
 - Test class name follows pattern: `Test{FunctionName}`
 - Test class docstring clearly identifies the function being tested
 - Test methods follow descriptive naming: `test_{what_it_tests}`

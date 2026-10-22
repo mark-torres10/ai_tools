@@ -1,6 +1,8 @@
 # Example: Pipeline + MemoryRepository
 
-Example walkthrough for `implement-from-spec`. Mirror this order; do not invent a different sequence. Each step below is a separate Git commit.
+Example walkthrough for `implement-from-spec`. Mirror the order below, and do not invent a different sequence. Each step below is a separate Git commit.
+
+This walkthrough includes tests because `run`, `transform_record`, and `MemoryRepository` are production logic with real behavior. A one-off exploratory script does not get tests. If `SKILL.md` says the task does not need tests, skip the test-design step and keep the other steps in this order.
 
 Task: Build a simple script that loads data from the DB, transforms it, and writes it back via `MemoryRepository`.
 
