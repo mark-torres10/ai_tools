@@ -18,6 +18,7 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **create-epic** | From a complete plan, file a GitHub parent issue plus one child sub-issue per step (each child = one future PR). Slash-only. |
 | **implement-epic** | Implements an existing GitHub epic as a stacked PR (`gh stack`): one child issue per PR, manager spawns one orchestrator per child. Slash-only. |
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
+| **grade-agent-conversation** | Grades a finished Claude Code, Cursor, or Codex conversation on verbosity, efficiency, test quality, and skill adherence, then proposes skill and rule edits. Slash-only. |
 | **review-security** | Instructs the agent to apply code-security (Semgrep) and security-best-practices (OpenAI). Requires both installed. Slash-only. |
 | **write-pr-description** | Type-specific PR bodies for experiments, features, bugs, or default (guide/template/examples under `types/`). Slash-only. Single source of truth for PR descriptions. |
 | **write-docstring** | Writes Python function, class, or module docstrings (numpy-style) via routed guides. Slash-only. |
