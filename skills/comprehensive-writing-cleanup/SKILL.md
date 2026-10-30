@@ -2,8 +2,9 @@
 name: comprehensive-writing-cleanup
 description: >-
   Cleans up prose by applying plain-writing, anti-slop-writing,
-  humanizer-writing, the Addy Osmani clear writing principles, and the
-  project's preferred vocabulary, then writing the edited text. Use when
+  humanizer-writing, the Addy Osmani clear writing principles, Full Stack
+  Data Lab agent-text-at-scale principles, and the project's preferred
+  vocabulary, then writing the edited text. Use when
   the user asks to clean up, rewrite, humanize, deslopify, or
   comprehensively edit writing, or when they run /comprehensive-writing-cleanup.
 disable-model-invocation: true
@@ -49,8 +50,9 @@ Cleanup progress:
 - [ ] 3. Apply /anti-slop-writing
 - [ ] 4. Apply /humanizer-writing
 - [ ] 5. Review against the Addy Osmani clear writing principles
-- [ ] 6. Review against conventions/vocabulary.md
-- [ ] 7. Check hard constraints, then write the result
+- [ ] 6. Review against agent-text-at-scale principles
+- [ ] 7. Review against conventions/vocabulary.md
+- [ ] 8. Check hard constraints, then write the result
 ```
 
 ### 1. Resolve the target and the ai_tools root
@@ -86,11 +88,23 @@ the plain-writing style. Use the Osmani file for usefulness, specificity, named
 actors, cutting padding, taking a position, and stopping when the thought
 stops.
 
-### 6. Review against conventions/vocabulary.md
+### 6. Review against agent-text-at-scale principles
+
+Read `references/agent-text-at-scale-fsdatalab.md` in full. When the
+target includes list-like or feed-like copy (titles, cards, repeated
+rows, notification summaries, or parallel bullets meant for fast
+scanning), edit so items follow the five principles: NVN-friendly
+openings, distinguishing words first, one structure and one term per
+concept, variation only for meaningful differences, and verb
+connotation aligned with the dashboard or list purpose. When the target
+is continuous prose only, skim the reference for embedded lists and
+apply the same rules to those fragments.
+
+### 7. Review against conventions/vocabulary.md
 
 Read `https://github.com/mark-torres10/ai_tools/blob/main/conventions/vocabulary.md`. Replace any listed term with the required substitute for that context. Then edit the text.
 
-### 7. Check hard constraints, then write the result
+### 8. Check hard constraints, then write the result
 
 After the last pass, confirm all of the following still hold:
 
