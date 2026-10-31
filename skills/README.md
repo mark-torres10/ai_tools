@@ -15,6 +15,7 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **comprehensive-writing-cleanup** | Full prose cleanup: `/plain-writing`, `/anti-slop-writing`, `/humanizer-writing`, Addy Osmani clear writing principles, then `conventions/vocabulary.md`. Slash-only. |
 | **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
 | **create-implementation-plan** | Draft-then-confirm implementation plans (`plan.md` router + `steps/`), then expand step details via `implement-from-spec`. Examples under `skills/create-implementation-plan/examples/`. Agent can auto-apply. |
+| **create-second-pass-implementation** | After a first working pass (plan, design, diff, PR, or code), harvest what it learned, rebuild a cleaner version from scratch, and keep it only if the same checks still hold. Reference: `skills/create-second-pass-implementation/references/second-pass-trick-youssef-hosni.md`. Slash-only. |
 | **create-epic** | From a complete plan, file a GitHub parent issue plus one child sub-issue per step (each child = one future PR). Slash-only. |
 | **implement-epic** | Implements an existing GitHub epic as a stacked PR (`gh stack`): one child issue per PR, manager spawns one orchestrator per child. Slash-only. |
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
