@@ -37,7 +37,7 @@ Please provide the following so I can perform a thorough review:
   - [ ] Tests that cannot fail or only restate the implementation: a mock returning what it was told, an expected value recomputed with the same code, or a constant asserted equal to itself.  
   - [ ] Suggested manual or integration checks.  
   - *Example:* “`test_models.py` covers user creation, but missing duplicate email case.”  
-  - *Example:* “`test_get_user` sets `mock.return_value = user`, then asserts that same `user`.”  
+  - *Example:* “`test_get_user` sets `mock.return_value = user`, then asserts only that same `user`, without checking the dependency call.”  
   - *Example:* “Manually test concurrent writes to `update_balance()` for race conditions.”
 
 - [ ] **Risks & Tradeoffs**  
