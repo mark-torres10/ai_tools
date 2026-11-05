@@ -44,7 +44,8 @@ If any of these steps fail, stop and ask instead of guessing.
 
 - Follow the plan. Do not silently redesign it. Do NOT make updates to plan.md or any step files.
 - For implementation, use the `/implement-from-spec` skill. Do not implement in a side pass that skips its phases.
-- Review CODING_RULES.md and UNIT_TESTING_STANDARDS.md before any implementation. You must be in compliance with these standards.
+- Review CODING_RULES.md and UNIT_TESTING_STANDARDS.md before any implementation. You must comply with both.
+- Follow the smallest change section in CODING_RULES.md when you decide how much code to add. Follow the testing policy in UNIT_TESTING_STANDARDS.md when you decide whether to add tests.
 - Preserve the plan's agreed contracts and invariants.
 - Only parallelize tasks that are clearly independent and safe. Do not run `/implement-from-spec` in parallel for different plan steps.
 - Never revert unrelated user changes.
@@ -80,7 +81,7 @@ If any of these steps fail, stop and ask instead of guessing.
 9. If verification fails, iterate until:
    - all required checks pass, or
    - you are blocked by an external dependency, missing credential, or pre-existing unrelated failure
-10. Review the final diff to ensure the implemented changes match the plan. Ensure that your implementation complies with CODING_RULES.md and UNIT_TESTING_STANDARDS.md. For docstrings, apply the `write-docstring` skill. If that leaves uncommitted changes, commit them separately (do not squash `/implement-from-spec` commits).
+10. Review the final diff. Confirm that the changes match the plan and comply with CODING_RULES.md and UNIT_TESTING_STANDARDS.md. Read the diff and delete anything the plan does not need. For docstrings, apply the `write-docstring` skill. If that leaves uncommitted changes, commit them separately (do not squash `/implement-from-spec` commits).
 11. Draft the PR title and body by applying `write-pr-description`.
 12. Push the branch.
 13. Open the PR.

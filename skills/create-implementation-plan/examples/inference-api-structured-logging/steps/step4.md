@@ -24,7 +24,7 @@ Prove the full happy and failure paths on `POST /v1/infer` against the plan’s 
 
 ### Allowed to change
 
-- Test files only, to close coverage gaps for the checklist below
+- Test files only, to cover the behaviors in the checklist below
 - Bugfixes strictly in files allowed in Steps 1–3 if verification finds a defect
 
 ### Forbidden to change

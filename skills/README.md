@@ -15,6 +15,7 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **comprehensive-writing-cleanup** | Full prose cleanup: `/plain-writing`, `/anti-slop-writing`, `/humanizer-writing`, Addy Osmani clear writing principles, then `conventions/vocabulary.md`. Slash-only. |
 | **explain-as-python** | Explain non-Python code (e.g. TypeScript) through a Python lens—concepts first, then translation. Agent can auto-apply. |
 | **create-implementation-plan** | Draft-then-confirm implementation plans (`plan.md` router + `steps/`), then expand step details via `implement-from-spec`. Examples under `skills/create-implementation-plan/examples/`. Agent can auto-apply. |
+| **create-second-pass-implementation** | After a first working pass (plan, design, diff, PR, or code), harvest what it learned, rebuild a cleaner version from scratch, and keep it only if the same checks still hold. Reference: `skills/create-second-pass-implementation/references/second-pass-trick-youssef-hosni.md`. Slash-only. |
 | **create-epic** | From a complete plan, file a GitHub parent issue plus one child sub-issue per step (each child = one future PR). Slash-only. |
 | **implement-epic** | Implements an existing GitHub epic as a stacked PR (`gh stack`): one child issue per PR, manager spawns one orchestrator per child. Slash-only. |
 | **suggest-rules-additions** | At end of conversation, infers preferences from the exchange and suggests additions to `docs/RULES.md`. Slash-only. |
@@ -29,7 +30,8 @@ Cursor and Codex skills. Source of truth: `skills/` in this repo.
 | **setup-new-repo** | Bootstrap a new repo: uv/pyproject, copy global Cursor skills, npx skills add (railway/shadcn/fastapi/langgraph/vercel), pre-commit+CI, gitignore, GitHub via gh. Slash-only. |
 | **handoff** | End-of-session handoff generator that writes `handoff.md` with PR link, done summary, remaining to-dos, and last left off. |
 | **create-advisory-brief** | Distills repo context into a copy-paste markdown prompt for an external AI (no codebase access) to evaluate options and recommend a path. Slash-only. |
-| **implement-from-spec** | Implements a scoped unit of work from an approved design/plan: caller-first scaffold, contracts agreed upon, test design, then one-function-at-a-time. References under `skills/implement-from-spec/`. Agent can auto-apply. |
+| **be-more-ambitious** | Rewrites a basic prompt into the deeper request a field-leading expert would make (altitude, depth, range) and returns that prompt with a short rationale. Does not run the task. Slash-only. |
+| **implement-from-spec** | Implements a scoped unit of work from an approved design/plan: caller-first scaffold, contracts agreed upon, smallest change, tests only for production logic, then one function at a time. References under `skills/implement-from-spec/`. Agent can auto-apply. |
 
 ## Some notes on how these fit together
 

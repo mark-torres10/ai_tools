@@ -1,11 +1,11 @@
 # Step 1: Define request-id and JSON log contracts
 
-Confirm contracts before behavior. Scaffold modules and write failing tests that encode the decisions in [../plan.md](../plan.md). Do not implement middleware or change error responses yet.
+Confirm contracts before behavior. Scaffold the modules, and add tests for `resolve_request_id` and the log-event builders. Do not add tests for the constants. Do not implement middleware or change error responses yet.
 
 ## Scope
 
 - **Caller (for later steps):** ASGI middleware registered from `inference-api/app/main.py` that wraps every HTTP request.
-- **This task:** Types, constants, pure helpers (resolve id, serialize log events), and failing tests for those contracts.
+- **This task:** Types, constants, and pure helpers (`resolve_request_id`, log-event builders), plus tests for those helpers.
 - **Out of scope:** Middleware wiring, error-body attachment, changing `POST /v1/infer`, metrics/tracing vendors.
 
 ## Files
@@ -22,7 +22,7 @@ Confirm contracts before behavior. Scaffold modules and write failing tests that
 
 - `inference-api/app/request_context.py` — **create** (constants, id resolution helper, log-event builders; stub bodies OK if signatures are confirmed)
 - `inference-api/app/logging_setup.py` — add JSON formatter / logger name for access events only if needed for imports to resolve; no runtime switch-over required yet
-- `inference-api/tests/test_request_context.py` — **create** (contract tests; must fail until Step 2+)
+- `inference-api/tests/test_request_context.py`: **create** (tests for the helpers)
 
 ### Forbidden to change
 
@@ -98,7 +98,7 @@ Bodies may raise `NotImplementedError`.
 
 Lock signatures and constants to the tables above. Stop if anything contradicts plan decisions.
 
-### Phase 4 — Test design (failing)
+### Phase 4: Tests for the helpers
 
 Pseudocode → real tests in `test_request_context.py`:
 

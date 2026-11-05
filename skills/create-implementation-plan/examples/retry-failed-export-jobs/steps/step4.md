@@ -26,7 +26,7 @@
 
 ## Required scenarios
 
-Write given/when/then tests first if any gap remains after Step 3; then implement until green.
+Add a test for any behavior below that Step 3 left uncovered.
 
 1. **Happy retry:** Job fails once (`attempt_count` under max, `next_retry_at` due) → `run_once` → `pending` + queue message → simulated export worker success → `completed` with download URL fields as today.
 2. **Backoff gating:** Failed job with `next_retry_at` in the future → `run_once` publishes nothing and leaves status `failed`.

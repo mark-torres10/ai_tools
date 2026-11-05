@@ -29,14 +29,15 @@ See [../examples/pipeline-memory-repo.md](../examples/pipeline-memory-repo.md).
 ## Done for one iteration
 
 - Diff is centered on one module/unit
-- At least one previously designed test is now green because of this unit
+- When this task has tests, at least one previously designed test is now green because of this unit
+- When this task has no tests, the caller path for this unit runs
 - No unrelated cleanup, renames, or features
 - Changes for this unit are committed before the next unit starts
 
 ## Done for Phase 5 (exit loop)
 
-- Every designed test for this slice is green or remaining reds are explicitly out-of-scope (should not happen if Phase 4 matched the slice)
-- Caller path runs end-to-end for the slice
+- When this task has tests, every designed test is green
+- The caller path runs end-to-end
 
 ## Anti-patterns
 
