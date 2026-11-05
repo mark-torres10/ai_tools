@@ -22,12 +22,16 @@ Draft a PR description. This skill is the single source of truth for PR bodies�
 1. **Classify** the PR as experiment, feature, or bug when clear. If none fit, use **default**. If unclear between two specific kinds, ask once.
 2. **Read** that type's `guide.md` (required).
 3. **Read** `template.md` when present (scaffold).
-4. **Skim** 1–2 examples only if the shape or tone is unclear.
-5. **Draft** from the diff / plan / experiment outputs. Omit empty or N/A sections.
-6. **Return** the description as markdown ready to paste into the PR.
+4. **Read** [shared/summary-view.md](shared/summary-view.md) and [shared/merge-danger.md](shared/merge-danger.md) (required).
+5. **Skim** 1–2 examples only if the shape or tone is unclear.
+6. **Draft** from the diff / plan / experiment outputs. Omit empty or N/A sections.
+7. **Return** the description as markdown ready to paste into the PR.
 
 ## Shared rules
 
+- Summary prose stays as the type guide defines it (for default: **Problem** / **Purpose** and **Solution**). Put the summary visual **under** that prose (under **Solution** for default). See [shared/summary-view.md](shared/summary-view.md).
+- **Merge Danger** is required on every type. End every description with it. See [shared/merge-danger.md](shared/merge-danger.md).
+- Do not repeat the same picture in a later diagram (Architecture, Flow, Fix). The summary slot gets the smaller view; later sections keep the fuller diagram only when they answer a different question.
 - Summary and Purpose may be a bit fuller (for default: Problem / Purpose); keep every other section terse.
 - Terse, professional, present tense. Short sentences. No filler. Minimal bolding. Executive-style McKinsey-style direct communication.
 - Describe behavior and outcomes, not a file changelog or stale implementation detail.
@@ -41,7 +45,7 @@ Resolve paths relative to this `SKILL.md`.
 |------|------|-------|----------|----------|
 | Experiment | Ablations, comparisons, evals, research trials | [types/experiments/guide.md](types/experiments/guide.md) | [types/experiments/template.md](types/experiments/template.md) | [types/experiments/examples/](types/experiments/examples/) |
 | Feature | New capability or behavior | [types/feature/guide.md](types/feature/guide.md) | [types/feature/template.md](types/feature/template.md) | [types/feature/examples/](types/feature/examples/) |
-| Bug | Defect fix; broken → corrected behavior | [types/bugs/guide.md](types/bugs/guide.md) | — | [types/bugs/examples/](types/bugs/examples/) |
-| Default | Catch-all when no other type fits (refactors, chores, infra, docs, deps, …) | [types/default/guide.md](types/default/guide.md) | — | — |
+| Bug | Defect fix; broken → corrected behavior | [types/bugs/guide.md](types/bugs/guide.md) | [types/bugs/template.md](types/bugs/template.md) | [types/bugs/examples/](types/bugs/examples/) |
+| Default | Catch-all when no other type fits (refactors, chores, infra, docs, deps, …) | [types/default/guide.md](types/default/guide.md) | [types/default/template.md](types/default/template.md) | — |
 
 Type index: [types/README.md](types/README.md)

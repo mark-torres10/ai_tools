@@ -6,6 +6,16 @@ Scheduled report jobs computed day windows in UTC but labeled and cut those wind
 
 Window start/end are now computed and labeled with one timezone contract: the workspace timezone end-to-end.
 
+```text
+# before
+start, end = utc_day_bounds(yesterday)
+label = format(workspace_tz, start, end)
+
+# after
+start, end = local_day_bounds(workspace_tz, yesterday)
+label = format(workspace_tz, start, end)
+```
+
 ## Purpose
 
 Workspaces outside UTC (especially those that observe DST) get reports whose coverage does not match the labeled date—missing late-evening rows or including early-morning hours from the adjacent day.
@@ -43,3 +53,11 @@ docker compose up api worker
 3. Run the daily “yesterday” report for the day after the transition.
 4. Confirm included timestamps fall strictly within yesterday 00:00–24:00 local, and the label matches that window.
 5. Repeat for a UTC workspace: window and label remain UTC calendar days with no shift.
+
+## Merge Danger
+
+**Door:** two-way
+
+Revert restores UTC-bound window math for newly scheduled runs. Reports already delivered keep their old coverage.
+
+**Blast radius:** scheduled report windows in non-UTC workspaces

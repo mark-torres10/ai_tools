@@ -6,6 +6,10 @@ Adds <capability> for <problem or constraint>.
 
 <How it behaves from the caller's perspective>. <Most important runtime behavior>.
 
+```text
+<smallest view: call tree, diff, or component tree — see ../../shared/summary-view.md>
+```
+
 ## Purpose
 
 Currently, <user or system problem>.
@@ -90,3 +94,13 @@ Response:
 ```
 
 Expected: <observable success condition>.
+
+## Merge Danger
+
+**Door:** one-way | two-way
+
+<optional: why revert is expensive or incomplete, or why it is cheap>
+
+**Blast radius:** <short phrase>
+
+<optional: who or what breaks if this is wrong>

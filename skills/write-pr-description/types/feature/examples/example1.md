@@ -6,6 +6,14 @@ Adds asynchronous CSV exports for queries that are too large to return in a norm
 
 The API creates an export job and returns a job identifier immediately. A background worker generates the file, stores it in S3, and exposes a temporary download URL when processing completes.
 
+```text
+ POST /exports
+-  └─ run query + stream CSV in response
++  └─ createJob() → { export_id, status: pending }
++  GET /exports/{export_id}   (poll)
++  Worker → Job Store + S3 → download_url when completed
+```
+
 ## Purpose
 
 Currently, users must wait for long-running queries to complete before receiving results. This leads to a poor user experience, with a possibility of a long-running job erroring out after a long wait.
@@ -129,3 +137,11 @@ curl localhost:8000/exports/exp_456
 ```
 
 Expected: eventually `status: "completed"` with a temporary `download_url`.
+
+## Merge Danger
+
+**Door:** one-way
+
+New job store, export queue, and poll/download API contract remain after revert; partial exports may already sit in S3.
+
+**Blast radius:** async export callers and stored export jobs

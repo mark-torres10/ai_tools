@@ -6,6 +6,12 @@ Compared <conditions or methods> on <task, dataset, or evaluation>.
 
 <Main result>. <Important secondary finding or tradeoff>.
 
+```text
+<Condition A>    <primary metric>   <short note>
+<Condition B>    <primary metric>   <short note>
+<Condition C>    <primary metric>   <short note>
+```
+
 ## Purpose
 
 Determine whether <experimental variable> affects <outcome or decision>.
@@ -65,3 +71,13 @@ Outputs:
 
 * `outputs/<artifact>`
 * `outputs/<artifact>`
+
+## Merge Danger
+
+**Door:** two-way | one-way
+
+<Why revert is or is not cheap for this experiment change.>
+
+**Blast radius:** <what later runs or comparisons depend on this PR>
+
+<Who or what is affected if the conclusion or config is wrong.>

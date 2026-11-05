@@ -52,15 +52,26 @@ Common anti-patterns:
 - Jumping straight to the root cause without stating what broke.
 - Including implementation details (e.g., variable names) that will become stale.
 
+After the prose, add the smallest view that makes the key point clear. Follow [../../shared/summary-view.md](../../shared/summary-view.md). Place each visual next to the short text it supports. Keep only the calls, files, props, states, and boundaries needed. One view is enough. Several only if each answers a different question. If Fix already draws the same picture, Summary uses a smaller different view.
+
 An example:
 
-```markdown
+````markdown
 Large CSV exports were truncated after ~100MB because the worker closed the
 S3 upload stream when the local buffer flushed, not when the query finished.
 
 Exports now stream until the query completes, then finalize the upload and
 return a complete download URL.
+
+```text
+# before
+on buffer_flush → finalize S3 upload
+
+# after
+on buffer_flush → write multipart part
+on cursor_exhausted → finalize S3 upload
 ```
+````
 
 ### 3. Purpose
 
@@ -214,3 +225,11 @@ Verify that:
 - Required services are mentioned
 - Paths assume a clear working directory
 - Success criteria are explicit (what "fixed" looks like)
+
+### 8. Merge Danger
+
+See [../../shared/merge-danger.md](../../shared/merge-danger.md).
+
+For bug fixes: a fix that rewrites already stored bad data is **one-way**; a logic fix that only affects new requests is **two-way**.
+
+Example: a migration that backfills truncated export metadata in the job store is one-way. Changing when the worker finalizes the S3 upload is two-way—revert restores behavior for new exports; files already downloaded stay truncated unless separately repaired.

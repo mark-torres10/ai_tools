@@ -6,6 +6,15 @@ Large CSV exports were truncated after ~100MB because the Export Worker finalize
 
 Exports now stream until the query is exhausted, then finalize the upload and return a complete download URL.
 
+```text
+# before
+on buffer_flush → finalize S3 upload
+
+# after
+on buffer_flush → write multipart part
+on cursor_exhausted → finalize S3 upload
+```
+
 ## Purpose
 
 Customers exporting result sets larger than ~100MB receive incomplete CSVs and cannot trust download contents for reporting or downstream loads.
@@ -61,3 +70,11 @@ docker compose up api worker
 2. Confirm downloaded CSV row count matches the query result.
 3. Spot-check a small (<10MB) export still completes and downloads normally.
 4. Confirm a failed query still yields `status: "failed"` with no download URL.
+
+## Merge Danger
+
+**Door:** two-way
+
+Revert restores finalize timing for new exports. Objects already written with early completion stay truncated unless re-exported.
+
+**Blast radius:** large async CSV exports

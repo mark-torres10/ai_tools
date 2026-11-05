@@ -6,6 +6,14 @@ The evaluation harness joined model predictions to labels by row index after shu
 
 Predictions are now matched to labels by stable `example_id` before scoring.
 
+```text
+# before
+pairs = align_by_row_index(predictions, labels)  # after shuffle
+
+# after
+pairs = inner_join(predictions, labels, on="example_id")
+```
+
 ## Purpose
 
 Offline eval runs that shuffle for batching or stratified sampling produce nonsense precision/recall (or accuracy) and can green-light a worse model.
@@ -42,3 +50,11 @@ pytest tests/eval/test_harness_join.py -q
 2. Corrupt predictions by permuting rows but keeping `example_id`; metrics must still match the unpermuted run.
 3. Drop or duplicate an `example_id` in predictions; the harness must fail with a clear join error instead of silently scoring.
 4. Spot-check a tiny three-row fixture: shuffled input yields the same per-id pairs as sorted input.
+
+## Merge Danger
+
+**Door:** two-way
+
+Revert restores positional join in the harness for new eval runs. Already published numbers from the old join are not rewritten.
+
+**Blast radius:** offline eval scores when shuffle is on

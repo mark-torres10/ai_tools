@@ -57,6 +57,7 @@ Guidelines:
 - Max 2-3 sentences.
 - Lead with the outcome, then the mechanism only if it clarifies the outcome.
 - Omit stale implementation detail (variable names, one-off helper renames).
+- After the prose, add the smallest view that makes the key point clear. Follow [../../shared/summary-view.md](../../shared/summary-view.md). For this type the view sits under **Solution**. Place each visual next to the short text it supports. Keep only the calls, files, props, states, and boundaries needed. One view is enough; use several only when each answers a different question.
 
 Common anti-patterns:
 
@@ -65,13 +66,19 @@ Common anti-patterns:
 
 An example:
 
-```markdown
+````markdown
 ## Solution
 
 Split the PR workflow into a fast default job and an optional `ml-extras` job.
 Docs and non-ML paths run the default job only; the heavy install runs when
 `paths` or a label indicate ML code changed.
+
+```text
+.github/workflows/pr.yml
+  ├─ job: default     # always — lint + unit tests
+  └─ job: ml-extras   # if paths match ml/** or label ml
 ```
+````
 
 ### 3. Purpose
 
@@ -128,3 +135,29 @@ Verify that:
 - Required services are mentioned
 - Paths assume a clear working directory
 - Success criteria are explicit
+
+### 5. Merge Danger
+
+End every default PR description with **Merge Danger**. Full rules: [../../shared/merge-danger.md](../../shared/merge-danger.md).
+
+For this type:
+
+- **One-way:** a migration, a deleted workflow, or a dependency major bump—revert is incomplete or costly.
+- **Two-way:** a refactor with the same behavior—revert restores the prior state.
+- The CI-split example above is **two-way**.
+
+**Blast radius** for infra and CI tweaks is often **PR check duration** (slow or broken checks block everyone).
+
+An example:
+
+```markdown
+## Merge Danger
+
+**Door:** two-way
+
+Reverting the workflow file restores the previous single-job install.
+
+**Blast radius:** PR check duration
+
+Wrong path filters could skip ML tests or run the heavy job on every push.
+```

@@ -64,7 +64,7 @@ A reader should be able to stop after this section and still understand the expe
 
 ### Good example
 
-```markdown
+````markdown
 ## Summary
 
 Compared classification using the target post alone, the target post plus its
@@ -73,7 +73,14 @@ direct parent, and the full preceding conversation thread.
 Adding the direct parent improved recall and overall F1. Providing the full
 thread increased recall further but reduced precision, resulting in no
 additional improvement over the parent-only condition.
+
+```text
+Context              F1    note
+Target only          0.59  baseline
+Target + parent      0.61  best overall
+Full thread          0.61  higher recall, lower precision vs parent
 ```
+````
 
 ### Common problems
 
@@ -82,6 +89,10 @@ additional improvement over the parent-only condition.
 * Including detailed metric tables in the summary
 * Claiming more than the experiment demonstrates
 * Writing the summary before the experiment and never updating it
+
+After the summary prose, add the smallest view that makes the key point clear. Follow [`../../shared/summary-view.md`](../../shared/summary-view.md). Place each visual directly under the short text it supports. Keep only the calls, files, props, states, and boundaries needed. One view is enough.
+
+The experiment key point is the comparison and the result, not the harness. If Flow already has the pipeline Mermaid diagram, do not copy it into Summary. A compact text comparison of conditions is often the smallest view.
 
 ---
 
@@ -244,7 +255,7 @@ Present the smallest result set needed to support the conclusion.
 |---|---:|---:|---:|---:|
 | Condition A | | | | |
 | Condition B | | | | |
-````
+```
 
 Use the primary metric plus only the secondary metrics needed to explain important tradeoffs.
 
@@ -261,3 +272,13 @@ Outputs:
 ```
 
 Do not copy every output file into the description. Just mention the key files.
+
+---
+
+## 8. Merge Danger
+
+End every experiment PR description with **Merge Danger**. Follow [`../../shared/merge-danger.md`](../../shared/merge-danger.md).
+
+For experiments, changing the harness or the metric definition is harder to walk back than a prompt or condition change, because older runs stop being comparable. A prompt change, a condition change, or an eval-config change is usually two-way.
+
+Example: swapping the primary metric from F1 to accuracy in shared scoring code is one-way for any dashboard or report that assumed F1. Adding a fourth context condition to an ablation config is two-way if scoring and the harness stay the same.

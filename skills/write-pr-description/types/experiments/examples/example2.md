@@ -6,6 +6,14 @@ Trained the same ModernBERT classifier on 10%, 25%, 50%, and 100% of the availab
 
 Performance improved consistently as the training set grew, but the largest gains occurred before the 50% condition. Training on the full dataset produced the best result, although the improvement over 50% was comparatively small.
 
+```text
+Train size   F1     note
+10%          0.43   low data
+25%          0.49
+50%          0.54   gains flatten here
+100%         0.56   small lift vs 50%
+```
+
 ## Purpose
 
 Measure how sensitive model performance is to the amount of labeled training data and identify a smaller subset suitable for faster development.
@@ -81,3 +89,11 @@ Outputs:
 - `outputs/aggregate_metrics.csv`
 - `outputs/learning_curve.png`
 - `outputs/predictions/`
+
+## Merge Danger
+
+**Door:** two-way
+
+**Blast radius:** how much labeled data later runs use
+
+Choosing a smaller subset for dev speed only affects which checkpoint this PR recommends; reverting the config returns later training to the prior fraction without migrating data.

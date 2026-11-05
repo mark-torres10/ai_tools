@@ -52,12 +52,22 @@ Common anti-patterns:
 
 An example:
 
-```markdown
+````markdown
 Adds asynchronous CSV exports for queries that are too large to return in a normal API response.
 
 The API creates an export job and returns a job identifier immediately. A background worker
 generates the file, stores it in S3, and exposes a temporary download URL when processing completes.
+
+```text
+ POST /exports
+-  └─ run query + stream CSV in response
++  └─ createJob() → { export_id, status: pending }
++  GET /exports/{export_id}   (poll)
++  Worker → Job Store + S3 → download_url when completed
 ```
+````
+
+After the Summary prose, add the smallest view that makes the key point clear. Follow [../../shared/summary-view.md](../../shared/summary-view.md). Place each visual directly under the short text it supports. Keep only the calls, files, props, states, and boundaries needed. One view is enough; use several only when each answers a different question. Do not use all of them. If Architecture already draws the same picture, Summary uses a smaller, different view.
 
 ### 3. Purpose
 
@@ -230,3 +240,19 @@ Verify that:
 - Required services are mentioned.
 - Paths assume a clear working directory.
 - Examples use good placeholder values.
+
+### 7. Merge Danger
+
+End every feature PR with **Merge Danger**. See [../../shared/merge-danger.md](../../shared/merge-danger.md) for door types and output shape.
+
+For features, **one-way** usually means a new public contract or stored shape (API fields clients depend on, job records, published prompt versions, migrations). **Two-way** usually means private behavior behind the same API (feature flag, handler-only logic, UI-only change).
+
+````markdown
+## Merge Danger
+
+**Door:** one-way
+
+New job store rows and queue messages remain if the deploy is reverted; callers already expect `export_id` and poll.
+
+**Blast radius:** async export callers and stored export jobs
+````

@@ -6,6 +6,13 @@ Adds a status panel on the query results page so users can start an async CSV ex
 
 Users click **Export CSV**, see job status update in place (`pending` → `running` → `completed`), and download the file when a temporary URL appears.
 
+```diff
+ QueryResultsPage
+-  └─ link out to separate export status page
++  ├─ ExportStatusPanel    // create job, poll, download link
++  └─ Export CSV button
+```
+
 ## Purpose
 
 Large exports previously required copying a job ID and polling a separate status page, which made the async export flow easy to abandon mid-job.
@@ -89,3 +96,11 @@ Expected: status panel appears inline, transitions to `completed`, and shows a w
 ### After
 
 ![After: query results page with inline export status panel and download link](screenshots/export-status-after.png)
+
+## Merge Danger
+
+**Door:** two-way
+
+UI-only; `POST /exports` and `GET /exports/{export_id}` are unchanged.
+
+**Blast radius:** query results page

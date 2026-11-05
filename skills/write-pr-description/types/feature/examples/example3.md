@@ -6,6 +6,15 @@ Adds a scoring API that loads a pinned model and prompt version for each request
 
 Callers specify `model_id` and `prompt_version` (or rely on the configured defaults). If either artifact is missing, the request fails closed rather than falling back to an implicit latest version.
 
+```text
+POST /v1/score
+  └─ Inference API
+       ├─ Model Registry.resolve(model_id)
+       ├─ Prompt Registry.resolve(task, prompt_version)
+       ├─ render(template, text)
+       └─ Model Runtime.score(rendered)
+```
+
 ## Purpose
 
 Ad-hoc prompt edits and floating “latest” model pointers make production predictions hard to reproduce and hard to compare against offline evals.
@@ -98,3 +107,11 @@ curl -X POST localhost:8000/v1/score \
 ```
 
 Expected: prediction plus `metadata.model_id` / `metadata.prompt_version` echoing the requested versions.
+
+## Merge Danger
+
+**Door:** one-way
+
+Published prompt versions and the versioned `/v1/score` contract are immutable once clients depend on explicit `prompt_version`.
+
+**Blast radius:** `/v1/score` clients

@@ -6,6 +6,13 @@ Compared Qwen3-8B, Qwen3-32B, and Ministral-3-14B on the same zero-shot post-rem
 
 Qwen3-32B achieved the strongest overall performance and the highest positive-class F1 score. Qwen3-8B performed worse but remained competitive enough to serve as a lower-cost model for development and iteration.
 
+```text
+Model              F1    rank
+Qwen3-32B          0.60  1
+Ministral-3-14B    0.56  2
+Qwen3-8B           0.54  3 (dev baseline)
+```
+
 ## Purpose
 
 Select two baselines for subsequent experiments:
@@ -65,3 +72,11 @@ Outputs:
 - `outputs/predictions_<model>.csv`
 - `outputs/model_comparison.csv`
 - `outputs/metrics.json`
+
+## Merge Danger
+
+**Door:** two-way
+
+**Blast radius:** which model later experiments start from
+
+Baseline selection only changes default configs and docs for follow-on work; reverting restores the previous model IDs without deleting predictions or shared eval data.

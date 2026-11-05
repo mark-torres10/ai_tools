@@ -6,6 +6,13 @@ Adds a PII redaction step that runs on all text before it is sent to an LLM prov
 
 Callers submit the original prompt payload and receive a redacted copy plus a compact audit record of what was masked. Emails, phone numbers, and government ID patterns are replaced with stable placeholders so downstream prompts remain structurally valid.
 
+```text
+POST /v1/completions
+  └─ PII Redactor.redact(prompt)
+  └─ Audit Store.write(metadata)
+  └─ Model Provider.complete(redacted prompt)
+```
+
 ## Purpose
 
 Prompts often contain user-authored text that includes personal identifiers. Sending that content verbatim to an external model provider creates compliance risk and makes it harder to reuse logs safely.
@@ -105,3 +112,13 @@ curl -X POST localhost:8000/v1/completions \
 ```
 
 Expected: provider sees placeholders instead of raw PII; response includes `redaction.entities_masked` counts.
+
+## Merge Danger
+
+**Door:** two-way
+
+`PII_REDACTION_ENABLED` can turn redaction off without changing the public endpoint shape.
+
+**Blast radius:** completion traffic
+
+Already-written audit rows are not deleted on revert.

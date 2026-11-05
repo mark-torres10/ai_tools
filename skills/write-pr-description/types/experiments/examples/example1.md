@@ -6,6 +6,13 @@ Compared classification using the target post alone, the target post plus its di
 
 Adding the direct parent improved recall and overall F1. Providing the full thread increased recall further but reduced precision, resulting in no additional improvement over the parent-only condition.
 
+```text
+Context              F1    note
+Target only          0.59  baseline
+Target + parent      0.61  best overall
+Full thread          0.61  higher recall, lower precision vs parent
+```
+
 ## Purpose
 
 Determine how much conversational context should be provided when classifying a target post.
@@ -74,3 +81,11 @@ Outputs:
 - `outputs/predictions_full_thread.csv`
 - `outputs/context_comparison.csv`
 - `outputs/changed_predictions.csv`
+
+## Merge Danger
+
+**Door:** two-way
+
+**Blast radius:** which context future classification runs include
+
+Wrong context choice shifts precision and recall on the same posts; reverting the config restores prior inputs without changing stored labels or the harness.
