@@ -6,11 +6,11 @@ Adds a PII redaction step that runs on all text before it is sent to an LLM prov
 
 Callers submit the original prompt payload and receive a redacted copy plus a compact audit record of what was masked. Emails, phone numbers, and government ID patterns are replaced with stable placeholders so downstream prompts remain structurally valid.
 
-```text
-POST /v1/completions
-  └─ PII Redactor.redact(prompt)
-  └─ Audit Store.write(metadata)
-  └─ Model Provider.complete(redacted prompt)
+```diff
+ POST /v1/completions
++  └─ PII Redactor.redact(prompt)
++  └─ Audit Store.write(metadata)
+   └─ Model Provider.complete(redacted prompt)
 ```
 
 ## Purpose
