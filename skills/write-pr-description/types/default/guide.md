@@ -73,10 +73,11 @@ Split the PR workflow into a fast default job and an optional `ml-extras` job.
 Docs and non-ML paths run the default job only; the heavy install runs when
 `paths` or a label indicate ML code changed.
 
-```text
-.github/workflows/pr.yml
-  ├─ job: default     # always — lint + unit tests
-  └─ job: ml-extras   # if paths match ml/** or label ml
+```diff
+ .github/workflows/pr.yml
+   ├─ job: default        # always — lint + unit tests
+-  └─ install ML extras on every PR
++  └─ job: ml-extras      # if paths match ml/** or label ml
 ```
 ````
 

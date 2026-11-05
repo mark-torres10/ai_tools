@@ -6,7 +6,7 @@ Adds asynchronous CSV exports for queries that are too large to return in a norm
 
 The API creates an export job and returns a job identifier immediately. A background worker generates the file, stores it in S3, and exposes a temporary download URL when processing completes.
 
-```text
+```diff
  POST /exports
 -  └─ run query + stream CSV in response
 +  └─ createJob() → { export_id, status: pending }

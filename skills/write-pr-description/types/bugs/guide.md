@@ -63,13 +63,12 @@ S3 upload stream when the local buffer flushed, not when the query finished.
 Exports now stream until the query completes, then finalize the upload and
 return a complete download URL.
 
-```text
-# before
-on buffer_flush → finalize S3 upload
-
-# after
-on buffer_flush → write multipart part
-on cursor_exhausted → finalize S3 upload
+```diff
+ on buffer_flush
+-  finalize S3 upload
++  write multipart part
++on cursor_exhausted
++  finalize S3 upload
 ```
 ````
 

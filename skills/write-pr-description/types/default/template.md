@@ -6,9 +6,13 @@
 
 <What changed from a caller or operator perspective? New or restored behavior.>
 
-```text
-<smallest view: call tree, diff, or file tree — see ../../shared/summary-view.md>
+```diff
+ <existing shape>
+-  <removed>
++  <added>
 ```
+
+Use a `diff` fence when the view is a change, so GitHub colors `+` and `-`. Use `text` for a new tree. See ../../shared/summary-view.md.
 
 ## Purpose
 

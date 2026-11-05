@@ -6,14 +6,10 @@ Scheduled report jobs computed day windows in UTC but labeled and cut those wind
 
 Window start/end are now computed and labeled with one timezone contract: the workspace timezone end-to-end.
 
-```text
-# before
-start, end = utc_day_bounds(yesterday)
-label = format(workspace_tz, start, end)
-
-# after
-start, end = local_day_bounds(workspace_tz, yesterday)
-label = format(workspace_tz, start, end)
+```diff
+-start, end = utc_day_bounds(yesterday)
++start, end = local_day_bounds(workspace_tz, yesterday)
+ label = format(workspace_tz, start, end)
 ```
 
 ## Purpose

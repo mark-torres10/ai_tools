@@ -71,7 +71,9 @@ sequenceDiagram
   API-->>UI: chunked stream
 ```
 
-### Diff (when shape exists; highlight what changed)
+### Diff (when the shape already exists)
+
+Fence the block as `diff`, not `text`. On GitHub, a line that starts with `+` renders green and a line that starts with `-` renders red. Context lines start with a single space. Put `+` or `-` in column 1. A `text` fence will not color those lines. Leave comparison tables and brand-new trees as `text`.
 
 **Component tree**
 

@@ -4,9 +4,13 @@
 
 <Observable failure>. <Corrected behavior after the fix>.
 
-```text
-<smallest view: pseudocode, control-flow diff, or call tree — see ../../shared/summary-view.md>
+```diff
+ <existing step>
+-  <faulty behavior>
++  <corrected behavior>
 ```
+
+Use a `diff` fence when the view is a change, so GitHub colors `+` and `-`. Use `text` for pseudocode that is not a change. See ../../shared/summary-view.md.
 
 ## Purpose
 

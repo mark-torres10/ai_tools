@@ -6,12 +6,9 @@ The evaluation harness joined model predictions to labels by row index after shu
 
 Predictions are now matched to labels by stable `example_id` before scoring.
 
-```text
-# before
-pairs = align_by_row_index(predictions, labels)  # after shuffle
-
-# after
-pairs = inner_join(predictions, labels, on="example_id")
+```diff
+-pairs = align_by_row_index(predictions, labels)  # after shuffle
++pairs = inner_join(predictions, labels, on="example_id")
 ```
 
 ## Purpose

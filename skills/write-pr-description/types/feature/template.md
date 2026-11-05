@@ -6,9 +6,13 @@ Adds <capability> for <problem or constraint>.
 
 <How it behaves from the caller's perspective>. <Most important runtime behavior>.
 
-```text
-<smallest view: call tree, diff, or component tree — see ../../shared/summary-view.md>
+```diff
+ <existing shape>
+-  <removed>
++  <added>
 ```
+
+Use a `diff` fence when the view is a change, so GitHub colors `+` and `-`. Use `text` for a new tree or pseudocode. See ../../shared/summary-view.md.
 
 ## Purpose
 
