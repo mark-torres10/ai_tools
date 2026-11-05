@@ -26,8 +26,8 @@ Please provide the following so I can perform a thorough review:
 
 - [ ] **Cross-Cutting Concerns**  
   - Highlight design patterns, abstractions, or conventions that span files.  
-  - Flag an interface, wrapper, factory, base class, or config layer with one caller or one implementation and no real variation. Prefer the direct version.  
-  - *Example:* “`Storage` and `S3Storage` have one caller — call the client directly.”  
+  - Flag an interface, wrapper, factory, base class, or config layer with one caller or one implementation when it has no concrete purpose, such as a public API boundary, dependency-injection or test seam, framework contract, or invariant. Prefer the direct version only when the abstraction adds no such value.  
+  - *Example:* “`Storage` only forwards to `S3Storage`, has no boundary or seam purpose, and has one caller — call the client directly.”  
   - Call out areas needing consistency (e.g., error handling, logging, API contracts).  
   - *Example:* “Ensure `api.py` and `tasks.py` return errors in the same JSON format.”
 
